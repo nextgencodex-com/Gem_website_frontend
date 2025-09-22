@@ -852,8 +852,8 @@ function dataURLtoFile(dataurl, filename) {
         />
         <div className="absolute inset-0 bg-black opacity-50 z-10" />
         <div className="relative z-20 space-y-4 px-6 lg:px-12 max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold tracking-tight drop-shadow-lg sm:text-5xl md:text-6xl">
-            Luxury Jewellry Collection
+          <h1 className="text-3xl font-bold tracking-tight drop-shadow-lg sm:text-5xl md:text-6xl md:whitespace-nowrap">
+            Luxury Jewellery Collection
           </h1>
           <p className="max-w-2xl text-base drop-shadow-md md:text-lg">
             Discover Timeless Elegance And Exquisite Craftsmanship

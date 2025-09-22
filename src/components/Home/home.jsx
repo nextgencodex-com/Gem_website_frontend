@@ -45,7 +45,7 @@ function HeroSection({ navigate }) {
   };
 
   return (
-    <div className="relative h-[400px] md:h-[700px] flex items-center justify-start text-left text-white overflow-hidden font-[Poppins]">
+    <div className="relative h-[400px] md:h-[700px] flex items-center justify-start text-left text-white overflow-hidden font-poppins">
       <video
         ref={videoRef}
         src="/videos/video1.mp4"
@@ -112,7 +112,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen font-[Poppins]">
+    <div className="min-h-screen font-poppines">
       <HeroSection navigate={navigate} />
 
       {/* WhatsApp Button - Made smaller on mobile */}
