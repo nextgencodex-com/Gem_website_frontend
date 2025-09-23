@@ -1421,13 +1421,13 @@ export default function GemCollection() {
                   </div>
                   <div className="flex gap-2 mt-auto">
                     <button
-                      className="flex-1 bg-[#bf9b30] text-white py-2 rounded-md font-semibold transition text-xs"
+                      className="flex-1 bg-[#bf9b30] text-white py-2 rounded-full font-semi text-xs shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#bf9b30]/40"
                       onClick={() => handleViewDetails(gem)}
                     >
                       View Details
                     </button>
                     <button
-                      className="flex-1 bg-white text-black py-2 rounded-md font-semibold border border-black transition text-xs"
+                      className="flex-1 bg-white text-black py-2 rounded-full font-semibold border border-black text-xs shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black/20"
                       onClick={() =>
                         addToCart({
                           id: gem.id,
@@ -1442,7 +1442,7 @@ export default function GemCollection() {
                       Add to Cart
                     </button>
                     <button
-                      className="flex-1 bg-[#bf9b30] text-white py-2 rounded-md font-semibold transition text-xs "
+                      className="flex-1 bg-[#bf9b30] text-white py-2 rounded-full font-semi text-xs shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#bf9b30]/40"
                       onClick={() => {
                         setCustomizeGem(gem);
                         setShowCustomizePopup(true);
