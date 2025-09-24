@@ -143,7 +143,7 @@ const Home = () => {
                 artistry.
               </p>
               <button
-                className="bg-[#bf9b30] hover:bg-[#bf9b30] text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-medium transition-colors duration-300 text-sm md:text-base"
+                className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={() => navigate("/gem-collection")}
               >
                 VIEW GEM COLLECTION
@@ -181,7 +181,7 @@ const Home = () => {
                 passion.
               </p>
               <button
-                className="bg-[#bf9b30] hover:bg-[#bf9b30] text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-medium transition-colors duration-300 text-sm md:text-base"
+                className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={() => navigate("/jewellery-collection")}
               >
                 VIEW JEWELRY COLLECTION

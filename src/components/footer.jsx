@@ -96,7 +96,7 @@ const Footer = () => {
               </Link>
               <Link
                 to="/admin"
-                className="block text-[#bf9b30] font-bold hover:text-blue-400 transition-colors duration-300"
+                className="block text-black hover:text-blue-400 transition-colors duration-300"
               >
                 Admin Panel
               </Link>
@@ -126,7 +126,7 @@ const Footer = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#bf9b30]  text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300"
+                className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
               >
                 Subscribe
               </button>
@@ -149,7 +149,7 @@ const Footer = () => {
                 className="text-black hover:text-blue-400 transition-colors duration-300"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-4 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -161,7 +161,7 @@ const Footer = () => {
                 className="text-black hover:text-blue-400 transition-colors duration-300"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-4 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -173,7 +173,7 @@ const Footer = () => {
                 className="text-black hover:text-blue-400 transition-colors duration-300"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-4 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -185,7 +185,7 @@ const Footer = () => {
                 className="text-black hover:text-blue-400 transition-colors duration-300"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-4 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -197,7 +197,7 @@ const Footer = () => {
                 className="text-black hover:text-blue-400 transition-colors duration-300"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-4 h-8"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
