@@ -719,7 +719,7 @@ export default function CustomJewelleryPage(props) {
           )}
           <h2 className="text-xl font-semibold mb-2">Selected {category}</h2>
           <button
-            className="bg-[#bf9b30] text-white px-4 py-2 rounded mb-2 text-sm md:text-base"
+            className="w-80 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
             onClick={() => {
               window.sessionStorage.setItem("returnToGemModal", "1");
               navigate("/gem-collection");
@@ -1056,7 +1056,7 @@ export default function CustomJewelleryPage(props) {
         <div className="flex flex-col gap-2">
           <div className="flex justify-center mt-4">
             <button
-              className="border border-green-600 text-green-600 py-3 px-6 rounded-md font-semibold hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center gap-2"
+              className="w-60 md:w-60 h-8 border border-green-600 text-green-600 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
               onClick={() => handleRequestViaWhatsApp()}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1069,7 +1069,7 @@ export default function CustomJewelleryPage(props) {
           {/* Request via Email Button */}
           <div className="flex justify-center mt-4">
             <button
-              className="px-6 py-3 rounded font-semibold bg-[#bf9b30] hover:bg-[#a88928] text-white"
+              className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
               onClick={() => setShowEmailModal(true)}
             >
               Request via Email
@@ -1102,7 +1102,7 @@ export default function CustomJewelleryPage(props) {
           )}
           <div className="flex justify-center mt-4">
             <button
-              className="border border-green-600 text-green-600 py-3 px-6 rounded-md font-semibold hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center gap-2"
+              className="w-60 md:w-60 h-8 border border-green-600 text-green-600 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
               onClick={() => handleRequestViaWhatsApp(true)}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1115,7 +1115,7 @@ export default function CustomJewelleryPage(props) {
           {/* Request via Email Button (after WhatsApp custom design) */}
           <div className="flex justify-center mt-4">
             <button
-              className="px-6 py-3 rounded font-semibold bg-[#bf9b30] text-white"
+              className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
               onClick={() => setShowEmailModal(true)}
             >
               Request via Email
@@ -1274,44 +1274,47 @@ export default function CustomJewelleryPage(props) {
             >
               &#10005;
             </button>
-            <h3 className="text-lg font-bold mb-4">Request via Email</h3>
+            <h3 className="text-lg font-bold mb-4 text-center">Request via Email</h3>
             <input
               name="fullName"
               value={emailForm.fullName}
               onChange={handleEmailInput}
               placeholder="Full Name"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-sm mb-2 p-2 border rounded"
             />
             <input
               name="address"
               value={emailForm.address}
               onChange={handleEmailInput}
               placeholder="Shipping Address"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-sm mb-2 p-2 border rounded"
             />
             <input
               name="mobile"
               value={emailForm.mobile}
               onChange={handleEmailInput}
               placeholder="Mobile Number"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-sm mb-2 p-2 border rounded"
             />
             <textarea
               name="details"
               value={emailForm.details}
               onChange={handleEmailInput}
               placeholder="Other Jewelry Details"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-sm  mb-2 p-2 border rounded"
               rows={3}
             />
+        <div className="text-xs text-gray-500 mb-2">All gem details will be included automatically in the email.</div>
+          <div className="flex justify-center mt-4">
             <button
-              className="w-full bg-[#bf9b30] hover:bg-[#a88928] text-white font-semibold rounded px-6 py-2 mt-2"
+              className="w-40 bg-[#bf9b30] text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
               onClick={handleSendEmail}
             >
               Send Email
             </button>
+          </div>
             {emailSent && (
-              <div className="text-green-600 mt-2">
+              <div className="text-black-600 text-sm mt-2">
                 Email client opened. Please send the email to complete your
                 request.
               </div>

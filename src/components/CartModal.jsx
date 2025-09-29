@@ -108,8 +108,10 @@ export default function CartModal({ open, onClose }) {
               {selectedCurrency === 'LKR' ? 'Rs. ' : ''}{total.toLocaleString(undefined, { maximumFractionDigits: 2 })} {selectedCurrency}
             </span>
           </div>
+
+          <div className="flex justify-center mt-8">
           <button
-            className="w-full border border-green-600 text-green-600 py-3 px-6 rounded-md font-semibold hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center gap-2"
+            className="w-60 md:w-60 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200"
             disabled={cartItems.length === 0}
             onClick={() => {
               // Get all currency totals
@@ -181,8 +183,11 @@ export default function CartModal({ open, onClose }) {
           >
             Request via WhatsApp
           </button>
+        </div>
+
+        <div className="flex justify-center mt-4">
           <button
-            className="w-full bg-[#bf9b30] hover:bg-[#a88928] text-white py-3 rounded-lg font-semibold text-lg transition mt-2"
+            className="w-60 md:w-40 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200"
             disabled={cartItems.length === 0}
             onClick={() => {
               // Get all currency totals
@@ -229,6 +234,7 @@ export default function CartModal({ open, onClose }) {
           >
             Order Via Email
           </button>
+        </div>
         </div>
       </div>
     </div>

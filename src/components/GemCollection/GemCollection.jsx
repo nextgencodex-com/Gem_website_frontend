@@ -1203,15 +1203,15 @@ export default function GemCollection() {
             {/* WhatsApp Request Button */}
             <div className="flex flex-col md:flex-row justify-center md:justify-start gap-3 mt-4">
               <button
-                className="w-60 md:w-40 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200"
-                style={{ fontSize: '11px' }}
+                className="w-60 md:w-40 h-10 text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
+                style={{ fontSize: '14px' }}
                 onClick={handleClearAll}
               >
                 Clear All
               </button>
               <button
-                className="w-60 md:w-40 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200"
-                style={{ fontSize: '11px' }}
+                className="w-60 md:w-40 h-10 text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
+                style={{ fontSize: '13px' }}
                 onClick={() => setShowEmailModal(true)}
               >
                 Request via Email
@@ -1236,49 +1236,53 @@ export default function GemCollection() {
                     onClick={() => setShowEmailModal(false)}
                   >
                     &#10005;
+                <div className="flex items-center justify-center"></div>    
                   </button>
-                  <h3 className="text-lg font-bold mb-4">Request via Email</h3>
+                  <h3 className="text-lg font-bold mb-4 text-center">Request via Email</h3>
                   <input
                     name="fullName"
                     value={emailForm.fullName}
                     onChange={handleEmailInput}
                     placeholder="Full Name"
-                    className="w-full mb-2 p-2 border rounded"
+                    className="w-full mb-2 p-2 border rounded text-sm"
                   />
                   <input
                     name="address"
                     value={emailForm.address}
                     onChange={handleEmailInput}
                     placeholder="Shipping Address"
-                    className="w-full mb-2 p-2 border rounded"
+                    className="w-full mb-2 p-2 border rounded text-sm"
                   />
                   <input
                     name="mobile"
                     value={emailForm.mobile}
                     onChange={handleEmailInput}
                     placeholder="Mobile Number"
-                    className="w-full mb-2 p-2 border rounded"
+                    className="w-full mb-2 p-2 border rounded text-sm"
                   />
                   <textarea
                     name="details"
                     value={emailForm.details}
                     onChange={handleEmailInput}
                     placeholder="Other Gem Details (optional)"
-                    className="w-full mb-2 p-2 border rounded"
+                    className="w-full mb-2 p-2 border rounded text-sm"
                     rows={3}
                   />
                   <div className="text-xs text-gray-500 mb-2">
                     All selected gem filter details will be included
                     automatically in the email.
                   </div>
+
+                <div className="flex items-center justify-center">
                   <button
-                    className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded px-6 py-2 mt-2"
+                    className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                     onClick={handleSendEmail}
                   >
                     Send Email
                   </button>
+                </div>
                   {emailSent && (
-                    <div className="text-green-600 mt-2">
+                    <div className="text-black-600 mt-2">
                       Email client opened. Please send the email to complete
                       your request.
                     </div>

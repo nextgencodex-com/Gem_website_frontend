@@ -1106,15 +1106,15 @@ function dataURLtoFile(dataurl, filename) {
             </div>
             
             
-                <div className="flex flex-col gap-2 mt-6">
+                <div className="flex flex-col items-center justify-center gap-3">
                   <button 
-                    className="border border-gray-300 bg-[#bf9b30] text-white rounded-md px-4 py-2 transition" 
+                    className="w-60 md:w-40 h-8 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
                     onClick={handleClearAll}
                   >
                     Clear All
                   </button>
                   <button
-                    className="bg-[#bf9b30] hover:bg-[#a88928] text-white py-3 px-6 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-[#bf9b30] focus:ring-offset-2 flex items-center justify-center gap-2"
+                    className="w-60 md:w-60 h-8 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
                     onClick={() => setShowFilterEmailModal(true)}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1123,7 +1123,7 @@ function dataURLtoFile(dataurl, filename) {
                     Request via Email
                   </button>
                   <button
-                    className="border border-green-600 text-green-600 py-3 px-6 rounded-md font-semibold hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center gap-2"
+                    className="w-60 md:w-60 h-8 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
                     onClick={() => handleRequestViaWhatsApp()}
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1549,14 +1549,16 @@ function dataURLtoFile(dataurl, filename) {
       {showFilterEmailModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
-            <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-700" onClick={() => setShowEmailModal(false)}>&#10005;</button>
-            <h3 className="text-lg font-bold mb-4">Request via Email</h3>
-            <input name="fullName" value={emailForm.fullName} onChange={handleEmailInput} placeholder="Full Name" className="w-full mb-2 p-2 border rounded" />
-            <input name="address" value={emailForm.address} onChange={handleEmailInput} placeholder="Shipping Address" className="w-full mb-2 p-2 border rounded" />
-            <input name="mobile" value={emailForm.mobile} onChange={handleEmailInput} placeholder="Mobile Number" className="w-full mb-2 p-2 border rounded" />
-            <textarea name="details" value={emailForm.details} onChange={handleEmailInput} placeholder="Other Jewelry Details" className="w-full mb-2 p-2 border rounded" rows={3} />
-            <button className="w-full bg-[#bf9b30] hover:bg-[#a88928] text-white font-semibold rounded px-6 py-2 mt-2" onClick={handleSendEmail}>Send Email</button>
-            {emailSent && <div className="text-green-600 mt-2">Email client opened. Please send the email to complete your request.</div>}
+            <button className="absolute top-2 right-2 text-gray-500 hover:text-gray-700" onClick={() => setShowFilterEmailModal(false)}>&#10005;</button>
+            <h3 className="text-lg font-bold mb-4 text-center">Request via Email</h3>
+            <input name="fullName" value={emailForm.fullName} onChange={handleEmailInput} placeholder="Full Name" className="w-full text-sm mb-2 p-2 border rounded" />
+            <input name="address" value={emailForm.address} onChange={handleEmailInput} placeholder="Shipping Address" className="w-full text-sm mb-2 p-2 border rounded" />
+            <input name="mobile" value={emailForm.mobile} onChange={handleEmailInput} placeholder="Mobile Number" className="w-full text-sm mb-2 p-2 border rounded" />
+            <textarea name="details" value={emailForm.details} onChange={handleEmailInput} placeholder="Other Jewelry Details" className="w-full text-sm mb-2 p-2 border rounded" rows={3} />
+            <div className="text-xs text-gray-500 mb-2">All gem details will be included automatically in the email.</div>
+            <div className="flex flex-col items-center justify-center mt-4"><button className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300 mb-2" onClick={handleSendEmail}>Send Email</button>
+            {emailSent && <div className="text-black-600 text-sm mt-2">Email client opened. Please send the email to complete your request.</div>}
+            </div>
           </div>
         </div>
       )}

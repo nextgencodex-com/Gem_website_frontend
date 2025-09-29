@@ -626,15 +626,15 @@ export default function JewDetails() {
                 </span>
               </div>
             </div>
-            <div className="flex flex-col sm:flexRow gap-4 pt-4">
+            <div className="flex flex-col items-center justify-center gap-4">
               <button
-                className="flex-1 bg-[#bf9b30] text-white py-3 px-6 rounded-md font-semibold  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm md:text-base"
+                className="w-40 bg-[#bf9b30] text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={handleAddToCart}
               >
                 Add To Cart
               </button>
               <button
-                className="flex-1 border border-blue-600 text-black py-3 px-6 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                className="w-40 bg-[#bf9b30] text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={() => setShowCustomizePopup(true)}
               >
                 Customize
@@ -820,7 +820,7 @@ export default function JewDetails() {
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold text-gray-800">Gemstone Options</h4>
                   <button
-                    className="w-full bg-[#bf9b30] text-white px-4 py-2 rounded-lg hover:bg-[#a88928] transition-colors"
+                    className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                     onClick={() => navigate("/gem-collection")}
                   >
                     Select Gemstone
@@ -925,9 +925,9 @@ export default function JewDetails() {
               )}
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
+              <div className="flex flex-col item-center justify-center sm:flex-row gap-4 pt-6 border-t border-gray-200">
                 <button
-                  className="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                  className="w-60 md:w-60 h-8 border border-green-600 text-green-600 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
                   onClick={() => handleCustomWhatsApp()}
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -936,7 +936,7 @@ export default function JewDetails() {
                   Contact Via WhatsApp
                 </button>
                 <button
-                  className="flex-1 bg-[#bf9b30] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#a88928] transition-colors"
+                  className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                   onClick={() => setShowEmailModal(true)}
                 >
                   Request Via Email
@@ -949,64 +949,61 @@ export default function JewDetails() {
 
       {/* Email Modal */}
       {showEmailModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60 p-4">
-          <div className="bg-white rounded-lg shadow-lg w-full max-w-md">
-            <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-gray-800">Request via Email</h3>
-              <button
-                className="text-gray-500 hover:text-gray-700 text-2xl"
-                onClick={() => setShowEmailModal(false)}
-              >
-                ×
-              </button>
-            </div>
-            
-            <div className="p-6 space-y-4">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+              <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+                <button
+                  className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                  onClick={() => setShowEmailModal(false)}
+                >
+                  &#10005;
+                </button>
+                <h3 className="text-lg font-bold mb-4 text-center">Request via Email</h3>
               <input
                 name="fullName"
                 value={emailForm.fullName}
                 onChange={handleCustomEmailInput}
                 placeholder="Full Name"
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bf9b30] focus:border-transparent"
+                className="w-full text-sm mb-2 p-2 border rounded"
               />
               <input
                 name="address"
                 value={emailForm.address}
                 onChange={handleCustomEmailInput}
                 placeholder="Shipping Address"
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bf9b30] focus:border-transparent"
+                className="w-full text-sm mb-2 p-2 border rounded"
               />
               <input
                 name="mobile"
                 value={emailForm.mobile}
                 onChange={handleCustomEmailInput}
                 placeholder="Mobile Number"
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bf9b30] focus:border-transparent"
+                className="w-full text-sm mb-2 p-2 border rounded"
               />
               <textarea
                 name="details"
                 value={emailForm.details}
                 onChange={handleCustomEmailInput}
                 placeholder="Additional customization details"
-                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bf9b30] focus:border-transparent"
+                className="w-full text-sm mb-2 p-2 border rounded"
                 rows={4}
               />
-              
+          <div className="text-xs text-gray-500 mb-2">All gem details will be included automatically in the email.</div>
+            <dev className="flex flex-col items-center justify-center mt-4">
               <button
-                className="w-full bg-[#bf9b30] hover:bg-[#a88928] text-white font-semibold rounded-lg px-6 py-3 transition-colors"
+                className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={handleCustomSendEmail}
               >
                 Send Email Request
               </button>
+            </dev>
               
               {emailSent && (
-                <div className="text-green-600 text-center mt-3">
+                <div className="text-black-600 text-sm mt-3">
                   Email client opened. Please send the email to complete your request.
                 </div>
               )}
             </div>
           </div>
-        </div>
       )}
     </div>
   );
