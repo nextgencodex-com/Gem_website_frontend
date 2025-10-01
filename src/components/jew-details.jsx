@@ -262,89 +262,109 @@ export default function JewDetails() {
   };
 
   // Custom Jewellery Handlers
-  const handleCustomEmailInput = (e) =>
-    setEmailForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-  
   const handleCustomSendEmail = async () => {
-    const materialInfo =
-      material === "Gold" ? `${material} - ${goldType} ${purity}` : material;
-    
-    let body = `Jewelry Customization Request\n\nFull Name: ${emailForm.fullName}\nShipping Address: ${emailForm.address}\nMobile Number: ${emailForm.mobile}\nJewelry: ${product?.name || "-"}\n`;
+  const materialInfo = material === "Gold" ? `${material} - ${goldType} ${purity}` : material;
+  
+  const category = product?.category || "Custom";
+  const categoryLower = category.toLowerCase();
+  
+  let body = `Jewelry Customization Request\n\nFull Name: ${emailForm.fullName}\nShipping Address: ${emailForm.address}\nMobile Number: ${emailForm.mobile}\nJewelry: ${product?.name || "-"}\n`;
 
-    // Add style based on category
-    const category = product?.category || "Custom";
-    if (category === "Ring" && ringStyle) {
-      body += `Ring Style: ${ringStyle}\n`;
-    } else if (category === "Necklace" && necklaceStyle) {
-      body += `Necklace Style: ${necklaceStyle}\n`;
-    } else if (category === "Bracelet" && braceletStyle) {
-      body += `Bracelet Style: ${braceletStyle}\n`;
-    } else if (category === "Earrings" && earringsStyle) {
-      body += `Earrings Style: ${earringsStyle}\n`;
-    } else if (customStyle) {
-      body += `Custom Style: ${customStyle}\n`;
-    }
+  // Style selection - check for partial matches
+  if (categoryLower.includes("ring") && ringStyle) {
+    body += `Ring Style: ${ringStyle}\n`;
+  } else if (categoryLower.includes("necklace") && necklaceStyle) {
+    body += `Necklace Style: ${necklaceStyle}\n`;
+  } else if (categoryLower.includes("bracelet") && braceletStyle) {
+    body += `Bracelet Style: ${braceletStyle}\n`;
+  } else if ((categoryLower.includes("earring") || categoryLower.includes("earing")) && earringsStyle) {
+    body += `Earrings Style: ${earringsStyle}\n`;
+  } else if (customStyle) {
+    body += `Custom Style: ${customStyle}\n`;
+  }
 
-    // Add sizes based on category
-    if (category === "Ring" && ringSize) {
-      body += `Ring Size: ${ringSize} (${ringSizeType})\n`;
-    } else if (category === "Necklace" && necklaceSize) {
-      body += `Necklace Size: ${necklaceSize} (${necklaceSizeType})\n`;
-    } else if (category === "Bracelet" && braceletSize) {
-      body += `Bracelet Size: ${braceletSize} (${braceletSizeType})\n`;
-    } else if (category === "Earrings" && earringsSize) {
-      body += `Earrings Size: ${earringsSize} (${earringsSizeType})\n`;
-    }
+  // Size selection - check for partial matches
+  if (categoryLower.includes("ring") && ringSize) {
+    body += `Ring Size: ${ringSize} (${ringSizeType})\n`;
+  } else if (categoryLower.includes("necklace") && necklaceSize) {
+    body += `Necklace Size: ${necklaceSize} (${necklaceSizeType})\n`;
+  } else if (categoryLower.includes("bracelet") && braceletSize) {
+    body += `Bracelet Size: ${braceletSize} (${braceletSizeType})\n`;
+  } else if ((categoryLower.includes("earring") || categoryLower.includes("earing")) && earringsSize) {
+    body += `Earrings Size: ${earringsSize} (${earringsSizeType})\n`;
+  }
 
-    body += `Material: ${materialInfo}\n`;
-    if (selectedGem) {
-      body += `Gem: ${selectedGem.name}\n`;
-    }
-    body += `Other Details: ${emailForm.details}`;
+  body += `Material: ${materialInfo}\n`;
+  if (selectedGem) {
+    body += `Gem: ${selectedGem.name}\n`;
+  }
+  body += `Other Details: ${emailForm.details}`;
 
-    window.location.href = `mailto:contact@luxirisgems.com?subject=Custom Jewelry Request&body=${encodeURIComponent(body)}`;
-    setEmailSent(true);
-  };
+  // Debug: log the email body
+  console.log("Email Body:", body);
+  console.log("Category:", category);
+  console.log("Category Lower:", categoryLower);
+  console.log("Ring Size:", ringSize);
+  console.log("Necklace Size:", necklaceSize);
+  console.log("Bracelet Size:", braceletSize);
+  console.log("Earrings Size:", earringsSize);
+
+  window.location.href = `mailto:contact@luxirisgems.com?subject=Custom Jewelry Request&body=${encodeURIComponent(body)}`;
+  setEmailSent(true);
+};
 
   const handleCustomWhatsApp = (withUpload = false) => {
-    let message = `Jewelry Customization Request:%0A`;
-    message += `Jewelry: ${product?.name || "-"}%0A`;
-    
-    const category = product?.category || "Custom";
-    if (category === "Ring" && ringStyle) {
-      message += `Ring Style: ${ringStyle}%0A`;
-    } else if (category === "Necklace" && necklaceStyle) {
-      message += `Necklace Style: ${necklaceStyle}%0A`;
-    } else if (category === "Bracelet" && braceletStyle) {
-      message += `Bracelet Style: ${braceletStyle}%0A`;
-    } else if (category === "Earrings" && earringsStyle) {
-      message += `Earrings Style: ${earringsStyle}%0A`;
-    } else if (customStyle) {
-      message += `Custom Style: ${customStyle}%0A`;
-    }
+  let message = `Jewelry Customization Request:%0A`;
+  message += `Jewelry: ${product?.name || "-"}%0A`;
+  
+  const category = product?.category || "Custom";
+  const categoryLower = category.toLowerCase();
+  
+  // Style selection - check for partial matches
+  if (categoryLower.includes("ring") && ringStyle) {
+    message += `Ring Style: ${ringStyle}%0A`;
+  } else if (categoryLower.includes("necklace") && necklaceStyle) {
+    message += `Necklace Style: ${necklaceStyle}%0A`;
+  } else if (categoryLower.includes("bracelet") && braceletStyle) {
+    message += `Bracelet Style: ${braceletStyle}%0A`;
+  } else if ((categoryLower.includes("earring") || categoryLower.includes("earing")) && earringsStyle) {
+    message += `Earrings Style: ${earringsStyle}%0A`;
+  } else if (customStyle) {
+    message += `Custom Style: ${customStyle}%0A`;
+  }
 
-    // Add sizes based on category
-    if (category === "Ring" && ringSize) {
-      message += `Ring Size: ${ringSize} (${ringSizeType})%0A`;
-    } else if (category === "Necklace" && necklaceSize) {
-      message += `Necklace Size: ${necklaceSize} (${necklaceSizeType})%0A`;
-    } else if (category === "Bracelet" && braceletSize) {
-      message += `Bracelet Size: ${braceletSize} (${braceletSizeType})%0A`;
-    } else if (category === "Earrings" && earringsSize) {
-      message += `Earrings Size: ${earringsSize} (${earringsSizeType})%0A`;
-    }
+  // Size selection - check for partial matches
+  if (categoryLower.includes("ring") && ringSize) {
+    message += `Ring Size: ${ringSize} (${ringSizeType})%0A`;
+  } else if (categoryLower.includes("necklace") && necklaceSize) {
+    message += `Necklace Size: ${necklaceSize} (${necklaceSizeType})%0A`;
+  } else if (categoryLower.includes("bracelet") && braceletSize) {
+    message += `Bracelet Size: ${braceletSize} (${braceletSizeType})%0A`;
+  } else if ((categoryLower.includes("earring") || categoryLower.includes("earing")) && earringsSize) {
+    message += `Earrings Size: ${earringsSize} (${earringsSizeType})%0A`;
+  }
 
-    const materialInfo = material === "Gold" ? `${material} - ${goldType} ${purity}` : material;
-    message += `Material: ${materialInfo}%0A`;
-    
-    if (selectedGem) {
-      message += `Gem: ${selectedGem.name || "-"}%0A`;
-    }
-    if (withUpload && uploadedImage) {
-      message += `Custom Design Image: [see uploaded image]%0A`;
-    }
-    window.open(`https://wa.me/94759627589?text=${message}`, "_blank");
-  };
+  const materialInfo = material === "Gold" ? `${material} - ${goldType} ${purity}` : material;
+  message += `Material: ${materialInfo}%0A`;
+  
+  if (selectedGem) {
+    message += `Gem: ${selectedGem.name || "-"}%0A`;
+  }
+  if (withUpload && uploadedImage) {
+    message += `Custom Design Image: [see uploaded image]%0A`;
+  }
+  
+  // Debug: log the message to console
+  console.log("WhatsApp Message:", message);
+  console.log("Category:", category);
+  console.log("Category Lower:", categoryLower);
+  console.log("Ring Size:", ringSize);
+  console.log("Necklace Size:", necklaceSize);
+  console.log("Bracelet Size:", braceletSize);
+  console.log("Earrings Size:", earringsSize);
+  
+  window.open(`https://wa.me/94759627589?text=${message}`, "_blank");
+};
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];

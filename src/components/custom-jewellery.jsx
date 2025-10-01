@@ -411,26 +411,26 @@ export default function CustomJewelleryPage(props) {
     // Do NOT include jewelry or gem images in the message
 
     // Add style based on category
-    if (category === "Ring" && ringStyle) {
+    if (category === "Rings" && ringStyle) {
       message += `Ring Style: ${ringStyle}%0A`;
     } else if (category === "Necklace" && necklaceStyle) {
       message += `Necklace Style: ${necklaceStyle}%0A`;
     } else if (category === "Bracelet" && braceletStyle) {
       message += `Bracelet Style: ${braceletStyle}%0A`;
-    } else if (category === "Earrings" && earringsStyle) {
+    } else if (category === "Earings" && earringsStyle) {
       message += `Earrings Style: ${earringsStyle}%0A`;
     } else if (customStyle) {
       message += `Custom Style: ${customStyle}%0A`;
     }
 
     // Add sizes based on category
-    if (category === "Ring" && ringSize) {
+    if (category === "Rings" && ringSize) {
       message += `Ring Size: ${ringSize} (${ringSizeType})%0A`;
     } else if (category === "Necklace" && necklaceSize) {
       message += `Necklace Size: ${necklaceSize} (${necklaceSizeType})%0A`;
     } else if (category === "Bracelet" && braceletSize) {
       message += `Bracelet Size: ${braceletSize} (${braceletSizeType})%0A`;
-    } else if (category === "Earrings" && earringsSize) {
+    } else if (category === "Earings" && earringsSize) {
       message += `Earrings Size: ${earringsSize} (${earringsSizeType})%0A`;
     }
 
@@ -512,27 +512,27 @@ export default function CustomJewelleryPage(props) {
     }\nJewelry: ${name || "-"}\n`;
 
     // Add style based on category
-    if (category === "Ring" && ringStyle) {
+    if (category === "Rings" && ringStyle) {
       body += `Ring Style: ${ringStyle}\n`;
     } else if (category === "Necklace" && necklaceStyle) {
       body += `Necklace Style: ${necklaceStyle}\n`;
     } else if (category === "Bracelet" && braceletStyle) {
       body += `Bracelet Style: ${braceletStyle}\n`;
     } else if (category === "Earrings" && earringsStyle) {
-      body += `Earrings Style: ${earringsStyle}\n`;
+      body += `Earings Style: ${earringsStyle}\n`;
     } else if (customStyle) {
       body += `Custom Style: ${customStyle}\n`;
     }
 
     // Add sizes based on category
-    if (category === "Ring" && ringSize) {
+    if (category === "Rings" && ringSize) {
       body += `Ring Size: ${ringSize} (${ringSizeType})\n`;
     } else if (category === "Necklace" && necklaceSize) {
       body += `Necklace Size: ${necklaceSize} (${necklaceSizeType})\n`;
     } else if (category === "Bracelet" && braceletSize) {
       body += `Bracelet Size: ${braceletSize} (${braceletSizeType})\n`;
     } else if (category === "Earrings" && earringsSize) {
-      body += `Earrings Size: ${earringsSize} (${earringsSizeType})\n`;
+      body += `Earings Size: ${earringsSize} (${earringsSizeType})\n`;
     }
 
     body += `Metal Type: ${material || "-"}`;
@@ -573,13 +573,13 @@ export default function CustomJewelleryPage(props) {
   // Get the current style value based on category
   const getCurrentStyleValue = () => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         return ringStyle;
       case "Necklace":
         return necklaceStyle;
       case "Bracelet":
         return braceletStyle;
-      case "Earrings":
+      case "Earings":
         return earringsStyle;
       default:
         return customStyle;
@@ -589,7 +589,7 @@ export default function CustomJewelleryPage(props) {
   // Set the style value based on category
   const setStyleValue = (value) => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         setRingStyle(value);
         break;
       case "Necklace":
@@ -598,7 +598,7 @@ export default function CustomJewelleryPage(props) {
       case "Bracelet":
         setBraceletStyle(value);
         break;
-      case "Earrings":
+      case "Earings":
         setEarringsStyle(value);
         break;
       default:
@@ -625,13 +625,13 @@ export default function CustomJewelleryPage(props) {
   // Get the current size value based on category
   const getCurrentSizeValue = () => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         return ringSize;
       case "Necklace":
         return necklaceSize;
       case "Bracelet":
         return braceletSize;
-      case "Earrings":
+      case "Earings":
         return earringsSize;
       default:
         return "";
@@ -641,13 +641,13 @@ export default function CustomJewelleryPage(props) {
   // Get the current size type based on category
   const getCurrentSizeType = () => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         return ringSizeType;
       case "Necklace":
         return necklaceSizeType;
       case "Bracelet":
         return braceletSizeType;
-      case "Earrings":
+      case "Earings":
         return earringsSizeType;
       default:
         return "US";
@@ -657,7 +657,7 @@ export default function CustomJewelleryPage(props) {
   // Set the size value based on category
   const setSizeValue = (value) => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         setRingSize(value);
         break;
       case "Necklace":
@@ -666,7 +666,7 @@ export default function CustomJewelleryPage(props) {
       case "Bracelet":
         setBraceletSize(value);
         break;
-      case "Earrings":
+      case "Earings":
         setEarringsSize(value);
         break;
       default:
@@ -677,7 +677,7 @@ export default function CustomJewelleryPage(props) {
   // Set the size type based on category
   const setSizeType = (value) => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         setRingSizeType(value);
         break;
       case "Necklace":
@@ -686,7 +686,7 @@ export default function CustomJewelleryPage(props) {
       case "Bracelet":
         setBraceletSizeType(value);
         break;
-      case "Earrings":
+      case "Earings":
         setEarringsSizeType(value);
         break;
       default:
