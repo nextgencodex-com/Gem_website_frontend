@@ -1916,10 +1916,11 @@ export default function GemCollection() {
               <div className="flex justify-center mt-4 gap-2">
                 <div className="w-full flex flex-col items-center gap-4 mt-6">
                  <div className="w-full flex justify-center">
-  <div className="w-full max-w-xs flex flex-col items-center gap-4">
+  <div className="flex flex-col md:flex-row justify-center md:justify-start gap-3 mt-4">
     {/* CLEAR ALL */}
     <button
-      className="border border-[#007bff] text-[#007bff] py-3 px-6 rounded-md font-semibold hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:ring-offset-2 flex items-center justify-center gap-2"
+      className="w-60 md:w-40 h-10 text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
+      style={{fontSize:'14px'}}
       onClick={handleClearAll}
     >
       CLEAR ALL
@@ -1927,7 +1928,8 @@ export default function GemCollection() {
 
     {/* Request via Email */}
     <button
-      className="bg-[#bf9b30] hover:bg-[#a88928] text-white py-3 px-6 rounded- font-semibold focus:outline-none focus:ring-2 focus:ring-[#bf9b30] focus:ring-offset-2 flex items-center justify-center gap-2"
+      className="w-60 md:w-40 h-10 text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
+      style={{fontSize:'14px'}}
       onClick={() => setShowEmailModal(true)}
     >
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1938,7 +1940,8 @@ export default function GemCollection() {
 
     {/* Request via WhatsApp */}
     <button
-      className="border border-green-600 text-green-600 py-3 px-6 rounded-md font-semibold hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center gap-2"
+      className="w-60 md:w-40 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-0 transition-all duration-200"
+      style={{fontSize:'14px'}}
       onClick={handleWhatsAppRequest}
     >
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1954,17 +1957,17 @@ export default function GemCollection() {
               {/* Email Modal */}
               {showEmailModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-                  <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+                 <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-sm relative">
                     {/* Close button (X icon) */}
                     <button
-                      className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl font-bold"
+                      className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-bold"
                       onClick={() => setShowEmailModal(false)}
                     >
                       &times;
                     </button>
 
                     {/* Title */}
-                    <h3 className="text-lg font-bold mb-4 text-center text-[#bf9b30]">
+                    <h3 className="text-md font-bold mb-3 text-center text-black">
                       Request via Email
                     </h3>
 
@@ -1974,28 +1977,28 @@ export default function GemCollection() {
                       value={emailForm.fullName}
                       onChange={handleEmailInput}
                       placeholder="Full Name"
-                      className="w-full mb-2 p-2 border rounded"
+                      className="w-full text-xs mb-2 p-1.5 border rounded"
                     />
                     <input
                       name="address"
                       value={emailForm.address}
                       onChange={handleEmailInput}
                       placeholder="Shipping Address"
-                      className="w-full mb-2 p-2 border rounded"
+                      className="w-full text-xs mb-2 p-1.5 border rounded"
                     />
                     <input
                       name="mobile"
                       value={emailForm.mobile}
                       onChange={handleEmailInput}
                       placeholder="Mobile Number"
-                      className="w-full mb-2 p-2 border rounded"
+                      className="w-full text-xs mb-2 p-1.5 border rounded"
                     />
                     <textarea
                       name="details"
                       value={emailForm.details}
                       onChange={handleEmailInput}
                       placeholder="Other Gem Details (optional)"
-                      className="w-full mb-2 p-2 border rounded"
+                      className="w-full text-xs mb-2 p-1.5 border rounded"
                       rows={3}
                     />
 
@@ -2006,16 +2009,18 @@ export default function GemCollection() {
                     </div>
 
                     {/* Send Email Button */}
+                    <div className="flex flex-col items-center justify-center mt-3">
                     <button
-                      className="w-full bg-[#bf9b30] hover:bg-[#a88928] text-white font-semibold rounded px-6 py-2 mt-2"
+                      className="w-40 bg-[#bf9b30]  text-white text-sm py-1 px-1 rounded-full transition-colors duration-300 mb-2"
                       onClick={handleSendEmail}
                     >
                       Send Email
                     </button>
+                    </div>
 
                     {/* Confirmation Message */}
                     {emailSent && (
-                      <div className="text-green-600 mt-2 text-sm">
+                      <div className="text-black-600 mt-1 text-xs">
                         Email client opened. Please send the email to complete
                         your request.
                       </div>

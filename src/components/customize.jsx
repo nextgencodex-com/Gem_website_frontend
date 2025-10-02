@@ -1,5 +1,5 @@
 import { X, ChevronDown, Upload } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect} from "react";
 import { useCart } from "./cart-context";
 import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "./GemCollection/gems-data";
@@ -36,10 +36,17 @@ export default function Customize({
 }) {
   useCart();
   const navigate = useNavigate();
-  const [selectedGem] = useState(initialGem || null);
+  const [selectedGem, setSelectedGem] = useState(initialGem || null);
   const [jewelleryType, setJewelleryType] = useState(
     initialJewelleryType || "Ring"
   );
+
+  useEffect(() => {
+    const storedGem = window.sessionStorage.getItem("selectedGemForCustom");
+    if (storedGem) {
+      setSelectedGem(JSON.parse(storedGem));
+    }
+  }, []);
   
   // Updated ring customization state
   const [ringStyle, setRingStyle] = useState("Solitaire");
@@ -118,6 +125,17 @@ export default function Customize({
     if (uploadedImage) {
       return uploadedImage;
     }
+    if (jewelleryType) {
+    return `/images/${
+      jewelleryType === "Ring"
+        ? "ring1.jpg"
+        : jewelleryType === "Necklace"
+        ? "neck1.jpg"
+        : jewelleryType === "Earrings"
+        ? "ear1.jpg"
+        : "be1.jpg"
+    }`;
+  }
     // Fallback to gem image if no design selected
     return (
       selectedGem?.images?.main || selectedGem?.imageUrl || "/images/hero.jpg"
@@ -860,7 +878,7 @@ Details: ${orderData.details}`
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-start mb-8">
         <div>
           <h2 className="text-xl md:text-2xl font-semibold text-gray-800 mb-5 md:mb-6">
-            Preview Your Design
+            Preview Your {jewelleryType}
           </h2>
           <div className="relative bg-gray-100 rounded-xl p-8 flex justify-center items-center shadow-lg">
             {selectedGem ? (
@@ -891,7 +909,7 @@ Details: ${orderData.details}`
             ) : (
               <div className="text-center p-8">
                 <p className="text-gray-500">
-                  Select a gem to see your custom design
+                  Select a gem to see your custom {jewelleryType.toLowerCase()} design
                 </p>
               </div>
             )}
