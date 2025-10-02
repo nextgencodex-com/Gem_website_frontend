@@ -226,6 +226,40 @@ export default function JewDetails() {
     fetchJewelry();
   }, [location.state, params.id]);
 
+  // Handle returning from gem collection with selected gem
+useEffect(() => {
+  // Check if we're returning from gem collection
+  if (window.sessionStorage.getItem("returnToJewDetails")) {
+    const gemJson = window.sessionStorage.getItem("selectedGemForCustom");
+    if (gemJson) {
+      try {
+        setSelectedGem(JSON.parse(gemJson));
+        window.sessionStorage.removeItem("selectedGemForCustom");
+        
+        // Check if we need to keep the customize modal open
+        if (window.sessionStorage.getItem("keepCustomizeModalOpen")) {
+          setShowCustomizePopup(true);
+          window.sessionStorage.removeItem("keepCustomizeModalOpen");
+        }
+      } catch (error) {
+        console.error("Error parsing gem from session storage:", error);
+      }
+    }
+    window.sessionStorage.removeItem("returnToJewDetails");
+  }
+
+  // If a gem was selected in Gem Collection, use it
+  const gemJson = window.sessionStorage.getItem("selectedGemForCustom");
+  if (gemJson) {
+    try {
+      setSelectedGem(JSON.parse(gemJson));
+      window.sessionStorage.removeItem("selectedGemForCustom");
+    } catch {
+      /* empty */
+    }
+  }
+}, []);
+
   // Image gallery logic
   const thumbnails = product?.images
     ? Array.isArray(product.images)
@@ -251,7 +285,13 @@ export default function JewDetails() {
     );
 
   const handleCustomizeNow = () => setShowCustomizePopup(true);
-  const handleCloseCustomize = () => setShowCustomizePopup(false);
+  const handleCloseCustomize = () => {
+  // Clear session storage when closing customize popup
+  window.sessionStorage.removeItem("returnToGemModal");
+  window.sessionStorage.removeItem("returnToJewDetails");
+  window.sessionStorage.removeItem("keepCustomizeModalOpen");
+  setShowCustomizePopup(false);
+}
 
   // Handle material change
   const handleMaterialChange = (newMaterial) => {
@@ -260,6 +300,10 @@ export default function JewDetails() {
       setGoldType("White Gold");
     }
   };
+
+  // Handle email form input
+  const handleCustomEmailInput = (e) =>
+    setEmailForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   // Custom Jewellery Handlers
   const handleCustomSendEmail = async () => {
@@ -376,20 +420,6 @@ export default function JewDetails() {
       reader.readAsDataURL(file);
     }
   };
-
-  // Handle gem selection from session storage
-  useEffect(() => {
-    // If a gem was selected in Gem Collection, use it
-    const gemJson = window.sessionStorage.getItem("selectedGemForCustom");
-    if (gemJson) {
-      try {
-        setSelectedGem(JSON.parse(gemJson));
-        window.sessionStorage.removeItem("selectedGemForCustom");
-      } catch {
-        /* empty */
-      }
-    }
-  }, []);
 
   const handleAddToCart = () => {
     if (!product) return;
@@ -674,7 +704,7 @@ export default function JewDetails() {
                 Customize Your {product.category || "Jewelry"}
               </h2>
               <button
-                onClick={() => setShowCustomizePopup(false)}
+                onClick={handleCloseCustomize}
                 className="text-gray-500 hover:text-gray-700 text-3xl font-bold"
               >
                 ×
@@ -840,8 +870,14 @@ export default function JewDetails() {
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold text-gray-800">Gemstone Options</h4>
                   <button
-                    className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
-                    onClick={() => navigate("/gem-collection")}
+                    className="w-40 bg-[#bf9b30] text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
+                    onClick={() => {
+                      // Set session storage to return to gem modal
+                      window.sessionStorage.setItem("returnToGemModal", "1");
+                      window.sessionStorage.setItem("returnToJewDetails", "1");
+                      window.sessionStorage.setItem("keepCustomizeModalOpen", "1");
+                      navigate("/gem-collection");
+                    }}
                   >
                     Select Gemstone
                   </button>
@@ -945,13 +981,13 @@ export default function JewDetails() {
               )}
 
               {/* Action Buttons */}
-              <div className="flex flex-col item-center justify-center sm:flex-row gap-4 pt-6 border-t border-gray-200">
+              <div className="flex flex-col items-center justify-center sm:flex-row gap-4 pt-6 border-t border-gray-200">
                 <button
                   className="w-60 md:w-60 h-8 border border-green-600 text-green-600 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
                   onClick={() => handleCustomWhatsApp()}
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.040 1.016-1.040 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.510-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
                   </svg>
                   Contact Via WhatsApp
                 </button>
@@ -969,56 +1005,56 @@ export default function JewDetails() {
 
       {/* Email Modal */}
       {showEmailModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-              <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[9999]">
+              <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-sm relative">
                 <button
-                  className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                  className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-bold"
                   onClick={() => setShowEmailModal(false)}
                 >
                   &#10005;
                 </button>
-                <h3 className="text-lg font-bold mb-4 text-center">Request via Email</h3>
+                <h3 className="text-md font-bold mb-3 text-center text-black">Request via Email</h3>
               <input
                 name="fullName"
                 value={emailForm.fullName}
                 onChange={handleCustomEmailInput}
                 placeholder="Full Name"
-                className="w-full text-sm mb-2 p-2 border rounded"
+                className="w-full text-xs mb-2 p-2 border rounded"
               />
               <input
                 name="address"
                 value={emailForm.address}
                 onChange={handleCustomEmailInput}
                 placeholder="Shipping Address"
-                className="w-full text-sm mb-2 p-2 border rounded"
+                className="w-full text-xs mb-2 p-2 border rounded"
               />
               <input
                 name="mobile"
                 value={emailForm.mobile}
                 onChange={handleCustomEmailInput}
                 placeholder="Mobile Number"
-                className="w-full text-sm mb-2 p-2 border rounded"
+                className="w-full text-xs mb-2 p-2 border rounded"
               />
               <textarea
                 name="details"
                 value={emailForm.details}
                 onChange={handleCustomEmailInput}
                 placeholder="Additional customization details"
-                className="w-full text-sm mb-2 p-2 border rounded"
+                className="w-full text-xs mb-2 p-2 border rounded"
                 rows={4}
               />
           <div className="text-xs text-gray-500 mb-2">All gem details will be included automatically in the email.</div>
-            <dev className="flex flex-col items-center justify-center mt-4">
+            <div className="flex flex-col items-center justify-center mt-4">
               <button
-                className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
+                className="w-40 bg-[#bf9b30] text-white text-sm py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={handleCustomSendEmail}
               >
                 Send Email Request
               </button>
-            </dev>
+            </div>
               
               {emailSent && (
-                <div className="text-black-600 text-sm mt-3">
+                <div className="text-black-600 mt-2 text-xs">
                   Email client opened. Please send the email to complete your request.
                 </div>
               )}

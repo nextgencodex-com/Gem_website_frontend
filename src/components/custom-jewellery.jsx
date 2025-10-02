@@ -725,7 +725,7 @@ export default function CustomJewelleryPage(props) {
               navigate("/gem-collection");
             }}
           >
-            Customize Gem for Jewellery
+            Customize Gem for Jeweller
           </button>
         </div>
         {/* Jewelry Customization Section */}
@@ -1266,55 +1266,55 @@ export default function CustomJewelleryPage(props) {
       )}
       {/* Email Modal */}
       {showEmailModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[9999]">
+          <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-sm relative">
             <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-bold"
               onClick={() => setShowEmailModal(false)}
             >
               &#10005;
             </button>
-            <h3 className="text-lg font-bold mb-4 text-center">Request via Email</h3>
+            <h3 className="text-md font-bold mb-3 text-center text-black">Request via Email</h3>
             <input
               name="fullName"
               value={emailForm.fullName}
               onChange={handleEmailInput}
               placeholder="Full Name"
-              className="w-full text-sm mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
             />
             <input
               name="address"
               value={emailForm.address}
               onChange={handleEmailInput}
               placeholder="Shipping Address"
-              className="w-full text-sm mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
             />
             <input
               name="mobile"
               value={emailForm.mobile}
               onChange={handleEmailInput}
               placeholder="Mobile Number"
-              className="w-full text-sm mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
             />
             <textarea
               name="details"
               value={emailForm.details}
               onChange={handleEmailInput}
               placeholder="Other Jewelry Details"
-              className="w-full text-sm  mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
               rows={3}
             />
         <div className="text-xs text-gray-500 mb-2">All gem details will be included automatically in the email.</div>
           <div className="flex justify-center mt-4">
             <button
-              className="w-40 bg-[#bf9b30] text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
+              className="w-40 bg-[#bf9b30] text-white text-sm py-1 px-1 rounded-full transition-colors duration-300"
               onClick={handleSendEmail}
             >
               Send Email
             </button>
           </div>
             {emailSent && (
-              <div className="text-black-600 text-sm mt-2">
+              <div className="text-black-600 mt-2 text-xs">
                 Email client opened. Please send the email to complete your
                 request.
               </div>

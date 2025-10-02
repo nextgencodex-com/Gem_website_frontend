@@ -296,7 +296,7 @@ export default function GemDetails() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="w-full flex flex-col items-center justify-center sm:flex-row gap-4 pt-6 border-t border-gray-200">
               <button
                 className="w-60 md:w-40 h-10 text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
                 style={{ fontSize: '16px' }}

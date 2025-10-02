@@ -94,35 +94,24 @@ export default function GemCollection() {
   const [error, setError] = useState(null)
   const [dataLoaded, setDataLoaded] = useState(false)
 
-    // Load gems from API
+  // Load gems from API
   useEffect(() => {
-    const loadGems = async () => {
-      try {
-        setLoading(true)
-        setError(null)
-        setDataLoaded(false)
-        
-        // Add minimum loading time for smooth UX
-        const [gemsData] = await Promise.all([
-          fetchGems(),
-          new Promise(resolve => setTimeout(resolve, 800)) // Minimum 800ms loading
-        ]);
-        
-        setGems(gemsData || [])
-        setDataLoaded(true)
-      } catch (err) {
-        setError(err.message)
-        setGems([])
-      } finally {
-        // Add a small delay before hiding loading to show the animation
-        setTimeout(() => {
-          setLoading(false)
-        }, 200)
-      }
+  const loadGems = async () => {
+    try {
+      setError(null);
+      setDataLoaded(false);
+      
+      const gemsData = await fetchGems();
+      setGems(gemsData || []);
+      setDataLoaded(true);
+    } catch (err) {
+      setError(err.message);
+      setGems([]);
     }
-    
-    loadGems()
-  }, [])
+  };
+  
+  loadGems();
+}, []);
 
   // Debug session storage on page load
   useEffect(() => {
@@ -661,18 +650,6 @@ export default function GemCollection() {
 
   const [showCustomizePopup, setShowCustomizePopup] = useState(false);
   const [customizeGem, setCustomizeGem] = useState(null);
-
-  // Show enhanced loading state
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="flex flex-col items-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#bf9b30] mb-6"></div>
-          <div className="text-xl font-semibold text-[#bf9b30]">Loading gems...</div>
-        </div>
-      </div>
-    );
-  }
 
   // Show error state
   if (error) {
