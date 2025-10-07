@@ -20,7 +20,6 @@ const Header = () => {
     { name: "Gem Collection", href: "/gem-collection" },
     { name: "Jewellery Collection", href: "/jewellery-collection" },
     { name: "Contact Us", href: "/contact" },
-    { name: "Admin Panel", href: "/admin/login", gold: true },
   ];
 
   return (
@@ -42,9 +41,7 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`text-black hover:text-blue-400 transition-colors duration-300 font-medium text-sm xl:text-base ${
-                  link.gold ? "text-[#bf9b30] font-bold" : ""
-                }`}
+                className="text-black hover:text-blue-400 transition-colors duration-300 font-medium text-sm xl:text-base"
               >
                 {link.name}
               </Link>
@@ -112,9 +109,7 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`text-black hover:text-blue-400 transition-colors duration-300 font-medium py-3 px-3 rounded-md hover:bg-gray-100 ${
-                  link.gold ? "text-[#bf9b30] font-bold" : ""
-                }`}
+                className="text-black hover:text-blue-400 transition-colors duration-300 font-medium py-3 px-3 rounded-md hover:bg-gray-100"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}

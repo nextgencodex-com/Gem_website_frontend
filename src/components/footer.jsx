@@ -95,7 +95,7 @@ const Footer = () => {
                 Contact
               </Link>
               <Link
-                to="/admin"
+                to="/admin/login"
                 className="block text-black hover:text-blue-400 transition-colors duration-300"
               >
                 Admin Panel

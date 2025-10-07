@@ -159,14 +159,17 @@ _Sent via website contact form_
                 onChange={handleChange}
               ></textarea>
             </div>
+
+            <div className="flex flex-col items-center justify-center sm:flex-row gap-1 pt-0">
             <button
               type="submit"
-              className="w-full bg-[#bf9b30] hover:bg-[#a88928] text-white py-3 rounded-md font-semibold transition-colors duration-300 shadow-md hover:shadow-lg text-sm md:text-base"
+              className="w-40 bg-[#bf9b30]  text-white text-sm py-1 px-1 rounded-full transition-colors duration-300"
               disabled={sending}
             >
               {sending ? "Sending..." : "SEND MESSAGE"}
             </button>
-            {sent && <div className="text-green-600 mt-2">Message sent successfully!</div>}
+            </div>
+            {sent && <div className="text-black-600 mt-2 text-sm">Message sent successfully!</div>}
           </form>
 
           {/* Contact Information */}
