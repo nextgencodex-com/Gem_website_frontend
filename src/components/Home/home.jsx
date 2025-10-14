@@ -48,7 +48,7 @@ function HeroSection({ navigate }) {
     <div className="relative h-[400px] md:h-[700px] flex items-center justify-start text-left text-white overflow-hidden font-poppins">
       <video
         ref={videoRef}
-        src="/videos/video1.mp4"
+        src="/videos/v2.mp4"
         autoPlay
         muted={muted}
         loop
