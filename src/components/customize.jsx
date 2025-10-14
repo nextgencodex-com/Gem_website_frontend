@@ -1,5 +1,5 @@
 import { X, ChevronDown, Upload } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect} from "react";
 import { useCart } from "./cart-context";
 import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "./GemCollection/gems-data";
@@ -36,10 +36,17 @@ export default function Customize({
 }) {
   useCart();
   const navigate = useNavigate();
-  const [selectedGem] = useState(initialGem || null);
+  const [selectedGem, setSelectedGem] = useState(initialGem || null);
   const [jewelleryType, setJewelleryType] = useState(
     initialJewelleryType || "Ring"
   );
+
+  useEffect(() => {
+    const storedGem = window.sessionStorage.getItem("selectedGemForCustom");
+    if (storedGem) {
+      setSelectedGem(JSON.parse(storedGem));
+    }
+  }, []);
   
   // Updated ring customization state
   const [ringStyle, setRingStyle] = useState("Solitaire");
@@ -118,6 +125,17 @@ export default function Customize({
     if (uploadedImage) {
       return uploadedImage;
     }
+    if (jewelleryType) {
+    return `/images/${
+      jewelleryType === "Ring"
+        ? "ring1.jpg"
+        : jewelleryType === "Necklace"
+        ? "neck1.jpg"
+        : jewelleryType === "Earrings"
+        ? "ear1.jpg"
+        : "be1.jpg"
+    }`;
+  }
     // Fallback to gem image if no design selected
     return (
       selectedGem?.images?.main || selectedGem?.imageUrl || "/images/hero.jpg"
@@ -860,7 +878,7 @@ Details: ${orderData.details}`
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 items-start mb-8">
         <div>
           <h2 className="text-xl md:text-2xl font-semibold text-gray-800 mb-5 md:mb-6">
-            Preview Your Design
+            Preview Your {jewelleryType}
           </h2>
           <div className="relative bg-gray-100 rounded-xl p-8 flex justify-center items-center shadow-lg">
             {selectedGem ? (
@@ -891,7 +909,7 @@ Details: ${orderData.details}`
             ) : (
               <div className="text-center p-8">
                 <p className="text-gray-500">
-                  Select a gem to see your custom design
+                  Select a gem to see your custom {jewelleryType.toLowerCase()} design
                 </p>
               </div>
             )}
@@ -1065,23 +1083,26 @@ Details: ${orderData.details}`
             </div>
           )}
 
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+          <div className="w-full flex flex-col items-center justify-center sm:flex-row gap-4 pt-6 border-t border-gray-200">
             <button
-              className="flex-1 bg-[#bf9b30] text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm md:text-base"
+              className="w-60 md:w-40 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200"
+              style={{ fontSize: '13px' }}
               onClick={handleSaveDesign}
               disabled={!selectedGem}
             >
               Save Design
             </button>
             <button
-              className="flex-1 border border-blue-600 text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-60 md:w-40 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200"
+              style={{ fontSize: '13px' }}
               onClick={handleRequestQuote}
             >
               Request Quote
             </button>
             {/* Request via Email Button */}
             <button
-              className="flex-1 bg-[#bf9b30] hover:bg-yellow-600 text-white py-3 px-6 rounded-lg font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 text-sm md:text-base"
+              className="w-60 md:w-40 h-10 border border-green-600 text-green-600 hover:bg-green-50 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200"
+              style={{ fontSize: '13px' }}
               onClick={() => setShowEmailModal(true)}
             >
               Request via Email
@@ -1089,52 +1110,55 @@ Details: ${orderData.details}`
           </div>
           {/* Email Modal */}
           {showEmailModal && (
-            <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-              <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+            <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[9999]">
+              <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-sm relative">
                 <button
-                  className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                  className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-bold"
                   onClick={() => setShowEmailModal(false)}
                 >
                   &#10005;
                 </button>
-                <h3 className="text-lg font-bold mb-4">Request via Email</h3>
+                <h3 className="text-md font-bold mb-3 text-center text-black">Request via Email</h3>
                 <input
                   name="fullName"
                   value={emailForm.fullName}
                   onChange={handleEmailInput}
                   placeholder="Full Name"
-                  className="w-full mb-2 p-2 border rounded"
+                  className="w-full text-xs mb-2 p-2 border rounded"
                 />
                 <input
                   name="address"
                   value={emailForm.address}
                   onChange={handleEmailInput}
                   placeholder="Shipping Address"
-                  className="w-full mb-2 p-2 border rounded"
+                  className="w-full text-xs mb-2 p-2 border rounded"
                 />
                 <input
                   name="mobile"
                   value={emailForm.mobile}
                   onChange={handleEmailInput}
                   placeholder="Mobile Number"
-                  className="w-full mb-2 p-2 border rounded"
+                  className="w-full text-xs mb-2 p-2 border rounded"
                 />
                 <textarea
                   name="details"
                   value={emailForm.details}
                   onChange={handleEmailInput}
                   placeholder="Other Jewellery Details"
-                  className="w-full mb-2 p-2 border rounded"
+                  className="w-full text-xs mb-2 p-2 border rounded"
                   rows={3}
                 />
+            <div className="text-xs text-gray-500 mb-2">All gem details will be included automatically in the email.</div>
+              <dev className="flex flex-col items-center justify-center mt-4">
                 <button
-                  className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded px-6 py-2 mt-2"
+                  className="w-40 bg-[#bf9b30] text-white text-sm py-1 px-1 rounded-full transition-colors duration-300"
                   onClick={handleSendEmail}
                 >
                   Send Email
                 </button>
+              </dev>
                 {emailSent && (
-                  <div className="text-green-600 mt-2">
+                  <div className="text-black-600 mt-2 text-xs">
                     Email client opened. Please send the email to complete your
                     request.
                   </div>

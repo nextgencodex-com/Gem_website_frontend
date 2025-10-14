@@ -45,7 +45,7 @@ function HeroSection({ navigate }) {
   };
 
   return (
-    <div className="relative h-[400px] md:h-[700px] flex items-center justify-start text-left text-white overflow-hidden font-[Poppins]">
+    <div className="relative h-[400px] md:h-[700px] flex items-center justify-start text-left text-white overflow-hidden font-poppins">
       <video
         ref={videoRef}
         src="/videos/video1.mp4"
@@ -112,7 +112,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen font-[Poppins]">
+    <div className="min-h-screen font-poppines">
       <HeroSection navigate={navigate} />
 
       {/* WhatsApp Button - Made smaller on mobile */}
@@ -143,7 +143,7 @@ const Home = () => {
                 artistry.
               </p>
               <button
-                className="bg-[#bf9b30] hover:bg-[#bf9b30] text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-medium transition-colors duration-300 text-sm md:text-base"
+                className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={() => navigate("/gem-collection")}
               >
                 VIEW GEM COLLECTION
@@ -181,7 +181,7 @@ const Home = () => {
                 passion.
               </p>
               <button
-                className="bg-[#bf9b30] hover:bg-[#bf9b30] text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-medium transition-colors duration-300 text-sm md:text-base"
+                className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
                 onClick={() => navigate("/jewellery-collection")}
               >
                 VIEW JEWELRY COLLECTION

@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 // UI Components
 const Card = ({ children, className = "", ...props }) => (
   <div className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`} {...props}>
@@ -52,7 +50,8 @@ const Blog = () => {
           </h2>
         </div>
       </div>
-      {/* WhatsApp Button (Home page style, single consistent version) */}
+
+      {/* WhatsApp Button */}
       <div className="fixed left-6 bottom-6 z-20">
         <button
           className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg transition-colors duration-300"
@@ -73,17 +72,16 @@ const Blog = () => {
         {/* The Sri Lankan Gem Legacy */}
         <section className="relative container mx-auto px-4 sm:px-6">
           <div className="w-full flex flex-col items-center pt-8 md:pt-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#bf9b30] text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#bf9b30] text-center">
               The Sri Lankan Gem Legacy
             </h2>
-            <div className="w-16 h-1 bg-[#00B9B3] mb-6 md:mb-8"></div>
-            </div>
+            <div className="w-20 h-1 bg-[#00B9B3] mb-6 md:mb-8"></div>
+          </div>
 
-          {/* Description card */}
-          <div className="w-full flex justify-center mt-8 md:mt-12">
+          <div className="w-full flex justify-center mt-8 md:mt-0 transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
             <Card className="w-full max-w-4xl lg:max-w-6xl xl:max-w-[1736px] shadow-[5px_10px_25px_#00000040] rounded-lg md:rounded-xl lg:rounded-[21px]">
               <CardContent className="p-6 md:p-12 lg:p-[85px_104px]">
-                <p className="text-lg text-black text-center leading-relaxed">
+                <p className="text-mg text-black text-center leading-relaxed">
                   Sri Lanka's and Worldwide Gem Industry Is A Blend Of Ancient Tradition
                   And Modern Precision, Producing World-renowned Ceylon
                   Sapphires, Rubies, And More. Sudharman Samarakoon, With Over 25 Years
@@ -98,309 +96,144 @@ const Blog = () => {
         {/* The Journey Of Excellence */}
         <section className="relative container bg-[#f8f4ed] mx-auto px-4 sm:px-6 mt-12 md:mt-16">
           <div className="w-full flex flex-col items-center">
-            <h2 className="text-5xl font-bold text-[#bf9b30] text-center">
+            <h2 className="text-4xl font-bold text-[#bf9b30] text-center">
               The Journey Of Excellence
             </h2>
-            <div className="w-[150px] sm:w-[180px] md:w-[216px] h-2 md:h-3 mt-4 md:mt-6 rounded-full bg-[#00B9B3]" />
+            <div className="w-20 h-1 bg-[#00B9B3] mb-6 md:mb-8"></div>
           </div>
 
           {/* Process Steps */}
           <div className="space-y-16 md:space-y-24 mt-12 md:mt-16">
-            {/* Step 1: Gem Mining */}
-            <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                <img
-                  className="w-full h-full rounded-lg object-cover"
-                  alt="Gem mining in Sri Lanka"
-                  src="/images/s1.jpg"
-                />
-              </div>
-
-              <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
-                <div className="w-[180px] sm:w-[200px] md:w-[239px] h-[60px] sm:h-[70px] md:h-[88px] bg-[#bf9b30] rounded-full flex items-center justify-center">
-                  <span className="text-xl font-bold text-white">
-                    Step 1
-                  </span>
+            {/** Loop through steps 1-6 with hover pop effect **/}
+            {[
+              {
+                step: "Step 1",
+                title: "Gem Mining",
+                description:
+                  "The Journey Begins In Sri Lanka's Gem-rich Regions Like Ratnapura And Elahera. Miners Use Traditional Methods, Such As Pit Mining And River Panning, To Extract Rough Stones. Anura Partners With Local Miners To Select High Quality Rough Gems, Ensuring Ethical And Sustainable Practices.",
+                img: "/images/s1.jpg",
+                reverse: false,
+              },
+              {
+                step: "Step 2",
+                title: "Sorting And Grading",
+                description:
+                  "Rough Stones Are Sorted By Color, Size, And Quality. Anura Evaluates Each Stone For Its Potential, Focusing On Clarity And Natural Properties Like The Cornflower Blue Of Ceylon Sapphires Or The Asterism Of Star Rubies.",
+                img: "/images/s2.jpg",
+                reverse: true,
+              },
+              {
+                step: "Step 3",
+                title: "Preforming",
+                description:
+                  "The Rough Stone Is Shaped To Maximize Weight Retention And Prepare It For Faceting. This Step Requires Skill To Balance The Gem's Size And Future Brilliance, Especially For Rare Padparadscha Sapphires",
+                img: "/images/s3.jpg",
+                reverse: false,
+              },
+              {
+                step: "Step 4",
+                title: "Faceting",
+                description:
+                  "Facets Are Cut At Precise Angles To Enhance The Gem's Brilliance And Color. For Ceylon Sapphires, They Ensure Angles That Highlight Their Vivid Hues, Often Using A Combination Of Traditional Hand Cutting And Modern Machines.",
+                img: "/images/s4.jpg",
+                reverse: true,
+              },
+              {
+                step: "Step 5",
+                title: "Polishing",
+                description:
+                  "The Gem Is Polished To A Mirror-like Finish, Revealing Its True Beauty. This Step Is Critical For Gems Like Star Rubies And Chrysoberyl Cat's Eye To Showcase Their Unique Optical Effects.",
+                img: "/images/s5.jpg",
+                reverse: false,
+              },
+              {
+                step: "Step 6",
+                title: "Quality Check And Certification",
+                description:
+                  "Each Gem Undergoes Rigorous Inspection For Quality And Authenticity. They Ensure Certification By The National Gem And Jewellery Authority (ngja) Or Gia, Guaranteeing Conflict-free Gems That Meet International Standards.",
+                img: "/images/s6.jpg",
+                reverse: true,
+              },
+            ].map(({ step, title, description, img, reverse }, idx) => (
+              <div
+                key={idx}
+                className={`flex flex-col ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 items-center transform hover:scale-[1.02] transition-all duration-200 cursor-pointer`}
+              >
+                <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
+                  <Card className="border-0 shadow-none h-full">
+                    <CardContent className="p-0 h-full">
+                      <img
+                        className="w-full h-full rounded-lg object-cover"
+                        alt={title}
+                        src={img}
+                      />
+                    </CardContent>
+                  </Card>
                 </div>
 
-                <h3 className="text-xl font-bold text-black">
-                  Gem Mining
-                </h3>
+                <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
+                  <Badge className="px-2 py-2 md:px-4 md:py-2 text-white bg-[#bf9b30] rounded-full">
+                    <span className="text-lg font-bold text-white">{step}</span>
+                  </Badge>
 
-                <p className="text-lg text-black leading-relaxed">
-                  The Journey Begins In Sri Lanka's Gem-rich Regions Like
-                  Ratnapura And Elahera. Miners Use Traditional Methods, Such As Pit
-                  Mining And River Panning, To Extract Rough Stones. Anura Partners
-                  With Local Miners To Select High Quality Rough Gems, Ensuring
-                  Ethical And Sustainable Practices.
-                </p>
-              </div>
-            </div>
+                  <h3 className="text-lg font-bold text-black">{title}</h3>
 
-            {/* Step 2: Sorting And Grading */}
-            <div className="flex flex-col lg:flex-row-reverse gap-8 items-center">
-              <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                <Card className="border-0 shadow-none h-full">
-                  <CardContent className="p-0 h-full">
-                    <img
-                      className="w-full h-full rounded-lg object-cover"
-                      alt="Gem sorting and grading process"
-                      src="/images/s2.jpg"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
-                <div className="w-[180px] sm:w-[200px] md:w-[237px] h-[60px] sm:h-[70px] md:h-[88px] rounded-full bg-[#bf9b30] flex items-center justify-center">
-                  <span className="text-xl font-bold text-white">
-                    Step 2
-                  </span>
+                  <p className="text-mg text-black leading-relaxed">{description}</p>
                 </div>
-
-                <h3 className="text-xl font-bold text-black">
-                  Sorting And Grading
-                </h3>
-
-                <p className="text-lg text-black leading-relaxed">
-                  Rough Stones Are Sorted By Color, Size, And Quality. Anura Evaluates
-                  Each Stone For Its Potential, Focusing On Clarity And Natural
-                  Properties Like The Cornflower Blue Of Ceylon Sapphires Or The
-                  Asterism Of Star Rubies.
-                </p>
               </div>
-            </div>
-
-            {/* Step 3: Preforming */}
-            <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                <img
-                  className="w-full h-full rounded-lg object-cover"
-                  alt="Gem preforming process"
-                  src="/images/s3.jpg"
-                />
-              </div>
-
-              <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
-                <Badge className="px-4 py-2 md:px-6 md:py-4 text-white bg-[#bf9b30]  rounded-full">
-                  <span className="text-xl font-bold">
-                    Step 3
-                  </span>
-                </Badge>
-
-                <h3 className="text-xl font-bold text-black">
-                  Preforming
-                </h3>
-
-                <p className="text-lg text-black leading-relaxed">
-                  The Rough Stone Is Shaped To Maximize Weight Retention And Prepare
-                  It For Faceting. This Step Requires Skill To Balance The Gem's
-                  Size And Future Brilliance, Especially For Rare Padparadscha
-                  Sapphires
-                </p>
-              </div>
-            </div>
-
-            {/* Step 4: Faceting */}
-            <div className="flex flex-col lg:flex-row-reverse gap-8 items-center">
-              <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                <Card className="border-0 shadow-none h-full">
-                  <CardContent className="p-0 h-full">
-                    <img
-                      className="w-full h-full object-cover rounded-lg"
-                      alt="Faceting process for gemstones"
-                      src="/images/s4.jpg"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
-                <Badge className="px-4 py-3 md:px-6 md:py-5 bg-[#bf9b30]  rounded-full">
-                  <span className="text-xl font-bold text-white">
-                    Step 4
-                  </span>
-                </Badge>
-
-                <h3 className="text-xl font-bold text-black">
-                  Faceting
-                </h3>
-
-                <p className="text-lg text-black leading-relaxed">
-                  Facets Are Cut At Precise Angles To Enhance The Gem's Brilliance
-                  And Color. For Ceylon Sapphires, They Ensure Angles That Highlight
-                  Their Vivid Hues, Often Using A Combination Of Traditional Hand
-                  Cutting And Modern Machines.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 5: Polishing */}
-            <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                <img
-                  className="w-full h-full rounded-lg object-cover"
-                  alt="Craftsman polishing a gemstone"
-                  src="/images/s5.jpg"
-                />
-              </div>
-
-              <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
-                <Badge className="px-4 py-2 md:px-6 md:py-4 rounded-full bg-[#bf9b30]">
-                  <span className="text-xl font-bold text-white">
-                    Step 5
-                  </span>
-                </Badge>
-
-                <h3 className="text-xl font-bold text-black">
-                  Polishing
-                </h3>
-
-                <p className="text-lg text-black leading-relaxed">
-                  The Gem Is Polished To A Mirror-like Finish, Revealing Its True
-                  Beauty. This Step Is Critical For Gems Like Star Rubies And
-                  Chrysoberyl Cat's Eye To Showcase Their Unique Optical
-                  Effects.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 6: Quality Check And Certification */}
-            <div className="flex flex-col lg:flex-row-reverse gap-8 items-center">
-              <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                <img
-                  className="w-full h-full object-cover rounded-lg"
-                  alt="Gem quality check process"
-                  src="/images/s6.jpg"
-                />
-              </div>
-
-              <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
-                <div className="w-[180px] sm:w-[200px] md:w-[237px] h-[60px] sm:h-[70px] md:h-[88px] rounded-full bg-[#bf9b30] flex items-center justify-center">
-                  <span className="text-xl font-bold text-white">
-                    Step 6
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-black">
-                  Quality Check And Certification
-                </h3>
-
-                <p className="text-lg text-black leading-relaxed">
-                  Each Gem Undergoes Rigorous Inspection For Quality And Authenticity.
-                  They Ensure Certification By The National Gem And Jewellery
-                  Authority (ngja) Or Gia, Guaranteeing Conflict-free Gems That Meet
-                  International Standards.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* Watch Our Process In Action */}
         <section className="relative container mx-auto px-4 sm:px-6 mt-12 md:mt-16">
           <div className="w-full flex flex-col items-center">
-            <h2 className="text-5xl font-bold text-[#bf9b30] text-center">
+            <h2 className="text-4xl font-bold text-[#bf9b30] text-center">
               Watch Our Process In Action
             </h2>
-            <div className="w-[150px] sm:w-[180px] md:w-[216px] h-2 md:h-3 mt-4 md:mt-6 rounded-full bg-[#00B9B3] " />
+            <div className="w-20 h-1 bg-[#00B9B3] mb-6 md:mb-8"></div>
           </div>
 
           {/* Video sections */}
           <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mt-8 md:mt-12">
-            {/* Process Video Section */}
-            <Card className="relative w-full h-[200px] sm:h-[300px] md:h-[360px] shadow-lg rounded-lg overflow-hidden"
-              onClick={() => window.open('https://youtu.be/z2JEulhxcns?si=IPThD_j1qZcnCA8h', '_blank')}
-              style={{ cursor: 'pointer' }}
-            >
-              <CardContent className="p-0 h-full relative">
-                {/* Video Thumbnail */}
-                <img
-                  className="absolute inset-0 w-full h-full object-cover"
-                  alt="Video thumbnail"
-                  src="/images/s7.jpg"
-                />
-
-                {/* Dark overlay for better text readability */}
-                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-
-                {/* Video Title */}
-                <div className="absolute top-3 left-3 right-3 z-10">
-                  <h3 className="text-sm font-medium text-white overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
-                  Sri Lanka Unearthed Pt 1: A story of sapphire mines and sparkling gems
-                  </h3>
-                </div>
-
-                {/* YouTube Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <Button
-                    variant="ghost"
-                    className="p-0 bg-transparent hover:bg-transparent"
-                    onClick={e => { e.stopPropagation(); window.open('https://youtu.be/z2JEulhxcns?si=IPThD_j1qZcnCA8h', '_blank'); }}
-                  >
-                    <img
-                      className="w-12 h-12 sm:w-16 sm:h-16"
-                      alt="YouTube Play Button"
-                      src="/images/youtube.jpg"
-                    />
-                  </Button>
-                </div>
-
-                {/* Watch on YouTube Bar */}
-                <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#171717cc] flex items-center px-3 z-10">
-                  <span className="text-sm font-medium text-white">
-                    Watch on YouTube
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Second Video Section */}
-            <Card className="relative w-full h-[300px] sm:h-[300px] md:h-[360px] shadow-lg rounded-lg overflow-hidden"
-              onClick={() => window.open('https://youtu.be/ilit_IEtRxY?si=tSYbhYcmSZylWDSz', '_blank')}
-              style={{ cursor: 'pointer' }}
-            >
-              <CardContent className="p-0 h-full relative">
-                {/* Video Thumbnail */}
-                <img
-                  className="absolute inset-0 w-full h-full object-cover"
-                  alt="Video thumbnail"
-                  src="/images/s8.jpg"
-                />
-
-                {/* Dark overlay for better text readability */}
-                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-
-                {/* Video Title */}
-                <div className="absolute top-3 left-3 right-3 z-10">
-                  <h3 className="text-sm font-medium text-white overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
-                  Inside Sri Lanka’s Deadly Underground Mines Filled With Rare Jewels | Risky
-                  </h3>
-                </div>
-
-                {/* YouTube Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <Button
-                    variant="ghost"
-                    className="p-0 bg-transparent hover:bg-transparent"
-                    onClick={e => { e.stopPropagation(); window.open('https://youtu.be/ilit_IEtRxY?si=tSYbhYcmSZylWDSz', '_blank'); }}
-                  >
-                    <img
-                      className="w-12 h-12 sm:w-16 sm:h-16"
-                      alt="YouTube play button"
-                      src="/images/youtube.jpg"
-                    />
-                  </Button>
-                </div>
-
-                {/* Watch on YouTube Bar */}
-                <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#171717cc] flex items-center px-3 z-10">
-                  <span className="text-sm font-medium text-white">
-                    Watch on YouTube
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
+            {[
+              {
+                thumbnail: "/images/s7.jpg",
+                title: "Sri Lanka Unearthed Pt 1: A story of sapphire mines and sparkling gems",
+                url: "https://youtu.be/z2JEulhxcns?si=IPThD_j1qZcnCA8h",
+              },
+              {
+                thumbnail: "/images/s8.jpg",
+                title: "Inside Sri Lanka’s Deadly Underground Mines Filled With Rare Jewels | Risky",
+                url: "https://youtu.be/ilit_IEtRxY?si=tSYbhYcmSZylWDSz",
+              },
+            ].map(({ thumbnail, title, url }, idx) => (
+              <Card
+                key={idx}
+                className="relative w-full h-[200px] sm:h-[300px] md:h-[360px] shadow-lg rounded-lg overflow-hidden transform hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+                onClick={() => window.open(url, "_blank")}
+              >
+                <CardContent className="p-0 h-full relative">
+                  <img className="absolute inset-0 w-full h-full object-cover" alt={title} src={thumbnail} />
+                  <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                  <div className="absolute top-3 left-3 right-3 z-10">
+                    <h3 className="text-sm font-medium text-white overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">{title}</h3>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <Button
+                      variant="ghost"
+                      className="p-0 bg-transparent hover:bg-transparent"
+                      onClick={e => { e.stopPropagation(); window.open(url, "_blank"); }}
+                    >
+                      <img className="w-12 h-12 sm:w-16 sm:h-16" alt="YouTube Play Button" src="/images/youtube.jpg" />
+                    </Button>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#171717cc] flex items-center px-3 z-10">
+                    <span className="text-sm font-medium text-white">Watch on YouTube</span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
       </div>

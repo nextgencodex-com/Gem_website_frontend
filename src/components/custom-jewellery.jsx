@@ -411,26 +411,26 @@ export default function CustomJewelleryPage(props) {
     // Do NOT include jewelry or gem images in the message
 
     // Add style based on category
-    if (category === "Ring" && ringStyle) {
+    if (category === "Rings" && ringStyle) {
       message += `Ring Style: ${ringStyle}%0A`;
     } else if (category === "Necklace" && necklaceStyle) {
       message += `Necklace Style: ${necklaceStyle}%0A`;
     } else if (category === "Bracelet" && braceletStyle) {
       message += `Bracelet Style: ${braceletStyle}%0A`;
-    } else if (category === "Earrings" && earringsStyle) {
+    } else if (category === "Earings" && earringsStyle) {
       message += `Earrings Style: ${earringsStyle}%0A`;
     } else if (customStyle) {
       message += `Custom Style: ${customStyle}%0A`;
     }
 
     // Add sizes based on category
-    if (category === "Ring" && ringSize) {
+    if (category === "Rings" && ringSize) {
       message += `Ring Size: ${ringSize} (${ringSizeType})%0A`;
     } else if (category === "Necklace" && necklaceSize) {
       message += `Necklace Size: ${necklaceSize} (${necklaceSizeType})%0A`;
     } else if (category === "Bracelet" && braceletSize) {
       message += `Bracelet Size: ${braceletSize} (${braceletSizeType})%0A`;
-    } else if (category === "Earrings" && earringsSize) {
+    } else if (category === "Earings" && earringsSize) {
       message += `Earrings Size: ${earringsSize} (${earringsSizeType})%0A`;
     }
 
@@ -512,27 +512,27 @@ export default function CustomJewelleryPage(props) {
     }\nJewelry: ${name || "-"}\n`;
 
     // Add style based on category
-    if (category === "Ring" && ringStyle) {
+    if (category === "Rings" && ringStyle) {
       body += `Ring Style: ${ringStyle}\n`;
     } else if (category === "Necklace" && necklaceStyle) {
       body += `Necklace Style: ${necklaceStyle}\n`;
     } else if (category === "Bracelet" && braceletStyle) {
       body += `Bracelet Style: ${braceletStyle}\n`;
     } else if (category === "Earrings" && earringsStyle) {
-      body += `Earrings Style: ${earringsStyle}\n`;
+      body += `Earings Style: ${earringsStyle}\n`;
     } else if (customStyle) {
       body += `Custom Style: ${customStyle}\n`;
     }
 
     // Add sizes based on category
-    if (category === "Ring" && ringSize) {
+    if (category === "Rings" && ringSize) {
       body += `Ring Size: ${ringSize} (${ringSizeType})\n`;
     } else if (category === "Necklace" && necklaceSize) {
       body += `Necklace Size: ${necklaceSize} (${necklaceSizeType})\n`;
     } else if (category === "Bracelet" && braceletSize) {
       body += `Bracelet Size: ${braceletSize} (${braceletSizeType})\n`;
     } else if (category === "Earrings" && earringsSize) {
-      body += `Earrings Size: ${earringsSize} (${earringsSizeType})\n`;
+      body += `Earings Size: ${earringsSize} (${earringsSizeType})\n`;
     }
 
     body += `Metal Type: ${material || "-"}`;
@@ -573,13 +573,13 @@ export default function CustomJewelleryPage(props) {
   // Get the current style value based on category
   const getCurrentStyleValue = () => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         return ringStyle;
       case "Necklace":
         return necklaceStyle;
       case "Bracelet":
         return braceletStyle;
-      case "Earrings":
+      case "Earings":
         return earringsStyle;
       default:
         return customStyle;
@@ -589,7 +589,7 @@ export default function CustomJewelleryPage(props) {
   // Set the style value based on category
   const setStyleValue = (value) => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         setRingStyle(value);
         break;
       case "Necklace":
@@ -598,7 +598,7 @@ export default function CustomJewelleryPage(props) {
       case "Bracelet":
         setBraceletStyle(value);
         break;
-      case "Earrings":
+      case "Earings":
         setEarringsStyle(value);
         break;
       default:
@@ -625,13 +625,13 @@ export default function CustomJewelleryPage(props) {
   // Get the current size value based on category
   const getCurrentSizeValue = () => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         return ringSize;
       case "Necklace":
         return necklaceSize;
       case "Bracelet":
         return braceletSize;
-      case "Earrings":
+      case "Earings":
         return earringsSize;
       default:
         return "";
@@ -641,13 +641,13 @@ export default function CustomJewelleryPage(props) {
   // Get the current size type based on category
   const getCurrentSizeType = () => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         return ringSizeType;
       case "Necklace":
         return necklaceSizeType;
       case "Bracelet":
         return braceletSizeType;
-      case "Earrings":
+      case "Earings":
         return earringsSizeType;
       default:
         return "US";
@@ -657,7 +657,7 @@ export default function CustomJewelleryPage(props) {
   // Set the size value based on category
   const setSizeValue = (value) => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         setRingSize(value);
         break;
       case "Necklace":
@@ -666,7 +666,7 @@ export default function CustomJewelleryPage(props) {
       case "Bracelet":
         setBraceletSize(value);
         break;
-      case "Earrings":
+      case "Earings":
         setEarringsSize(value);
         break;
       default:
@@ -677,7 +677,7 @@ export default function CustomJewelleryPage(props) {
   // Set the size type based on category
   const setSizeType = (value) => {
     switch (category) {
-      case "Ring":
+      case "Rings":
         setRingSizeType(value);
         break;
       case "Necklace":
@@ -686,7 +686,7 @@ export default function CustomJewelleryPage(props) {
       case "Bracelet":
         setBraceletSizeType(value);
         break;
-      case "Earrings":
+      case "Earings":
         setEarringsSizeType(value);
         break;
       default:
@@ -719,13 +719,13 @@ export default function CustomJewelleryPage(props) {
           )}
           <h2 className="text-xl font-semibold mb-2">Selected {category}</h2>
           <button
-            className="bg-[#bf9b30] text-white px-4 py-2 rounded mb-2 text-sm md:text-base"
+            className="w-80 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
             onClick={() => {
               window.sessionStorage.setItem("returnToGemModal", "1");
               navigate("/gem-collection");
             }}
           >
-            Customize Gem for Jewellery
+            Customize Gem for Jeweller
           </button>
         </div>
         {/* Jewelry Customization Section */}
@@ -1056,7 +1056,7 @@ export default function CustomJewelleryPage(props) {
         <div className="flex flex-col gap-2">
           <div className="flex justify-center mt-4">
             <button
-              className="border border-green-600 text-green-600 py-3 px-6 rounded-md font-semibold hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center gap-2"
+              className="w-60 md:w-60 h-8 border border-green-600 text-green-600 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
               onClick={() => handleRequestViaWhatsApp()}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1069,7 +1069,7 @@ export default function CustomJewelleryPage(props) {
           {/* Request via Email Button */}
           <div className="flex justify-center mt-4">
             <button
-              className="px-6 py-3 rounded font-semibold bg-[#bf9b30] hover:bg-[#a88928] text-white"
+              className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
               onClick={() => setShowEmailModal(true)}
             >
               Request via Email
@@ -1102,7 +1102,7 @@ export default function CustomJewelleryPage(props) {
           )}
           <div className="flex justify-center mt-4">
             <button
-              className="border border-green-600 text-green-600 py-3 px-6 rounded-md font-semibold hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 flex items-center justify-center gap-2"
+              className="w-60 md:w-60 h-8 border border-green-600 text-green-600 text-sm text-black bg-green-50 hover:bg-green-100 rounded-xl font-semibold flex items-center justify-center gap-1 transition-all duration-200 transform active:scale-105"
               onClick={() => handleRequestViaWhatsApp(true)}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1115,7 +1115,7 @@ export default function CustomJewelleryPage(props) {
           {/* Request via Email Button (after WhatsApp custom design) */}
           <div className="flex justify-center mt-4">
             <button
-              className="px-6 py-3 rounded font-semibold bg-[#bf9b30] text-white"
+              className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
               onClick={() => setShowEmailModal(true)}
             >
               Request via Email
@@ -1266,52 +1266,55 @@ export default function CustomJewelleryPage(props) {
       )}
       {/* Email Modal */}
       {showEmailModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-[9999]">
+          <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-sm relative">
             <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-lg font-bold"
               onClick={() => setShowEmailModal(false)}
             >
               &#10005;
             </button>
-            <h3 className="text-lg font-bold mb-4">Request via Email</h3>
+            <h3 className="text-md font-bold mb-3 text-center text-black">Request via Email</h3>
             <input
               name="fullName"
               value={emailForm.fullName}
               onChange={handleEmailInput}
               placeholder="Full Name"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
             />
             <input
               name="address"
               value={emailForm.address}
               onChange={handleEmailInput}
               placeholder="Shipping Address"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
             />
             <input
               name="mobile"
               value={emailForm.mobile}
               onChange={handleEmailInput}
               placeholder="Mobile Number"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
             />
             <textarea
               name="details"
               value={emailForm.details}
               onChange={handleEmailInput}
               placeholder="Other Jewelry Details"
-              className="w-full mb-2 p-2 border rounded"
+              className="w-full text-xs mb-2 p-2 border rounded"
               rows={3}
             />
+        <div className="text-xs text-gray-500 mb-2">All gem details will be included automatically in the email.</div>
+          <div className="flex justify-center mt-4">
             <button
-              className="w-full bg-[#bf9b30] hover:bg-[#a88928] text-white font-semibold rounded px-6 py-2 mt-2"
+              className="w-40 bg-[#bf9b30] text-white text-sm py-1 px-1 rounded-full transition-colors duration-300"
               onClick={handleSendEmail}
             >
               Send Email
             </button>
+          </div>
             {emailSent && (
-              <div className="text-green-600 mt-2">
+              <div className="text-black-600 mt-2 text-xs">
                 Email client opened. Please send the email to complete your
                 request.
               </div>
