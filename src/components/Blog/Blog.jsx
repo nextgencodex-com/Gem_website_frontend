@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // UI Components
 const Card = ({ children, className = "", ...props }) => (
@@ -31,6 +31,63 @@ const Button = ({ children, className = "", variant = "default", ...props }) => 
 };
 
 const Blog = () => {
+  const [isJourneyOpen, setIsJourneyOpen] = useState(false);
+
+  const toggleJourney = () => {
+    setIsJourneyOpen(!isJourneyOpen);
+  };
+
+  const journeySteps = [
+    {
+      step: "Step 1",
+      title: "Gem Mining",
+      description:
+        "The Journey Begins In Sri Lanka's Gem-rich Regions Like Ratnapura And Elahera. Miners Use Traditional Methods, Such As Pit Mining And River Panning, To Extract Rough Stones. Anura Partners With Local Miners To Select High Quality Rough Gems, Ensuring Ethical And Sustainable Practices.",
+      img: "/images/s1.jpg",
+      reverse: false,
+    },
+    {
+      step: "Step 2",
+      title: "Sorting And Grading",
+      description:
+        "Rough Stones Are Sorted By Color, Size, And Quality. Anura Evaluates Each Stone For Its Potential, Focusing On Clarity And Natural Properties Like The Cornflower Blue Of Ceylon Sapphires Or The Asterism Of Star Rubies.",
+      img: "/images/s2.jpg",
+      reverse: true,
+    },
+    {
+      step: "Step 3",
+      title: "Preforming",
+      description:
+        "The Rough Stone Is Shaped To Maximize Weight Retention And Prepare It For Faceting. This Step Requires Skill To Balance The Gem's Size And Future Brilliance, Especially For Rare Padparadscha Sapphires",
+      img: "/images/s3.jpg",
+      reverse: false,
+    },
+    {
+      step: "Step 4",
+      title: "Faceting",
+      description:
+        "Facets Are Cut At Precise Angles To Enhance The Gem's Brilliance And Color. For Ceylon Sapphires, They Ensure Angles That Highlight Their Vivid Hues, Often Using A Combination Of Traditional Hand Cutting And Modern Machines.",
+      img: "/images/s4.jpg",
+      reverse: true,
+    },
+    {
+      step: "Step 5",
+      title: "Polishing",
+      description:
+        "The Gem Is Polished To A Mirror-like Finish, Revealing Its True Beauty. This Step Is Critical For Gems Like Star Rubies And Chrysoberyl Cat's Eye To Showcase Their Unique Optical Effects.",
+      img: "/images/s5.jpg",
+      reverse: false,
+    },
+    {
+      step: "Step 6",
+      title: "Quality Check And Certification",
+      description:
+        "Each Gem Undergoes Rigorous Inspection For Quality And Authenticity. They Ensure Certification By The National Gem And Jewellery Authority (ngja) Or Gia, Guaranteeing Conflict-free Gems That Meet International Standards.",
+      img: "/images/s6.jpg",
+      reverse: true,
+    },
+  ];
+
   return (
     <div className="relative w-full bg-[#f8f9fa] overflow-x-hidden font-[Poppins]">
       {/* Hero Section */}
@@ -102,59 +159,9 @@ const Blog = () => {
             <div className="w-20 h-1 bg-[#00B9B3] mb-6 md:mb-8"></div>
           </div>
 
-          {/* Process Steps */}
-          <div className="space-y-16 md:space-y-24 mt-12 md:mt-16">
-            {/** Loop through steps 1-6 with hover pop effect **/}
-            {[
-              {
-                step: "Step 1",
-                title: "Gem Mining",
-                description:
-                  "The Journey Begins In Sri Lanka's Gem-rich Regions Like Ratnapura And Elahera. Miners Use Traditional Methods, Such As Pit Mining And River Panning, To Extract Rough Stones. Anura Partners With Local Miners To Select High Quality Rough Gems, Ensuring Ethical And Sustainable Practices.",
-                img: "/images/s1.jpg",
-                reverse: false,
-              },
-              {
-                step: "Step 2",
-                title: "Sorting And Grading",
-                description:
-                  "Rough Stones Are Sorted By Color, Size, And Quality. Anura Evaluates Each Stone For Its Potential, Focusing On Clarity And Natural Properties Like The Cornflower Blue Of Ceylon Sapphires Or The Asterism Of Star Rubies.",
-                img: "/images/s2.jpg",
-                reverse: true,
-              },
-              {
-                step: "Step 3",
-                title: "Preforming",
-                description:
-                  "The Rough Stone Is Shaped To Maximize Weight Retention And Prepare It For Faceting. This Step Requires Skill To Balance The Gem's Size And Future Brilliance, Especially For Rare Padparadscha Sapphires",
-                img: "/images/s3.jpg",
-                reverse: false,
-              },
-              {
-                step: "Step 4",
-                title: "Faceting",
-                description:
-                  "Facets Are Cut At Precise Angles To Enhance The Gem's Brilliance And Color. For Ceylon Sapphires, They Ensure Angles That Highlight Their Vivid Hues, Often Using A Combination Of Traditional Hand Cutting And Modern Machines.",
-                img: "/images/s4.jpg",
-                reverse: true,
-              },
-              {
-                step: "Step 5",
-                title: "Polishing",
-                description:
-                  "The Gem Is Polished To A Mirror-like Finish, Revealing Its True Beauty. This Step Is Critical For Gems Like Star Rubies And Chrysoberyl Cat's Eye To Showcase Their Unique Optical Effects.",
-                img: "/images/s5.jpg",
-                reverse: false,
-              },
-              {
-                step: "Step 6",
-                title: "Quality Check And Certification",
-                description:
-                  "Each Gem Undergoes Rigorous Inspection For Quality And Authenticity. They Ensure Certification By The National Gem And Jewellery Authority (ngja) Or Gia, Guaranteeing Conflict-free Gems That Meet International Standards.",
-                img: "/images/s6.jpg",
-                reverse: true,
-              },
-            ].map(({ step, title, description, img, reverse }, idx) => (
+          {/* Desktop Process Steps - hidden on mobile */}
+          <div className="space-y-16 md:space-y-24 mt-12 md:mt-16 hidden md:block">
+            {journeySteps.map(({ step, title, description, img, reverse }, idx) => (
               <div
                 key={idx}
                 className={`flex flex-col ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 items-center transform hover:scale-[1.02] transition-all duration-200 cursor-pointer`}
@@ -183,6 +190,98 @@ const Blog = () => {
               </div>
             ))}
           </div>
+
+          {/* Mobile Process Steps with Dropdown - shown only on mobile */}
+          <div className="mt-12 md:hidden">
+            {/* Always visible Step 1 */}
+            <div className="flex flex-col gap-8 items-center transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+              <div className="w-full h-[300px]">
+                <Card className="border-0 shadow-none h-full">
+                  <CardContent className="p-0 h-full">
+                    <img
+                      className="w-full h-full rounded-lg object-cover"
+                      alt="Gem Mining"
+                      src="/images/s1.jpg"
+                    />
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="w-full space-y-4">
+                <Badge className="px-2 py-2 text-white bg-[#bf9b30] rounded-full">
+                  <span className="text-lg font-bold text-white">Step 1</span>
+                </Badge>
+
+                <h3 className="text-lg font-bold text-black">Gem Mining</h3>
+
+                <p className="text-mg text-black leading-relaxed">
+                  The Journey Begins In Sri Lanka's Gem-rich Regions Like Ratnapura And Elahera. Miners Use Traditional Methods, Such As Pit Mining And River Panning, To Extract Rough Stones. Anura Partners With Local Miners To Select High Quality Rough Gems, Ensuring Ethical And Sustainable Practices.
+                </p>
+              </div>
+            </div>
+
+            {/* Dropdown arrow button */}
+            <div className="flex justify-center my-8">
+              <button
+                onClick={toggleJourney}
+                className="flex flex-col items-center justify-center text-[#bf9b30] hover:text-[#a88728] transition-colors duration-300"
+                aria-label={isJourneyOpen ? "Hide steps" : "Show steps"}
+              >
+                <span className="text-sm font-semibold mb-1">
+                  {isJourneyOpen ? "Hide" : "Show"} More Steps
+                </span>
+                <svg
+                  className={`w-8 h-8 transform transition-transform duration-300 ${
+                    isJourneyOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Dropdown content - Steps 2-6 */}
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                isJourneyOpen ? "max-h-[5000px] opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              {journeySteps.slice(1).map(({ step, title, description, img }, idx) => (
+                <div key={idx} className="flex flex-col gap-8 items-center mb-16 transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+                  <div className="w-full h-[300px]">
+                    <Card className="border-0 shadow-none h-full">
+                      <CardContent className="p-0 h-full">
+                        <img
+                          className="w-full h-full rounded-lg object-cover"
+                          alt={title}
+                          src={img}
+                        />
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <div className="w-full space-y-4">
+                    <Badge className="px-2 py-2 text-white bg-[#bf9b30] rounded-full">
+                      <span className="text-lg font-bold text-white">{step}</span>
+                    </Badge>
+
+                    <h3 className="text-lg font-bold text-black">{title}</h3>
+
+                    <p className="text-mg text-black leading-relaxed">{description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* Watch Our Process In Action */}
@@ -204,7 +303,7 @@ const Blog = () => {
               },
               {
                 thumbnail: "/images/s8.jpg",
-                title: "Inside Sri Lanka’s Deadly Underground Mines Filled With Rare Jewels | Risky",
+                title: "Inside Sri Lanka's Deadly Underground Mines Filled With Rare Jewels | Risky",
                 url: "https://youtu.be/ilit_IEtRxY?si=tSYbhYcmSZylWDSz",
               },
             ].map(({ thumbnail, title, url }, idx) => (

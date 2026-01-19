@@ -472,7 +472,7 @@ Details: ${orderData.details}`
           {popularDesigns[jewelleryType].map((design) => (
             <div
               key={design.id}
-              className={`border-2 rounded-lg p-3 cursor-pointer ${
+              className={`border-2 rounded-3xl p-3 cursor-pointer ${
                 selectedDesign?.id === design.id
                   ? "border-blue-500 ring-2 ring-blue-300"
                   : "border-gray-200"

@@ -102,6 +102,7 @@ function HeroSection({ navigate }) {
 const Home = () => {
   const navigate = useNavigate();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isWhyChooseOpen, setIsWhyChooseOpen] = useState(false);
   const carouselRef = useRef(null);
 
   const handleScroll = (e) => {
@@ -109,6 +110,49 @@ const Home = () => {
     const width = e.target.offsetWidth;
     const idx = Math.round(scrollLeft / width);
     setCurrentTestimonial(idx);
+  };
+
+  const whyChooseItems = [
+    {
+      icon: (
+        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
+      title: "Certified Authenticity",
+      description: "Every gem comes with international certification ensuring genuine Sri Lankan origin and quality.",
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: "Ethical Sourcing",
+      description: "We work directly with licensed mines ensuring fair trade practices that benefit local communities.",
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+      ),
+      title: "Global Shipping",
+      description: "Insured worldwide delivery with tracking, ensuring your precious gemstones arrive safely.",
+    },
+    {
+      icon: (
+        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: "Expert Craftsmanship",
+      description: "Our master cutters have decades of experience in bringing out the maximum brilliance in every stone.",
+    },
+  ];
+
+  const toggleWhyChoose = () => {
+    setIsWhyChooseOpen(!isWhyChooseOpen);
   };
 
   return (
@@ -191,67 +235,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 2x2 Gemstone Grid for Mobile */}
-      <section className="md:hidden py-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold text-center text-[#bf9b30] mb-6">
-            Our Signature Gemstones
-          </h2>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img
-                src="/images/gm4.jpg"
-                alt="Blue Sapphire"
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-3">
-                <h3 className="text-base font-semibold text-gray-800">
-                  Blue Sapphire
-                </h3>
-                <p className="text-xs text-gray-600 mt-1">
-                  The finest Ceylon blue
-                </p>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img
-                src="/images/gm1.jpg"
-                alt="Ruby"
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-3">
-                <h3 className="text-base font-semibold text-gray-800">Ruby</h3>
-                <p className="text-xs text-gray-600 mt-1">Vibrant and rare</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img
-                src="/images/gm3.jpg"
-                alt="Padparadscha"
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-3">
-                <h3 className="text-base font-semibold text-gray-800">
-                  Padparadscha
-                </h3>
-                <p className="text-xs text-gray-600 mt-1">Sunset in a stone</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img
-                src="/images/gm2.jpg"
-                alt="Emerald"
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-3">
-                <h3 className="text-base font-semibold text-gray-800">Emerald</h3>
-                <p className="text-xs text-gray-600 mt-1">Lush green beauty</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Master Of Ceylon Gems Section */}
       <section className="py-12 md:py-20 bg-[#f8f4ed]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -297,7 +280,7 @@ const Home = () => {
                 </div>
                 <div className="flex items-start">
                   <svg
-                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B3] mt-0.5 md:mt-1 mr-2 md:mr-3"
+                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B30] mt-0.5 md:mt-1 mr-2 md:mr-3"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -467,105 +450,91 @@ const Home = () => {
             <div className="w-16 h-1 bg-[#00B9B3] mx-auto"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#00B9B3] transition-all duration-300">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                <svg
-                  className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
+          {/* Desktop Grid - hidden on mobile */}
+          <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {whyChooseItems.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#00B9B3] transition-all duration-300"
+              >
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4 md:mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm md:text-base text-gray-600">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile View with Dropdown - shown only on mobile */}
+          <div className="md:hidden">
+            {/* First item always visible */}
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 mb-6">
+              <div className="w-12 h-12 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
                 Certified Authenticity
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
-                Every gem comes with international certification ensuring
-                genuine Sri Lankan origin and quality.
+              <p className="text-sm text-gray-600">
+                Every gem comes with international certification ensuring genuine Sri Lankan origin and quality.
               </p>
             </div>
 
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#00B9B3] transition-all duration-300">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4 md:mb-6">
+            {/* Dropdown arrow button */}
+            <div className="flex justify-center my-6">
+              <button
+                onClick={toggleWhyChoose}
+                className="flex flex-col items-center justify-center text-[#bf9b30] hover:text-[#a88728] transition-colors duration-300"
+                aria-label={isWhyChooseOpen ? "Hide features" : "Show features"}
+              >
+                <span className="text-sm font-semibold mb-1">
+                  {isWhyChooseOpen ? "Hide" : "Show"} More Features
+                </span>
                 <svg
-                  className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]"
+                  className={`w-8 h-8 transform transition-transform duration-300 ${
+                    isWhyChooseOpen ? "rotate-180" : ""
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">
-                Ethical Sourcing
-              </h3>
-              <p className="text-sm md:text-base text-gray-600">
-                We work directly with licensed mines ensuring fair trade
-                practices that benefit local communities.
-              </p>
+              </button>
             </div>
 
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#00B9B3] transition-all duration-300">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                <svg
-                  className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">
-                Global Shipping
-              </h3>
-              <p className="text-sm md:text-base text-gray-600">
-                Insured worldwide delivery with tracking, ensuring your precious
-                gemstones arrive safely.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#00B9B3] transition-all duration-300">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                <svg
-                  className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">
-                Expert Craftsmanship
-              </h3>
-              <p className="text-sm md:text-base text-gray-600">
-                Our master cutters have decades of experience in bringing out
-                the maximum brilliance in every stone.
-              </p>
+            {/* Dropdown content - Other features */}
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                isWhyChooseOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              {whyChooseItems.slice(1).map((item, index) => (
+                <div key={index} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 mb-6">
+                  <div className="w-12 h-12 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
