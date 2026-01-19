@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AboutUs = () => {
   const certifications = [
@@ -61,6 +61,12 @@ const AboutUs = () => {
       imageAlt: "Mission icon",
     },
   ];
+
+  const [isTimelineOpen, setIsTimelineOpen] = useState(false);
+
+  const toggleTimeline = () => {
+    setIsTimelineOpen(!isTimelineOpen);
+  };
 
   return (
     <div className="bg-gray-50 min-h-screen font-[Poppins]">
@@ -136,7 +142,9 @@ const AboutUs = () => {
             </h2>
             <div className="w-24 h-1 bg-[#00B9B3] mx-auto rounded-full"></div>
           </div>
-          <div className="max-w-4xl mx-auto">
+          
+          {/* Desktop Timeline - hidden on mobile */}
+          <div className="max-w-4xl mx-auto hidden md:block">
             {timelineItems.map((item, index) => (
               <div
                 key={item.id}
@@ -161,6 +169,84 @@ const AboutUs = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Timeline with Dropdown - shown only on mobile */}
+          <div className="max-w-4xl mx-auto md:hidden">
+            {/* Always visible first item (1999) */}
+            <div className="flex flex-col items-center mb-6">
+              <div className="flex-shrink-0 mb-4">
+                <div className="w-24 h-24 bg-[#bf9b30] flex items-center justify-center text-white font-bold text-2xl rounded-full border border-black shadow-sm">
+                  1999
+                </div>
+              </div>
+              <div className="flex-1 w-full">
+                <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
+                    The Beginning
+                  </h3>
+                  <p className="text-md text-gray-600 leading-relaxed text-center">
+                    Anura Perera started his journey at age 18, learning the ancient art of gem cutting from his father in Ratnapura, the gem capital of Sri Lanka.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Dropdown arrow button */}
+            <div className="flex justify-center mb-6">
+              <button
+                onClick={toggleTimeline}
+                className="flex flex-col items-center justify-center text-[#bf9b30] hover:text-[#a88728] transition-colors duration-300"
+                aria-label={isTimelineOpen ? "Hide timeline" : "Show timeline"}
+              >
+                <span className="text-sm font-semibold mb-1">
+                  {isTimelineOpen ? "Hide" : "Show"} More
+                </span>
+                <svg
+                  className={`w-8 h-8 transform transition-transform duration-300 ${
+                    isTimelineOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Dropdown content - other timeline items */}
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                isTimelineOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              {timelineItems.slice(1).map((item) => (
+                <div key={item.id} className="flex flex-col items-center mb-8">
+                  <div className="flex-shrink-0 mb-4">
+                    <div className="w-24 h-24 bg-[#bf9b30] flex items-center justify-center text-white font-bold text-2xl rounded-full border border-black shadow-sm hover:shadow-md transform hover:scale-[1.05] transition-all duration-200 cursor-pointer">
+                      {item.year}
+                    </div>
+                  </div>
+                  <div className="flex-1 w-full">
+                    <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+                      <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
+                        {item.title}
+                      </h3>
+                      <p className="text-md text-gray-600 leading-relaxed text-center">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
