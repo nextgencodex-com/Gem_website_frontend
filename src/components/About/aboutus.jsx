@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const AboutUs = () => {
   const certifications = [
@@ -14,6 +14,7 @@ const AboutUs = () => {
       title: "The Beginning",
       description:
         "Anura Perera started his journey at age 18, learning the ancient art of gem cutting from his father in Ratnapura, the gem capital of Sri Lanka.",
+      highlight: "Founded"
     },
     {
       id: 2,
@@ -21,6 +22,7 @@ const AboutUs = () => {
       title: "First Export",
       description:
         "Achieved our first international export of Ceylon Sapphires to European markets, marking the beginning of our global presence.",
+      highlight: "Global Reach"
     },
     {
       id: 3,
@@ -28,6 +30,7 @@ const AboutUs = () => {
       title: "Business Expansion",
       description:
         "Established direct partnerships with mines in Ratnapura and Elahera, ensuring consistent supply of premium quality gems.",
+      highlight: "Partnerships"
     },
     {
       id: 4,
@@ -35,6 +38,7 @@ const AboutUs = () => {
       title: "Global Recognition",
       description:
         "Received international recognition for quality and ethical sourcing practices, expanding to North American and Asian markets.",
+      highlight: "Awards"
     },
     {
       id: 5,
@@ -42,6 +46,7 @@ const AboutUs = () => {
       title: "Digital Transformation",
       description:
         "Launched online platform, bringing Ceylon gems directly to collectors worldwide while maintaining personal service standards.",
+      highlight: "Innovation"
     },
   ];
 
@@ -51,303 +56,358 @@ const AboutUs = () => {
       description:
         "To Bring Sri Lanka's Finest Gems To The Global Stage, Showcasing The Unparalleled Beauty And Quality Of Ceylon's Precious Stones To Collectors And Enthusiasts Worldwide.",
       imageSrc: "/images/light.png",
-      imageAlt: "Light bulb",
+      imageAlt: "Vision",
+      points: [
+        "Global recognition of Ceylon gemstones",
+        "Preservation of traditional craftsmanship",
+        "Setting industry standards for quality"
+      ]
     },
     {
       title: "Our Mission",
       description:
         "To Provide Authentic, Ethically Sourced Gems With Transparency And Trust, Ensuring Every Client Receives Not Just A Precious Stone, But A Piece Of Sri Lankan Heritage.",
       imageSrc: "/images/mission.png",
-      imageAlt: "Mission icon",
+      imageAlt: "Mission",
+      points: [
+        "Ethical sourcing from verified mines",
+        "100% certified and traceable gems",
+        "Personalized client relationships"
+      ]
     },
   ];
 
-  const [isTimelineOpen, setIsTimelineOpen] = useState(false);
-
-  const toggleTimeline = () => {
-    setIsTimelineOpen(!isTimelineOpen);
-  };
-
   return (
-    <div className="bg-gray-50 min-h-screen font-[Poppins]">
-      {/* Hero Section */}
-      <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
-        <img
-          src="/images/cc.jpg"
-          alt="About Us Background"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
-        <div className="absolute inset-0 bg-black opacity-50 z-10" />
-        <div className="relative z-20 space-y-4 px-6 lg:px-12 max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg mb-2">
-            About Us
-          </h1>
-          <h2 className="text-lg md:text-xl font-semibold">
-            Three Generations Of Gem Excellence
-          </h2>
+    <div className="bg-white min-h-screen font-[Poppins]">
+{/* ================= HERO SECTION ================= */}
+<section className="relative bg-gradient-to-b from-gray-50 to-white py-24 overflow-hidden">
+
+  {/* Subtle Background Pattern */}
+  <div className="absolute inset-0 opacity-[0.02]">
+    <div
+      className="absolute inset-0"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='%23000000'/%3E%3C/svg%3E")`,
+        backgroundSize: "60px 60px",
+      }}
+    />
+  </div>
+
+  <div className="max-w-7xl mx-auto px-6 relative">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      {/* LEFT CONTENT */}
+      <div>
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-16 h-px bg-[#bf9b30]"></div>
+          <span className="text-sm font-medium text-gray-500 tracking-widest uppercase">
+            Since 1999
+          </span>
         </div>
+
+        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          About <span className="text-[#bf9b30]">Us</span>
+        </h1>
+
+        <p className="text-gray-600 text-lg leading-relaxed max-w-xl mb-8">
+          Three generations of gem expertise rooted in Sri Lanka's rich heritage.
+          We craft, source, and deliver ethically sourced Ceylon gemstones with
+          unmatched brilliance, transparency, and trust.
+        </p>
+
+        
       </div>
 
-      {/* WhatsApp Button */}
-      <div className="fixed left-6 bottom-6 z-20">
-        <button
-          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg transition-colors duration-300"
-          onClick={() => window.open("https://wa.me/94759627589", "_blank")}
-        >
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-          </svg>
-          <span className="text-sm font-medium">WhatsApp</span>
-        </button>
+      {/* RIGHT IMAGE */}
+      <div className="relative">
+        <div className="relative rounded-lg overflow-hidden shadow-xl">
+          <img
+            src="/images/cc.jpg"
+            alt="Ceylon Gems Collection"
+            className="w-full h-[500px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+        </div>
+
+        {/* Accent Border */}
+        <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-[#bf9b30]/20 rounded-lg -z-10"></div>
       </div>
 
-      {/* Heritage Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#bf9b30] mb-4">
-              Our Heritage & Companies
-            </h2>
-            <div className="w-24 h-1 bg-[#00B9B3] mx-auto rounded-full"></div>
+    </div>
+  </div>
+</section>
+
+
+      {/* =================  HERITAGE SECTION ================= */}
+      <section className="py-20 bg-[#f8f4ed] px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#bf9b30] mb-4">Our Heritage & Legacy</h2>
+            <div className="w-24 h-1 bg-[#bf9b30] mx-auto mb-6"></div>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Building on generations of expertise, we continue a legacy of excellence in gemology
+            </p>
           </div>
-          <div className="max-w-6xl mx-auto space-y-12">
-            <div className="bg-[#f8f4ed] rounded-2xl text-black p-8 md:p-12 shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-              <p className="text-md text-center leading-relaxed">
-                Ceycarb Is A Global Leader In Activated Carbon Solutions, Offering
-                High-quality Products Made From Coconut Shell, Coal, And Wood. With
-                Decades Of Experience And A Strong Focus On Sustainability, We Serve
-                Diverse Industries Worldwide With Innovative Purification
-                Technologies.
-                <br /><br />
-                Building On This Legacy, Ceygem Was Founded To Showcase Sri
-                Lanka's World-renowned Blue Sapphires. We Provide Ethically
-                Sourced, Certified Ceylon Sapphires Celebrated For Their Vibrant
-                Color And Clarity.
-                <br /><br />
-                Together, Ceycarb And Ceygem Reflect A Shared Commitment To Quality,
-                Integrity, And Sustainability Purifying The World And Illuminating
-                It With Natural Brilliance.
-              </p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-[#bf9b30]">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Ceycarb</h3>
+                <p className="text-gray-600 mb-4">
+                  A global leader in activated carbon solutions, serving industries worldwide with sustainable purification technologies. Our expertise in material science formed the foundation of our gemstone operations.
+                </p>
+                <div className="flex items-center text-sm text-[#bf9b30] font-medium">
+                  <span className="mr-2">●</span>
+                  <span>Established 1985</span>
+                </div>
+              </div>
+              
+              <div className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-[#bf9b30]">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Ceygem</h3>
+                <p className="text-gray-600 mb-4">
+                  Born from this legacy, Ceygem showcases Sri Lanka's world-renowned Ceylon Sapphires. Each gem reflects our commitment to ethical sourcing, certification, and preserving traditional craftsmanship.
+                </p>
+                <div className="flex items-center text-sm text-[#bf9b30] font-medium">
+                  <span className="mr-2">●</span>
+                  <span>Founded 1999</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Our Values</h3>
+              <div className="space-y-6">
+                {[
+                  { title: "Tradition", desc: "Preserving centuries-old gem cutting techniques" },
+                  { title: "Integrity", desc: "Transparent sourcing and fair trade practices" },
+                  { title: "Quality", desc: "Uncompromising standards in every gem" },
+                  { title: "Innovation", desc: "Modern techniques enhancing traditional craft" }
+                ].map((value, index) => (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-[#f8f4ed] rounded-lg flex items-center justify-center">
+                      <span className="text-[#bf9b30] font-bold">{index + 1}</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-800 mb-1">{value.title}</h4>
+                      <p className="text-gray-600 text-sm">{value.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Business Journey Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
+      {/* =================  BUSINESS JOURNEY ================= */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#bf9b30] mb-4">
-              Our Business Journey
-            </h2>
-            <div className="w-24 h-1 bg-[#00B9B3] mx-auto rounded-full"></div>
+            <h2 className="text-4xl font-bold text-[#bf9b30] mb-4">Our Business Journey</h2>
+            <div className="w-24 h-1 bg-[#bf9b30] mx-auto mb-6"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Milestones that shaped our journey from a small family business to an internationally recognized gemstone authority
+            </p>
           </div>
-          
-          {/* Desktop Timeline - hidden on mobile */}
-          <div className="max-w-4xl mx-auto hidden md:block">
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#bf9b30] via-[#bf9b30]/80 to-[#bf9b30]"></div>
+            
             {timelineItems.map((item, index) => (
-              <div
-                key={item.id}
-                className={`flex flex-col md:flex-row items-center mb-12 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="flex-shrink-0 mb-6 md:mb-0">
-                  <div className="w-28 h-28 bg-[#bf9b30] flex items-center justify-center text-white font-bold text-2xl rounded-full border border-black shadow-sm hover:shadow-md transform hover:scale-[1.05] transition-all duration-200 cursor-pointer">
-                    {item.year}
-                  </div>
+              <div key={item.id} className={`relative flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-start mb-16`}>
+                {/* Year circle */}
+                <div className="relative z-10 flex-shrink-0 w-20 h-20 bg-[#bf9b30] text-white flex flex-col items-center justify-center rounded-full font-bold shadow-lg mx-8">
+                  <div className="text-sm font-normal">Year</div>
+                  <div className="text-xl">{item.year}</div>
                 </div>
-                <div className={`flex-1 ${index % 2 === 0 ? "md:ml-8" : "md:mr-8"}`}>
-                  <div className="bg-gray-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4 text-center md:text-left">
-                      {item.title}
-                    </h3>
-                    <p className="text-md text-gray-600 leading-relaxed text-center md:text-left">
-                      {item.description}
-                    </p>
+                
+                {/* Content card */}
+                <div className={`flex-1 ${index % 2 === 0 ? 'md:pl-8' : 'md:pr-8 md:text-right'} mt-2 md:mt-0`}>
+                  <div className="bg-white p-8 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                    <div className="mb-4">
+                      <span className="inline-block px-3 py-1 bg-[#f8f4ed] text-[#bf9b30] text-sm font-medium rounded-full">
+                        {item.highlight}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-3">{item.title}</h3>
+                    <p className="text-gray-600 mb-4">{item.description}</p>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <div className="w-2 h-2 rounded-full bg-[#bf9b30] mr-2"></div>
+                      <span>Milestone Achieved</span>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Mobile Timeline with Dropdown - shown only on mobile */}
-          <div className="max-w-4xl mx-auto md:hidden">
-            {/* Always visible first item (1999) */}
-            <div className="flex flex-col items-center mb-6">
-              <div className="flex-shrink-0 mb-4">
-                <div className="w-24 h-24 bg-[#bf9b30] flex items-center justify-center text-white font-bold text-2xl rounded-full border border-black shadow-sm">
-                  1999
-                </div>
-              </div>
-              <div className="flex-1 w-full">
-                <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
-                    The Beginning
-                  </h3>
-                  <p className="text-md text-gray-600 leading-relaxed text-center">
-                    Anura Perera started his journey at age 18, learning the ancient art of gem cutting from his father in Ratnapura, the gem capital of Sri Lanka.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Dropdown arrow button */}
-            <div className="flex justify-center mb-6">
-              <button
-                onClick={toggleTimeline}
-                className="flex flex-col items-center justify-center text-[#bf9b30] hover:text-[#a88728] transition-colors duration-300"
-                aria-label={isTimelineOpen ? "Hide timeline" : "Show timeline"}
-              >
-                <span className="text-sm font-semibold mb-1">
-                  {isTimelineOpen ? "Hide" : "Show"} More
-                </span>
-                <svg
-                  className={`w-8 h-8 transform transition-transform duration-300 ${
-                    isTimelineOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* Dropdown content - other timeline items */}
-            <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                isTimelineOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
-              }`}
-            >
-              {timelineItems.slice(1).map((item) => (
-                <div key={item.id} className="flex flex-col items-center mb-8">
-                  <div className="flex-shrink-0 mb-4">
-                    <div className="w-24 h-24 bg-[#bf9b30] flex items-center justify-center text-white font-bold text-2xl rounded-full border border-black shadow-sm hover:shadow-md transform hover:scale-[1.05] transition-all duration-200 cursor-pointer">
-                      {item.year}
-                    </div>
-                  </div>
-                  <div className="flex-1 w-full">
-                    <div className="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                      <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
-                        {item.title}
-                      </h3>
-                      <p className="text-md text-gray-600 leading-relaxed text-center">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Vision & Mission Section */}
-      <section className="py-16 px-4 bg-[#f8f4ed] text-black">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl text-[#bf9b30] font-bold mb-4">
-              Our Vision & Mission
-            </h2>
-            <div className="w-24 h-1 bg-[#00B9B3] mx-auto rounded-full"></div>
+      {/* =================   VISION & MISSION ================= */}
+      <section className="py-20 bg-[#f8f4ed] px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#bf9b30] mb-4">Vision & Mission</h2>
+            <div className="w-24 h-1 bg-[#bf9b30] mx-auto mb-6"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Guiding principles that define our purpose and direction
+            </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {visionMissionData.map((item, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
               >
-                <h3 className="text-xl font-bold mb-6">{item.title}</h3>
-                <img
-                  className="w-32 h-32 bg-[#00B9B3] rounded-2xl mx-auto mb-6 object-contain"
-                  alt={item.imageAlt}
-                  src={item.imageSrc}
-                />
-                <p className="text-mg leading-relaxed">{item.description}</p>
+                <div className="p-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-2xl font-bold text-gray-800">{item.title}</h3>
+                    <div className="w-20 h-20 bg-[#bf9b30]/10 rounded-full flex items-center justify-center shadow-md ring-2 ring-[#bf9b30]/40">
+                      <img
+                        src={item.imageSrc}
+                        alt={item.imageAlt}
+                        className="w-14 h-14 object-contain drop-shadow-md contrast-125 saturate-150"
+                      />
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-8 leading-relaxed">
+                    {item.description}
+                  </p>
+                  
+                  <div className="border-t border-gray-100 pt-6">
+                    <h4 className="font-bold text-gray-800 mb-4">Key Focus Areas:</h4>
+                    <ul className="space-y-3">
+                      {item.points.map((point, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <div className="flex-shrink-0 w-6 h-6 bg-[#bf9b30]/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                            <div className="w-2 h-2 rounded-full bg-[#bf9b30]"></div>
+                          </div>
+                          <span className="text-gray-600">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="bg-[#bf9b30] h-1"></div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Founder Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#bf9b30] mb-4">
-              Meet Our Founder
-            </h2>
-            <div className="w-24 h-1 bg-[#00B9B3]  mx-auto rounded-full"></div>
-          </div>
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1">
-                <img
-                  className="w-full max-w-md mx-auto rounded-2xl shadow-lg object-cover transform hover:scale-105 transition-all duration-300 cursor-pointer"
-                  alt="Anura Perera - Founder"
-                  src="/images/ff.png"
-                />
-              </div>
-              <div className="order-1 lg:order-2">
-                <div className="bg-gray-50 rounded-2xl p-8 shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                  <h3 className="text-xl font-bold text-[#bf9b30] mb-2 text-center">
-                    Anura Perera
-                  </h3>
-                  <p className="text-mg text-black italic mb-6 text-center">
-                    Master Gemologist & Founder
-                  </p>
-                  <p className="text-mg text-gray-600 mb-8 leading-relaxed">
-                    As A Third-generation Gemologist, I Am Passionate About Sharing
-                    Sri Lanka's Gem Heritage With The World. My Expertise
-                    Ensures Every Gem Meets The Highest Standards Of Quality And
-                    Authenticity.
-                  </p>
-                  <div className="bg-[#f8f4ed] border-l-4 border-[#00B9B3] p-6 rounded-r-lg">
-                    <blockquote className="text-mg italic text-gray-700">
-                      "Every Gem Tells A Story Of Millions Of Years In The
-                      Making. Our Role Is To Honor That Story And Ensure It Reaches
-                      Those Who Truly Appreciate Its Beauty."
-                    </blockquote>
-                  </div>
-                </div>
+          
+          {/* Combined Purpose Statement */}
+          <div className="mt-16 bg-white rounded-xl shadow-lg p-10 border border-gray-100">
+            <div className="text-center max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">Our Combined Purpose</h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Through our vision to showcase Sri Lanka's finest gems globally and our mission 
+                to provide authentic, ethically sourced stones, we create lasting value that 
+                honors our heritage while building trust with collectors worldwide.
+              </p>
+              <div className="mt-8 flex items-center justify-center">
+                <div className="w-32 h-px bg-[#bf9b30]"></div>
+                <span className="mx-4 text-[#bf9b30] font-medium">●</span>
+                <div className="w-32 h-px bg-[#bf9b30]"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Certified Excellence Section */}
-      <section className="py-16 px-4 bg-[#f8f4ed]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#bf9b30] mb-4">
-              Certified Excellence
-            </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+    {/* ================= FOUNDER ================= */}
+<section className="py-24 px-6 bg-white">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    {/* IMAGE */}
+    <div className="relative">
+      <img
+        src="/images/ff.png"
+        alt="Founder"
+        className="rounded-lg shadow-md"
+      />
+
+      {/* Subtle Accent */}
+      <div className="absolute -bottom-3 -right-3 w-full h-full border border-[#bf9b30]/30 rounded-lg -z-10"></div>
+    </div>
+
+    {/* CONTENT */}
+    <div>
+      <span className="block text-sm tracking-widest uppercase text-[#bf9b30] mb-3">
+        Founder
+      </span>
+
+      <h2 className="text-3xl font-semibold text-gray-900 mb-2">
+        Anura Perera
+      </h2>
+
+      <p className="text-gray-500 italic mb-8">
+        Third-Generation Gemologist
+      </p>
+
+      <p className="text-gray-600 leading-relaxed mb-8 max-w-xl">
+        With over two decades of experience, Anura Perera represents the
+        continuity of Sri Lanka’s gemstone heritage. His work blends traditional
+        craftsmanship with modern ethical standards, ensuring each gem reflects
+        authenticity, provenance, and lasting value.
+      </p>
+
+      <blockquote className="border-l-2 border-[#bf9b30] pl-6 text-gray-700 italic mb-10 max-w-xl">
+        “Every gemstone carries millions of years of history. Our role is to
+        preserve its integrity and meaning.”
+      </blockquote>
+
+      {/* STATS */}
+      <div className="flex gap-12">
+        <div>
+          <div className="text-2xl font-semibold text-gray-900">25+</div>
+          <div className="text-sm text-gray-500">Years of Experience</div>
+        </div>
+
+        <div>
+          <div className="text-2xl font-semibold text-gray-900">1000+</div>
+          <div className="text-sm text-gray-500">Certified Gems</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+      {/* ================= CERTIFICATIONS ================= */}
+      <section className="py-20 bg-[#f8f4ed] px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#bf9b30] mb-4">Our Certifications</h2>
+            <div className="w-24 h-1 bg-[#bf9b30] mx-auto mb-6"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Internationally recognized certifications that guarantee authenticity and ethical standards
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {certifications.map((cert) => (
               <div
                 key={cert.id}
-                className="bg-white rounded-xl shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-200 cursor-pointer p-6 text-center"
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center group"
               >
-                <img
-                  className="w-24 h-24 mx-auto mb-4 object-contain"
-                  alt="Certification icon"
-                  src={cert.image}
-                />
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
-                  {cert.title}
-                </h3>
+                <div className="mb-6">
+                  <div className="w-24 h-24 mx-auto bg-[#f8f4ed] rounded-full flex items-center justify-center group-hover:bg-[#bf9b30]/10 transition-colors duration-300">
+                    <img src={cert.image} alt={cert.title} className="w-16 h-16" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">{cert.title}</h3>
+                <p className="text-gray-600 text-sm">
+                  Internationally recognized standard for quality assurance and ethical practices
+                </p>
+                <div className="mt-6 pt-6 border-t border-gray-100">
+                  <div className="inline-flex items-center text-[#bf9b30] font-medium">
+                    <span className="mr-2">●</span>
+                    <span>Certified & Verified</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
