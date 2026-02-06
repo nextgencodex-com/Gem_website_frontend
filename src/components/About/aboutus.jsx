@@ -259,9 +259,9 @@ const AboutUs = () => {
             {visionMissionData.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden h-full flex flex-col"
               >
-                <div className="p-10">
+                <div className="p-10 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-2xl font-bold text-gray-800">{item.title}</h3>
                     <div className="w-20 h-20 bg-[#bf9b30]/10 rounded-full flex items-center justify-center shadow-md ring-2 ring-[#bf9b30]/40">
