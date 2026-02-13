@@ -76,66 +76,99 @@ const AboutUs = () => {
       ]
     },
   ];
-
   return (
-    <div className="bg-[#f8f4ed] min-h-screen font-[Poppins]">
+    <div className="bg-white min-h-screen font-[Poppins]">
 {/* ================= HERO SECTION ================= */}
-<section className="relative bg-gradient-to-b from-gray-50 to-white py-24 overflow-hidden">
-
-  {/* Subtle Background Pattern */}
-  <div className="absolute inset-0 opacity-[0.02]">
-    <div
-      className="absolute inset-0"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='%23000000'/%3E%3C/svg%3E")`,
-        backgroundSize: "60px 60px",
-      }}
-    />
-  </div>
-
-  <div className="max-w-7xl mx-auto px-6 relative">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-      {/* LEFT CONTENT */}
-      <div>
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-16 h-px bg-[#bf9b30]"></div>
-          <span className="text-sm font-medium text-gray-500 tracking-widest uppercase">
-            Since 1999
-          </span>
-        </div>
-
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-          About <span className="text-[#bf9b30]">Us</span>
-        </h1>
-
-        <p className="text-gray-600 text-lg leading-relaxed max-w-xl mb-8">
-          Three generations of gem expertise rooted in Sri Lanka's rich heritage.
-          We craft, source, and deliver ethically sourced Ceylon gemstones with
-          unmatched brilliance, transparency, and trust.
-        </p>
-
-        
+ 
+    <section className="relative bg-gradient-to-b from-gray-50 to-white py-24 overflow-hidden">
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='%23000000'/%3E%3C/svg%3E")`,
+            backgroundSize: "60px 60px",
+          }}
+        />
       </div>
 
-      {/* RIGHT IMAGE */}
-      <div className="relative">
-        <div className="relative rounded-lg overflow-hidden shadow-xl">
-          <img
-            src="/images/cc.jpg"
-            alt="Ceylon Gems Collection"
-            className="w-full h-[500px] object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+      <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* LEFT CONTENT */}
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-16 h-px bg-[#bf9b30]"></div>
+              <span className="text-sm font-medium text-gray-500 tracking-widest uppercase">
+                Since 1999
+              </span>
+            </div>
+
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              About <span className="text-[#bf9b30]">Us</span>
+            </h1>
+
+            <p className="text-gray-600 text-lg leading-relaxed max-w-xl mb-8">
+              Three generations of gem expertise rooted in Sri Lanka's rich heritage.
+              We craft, source, and deliver ethically sourced Ceylon gemstones with
+              unmatched brilliance, transparency, and trust.
+            </p>
+            
+            {/* Decorative element - subtle gem line */}
+            <div className="flex items-center gap-2 mt-8">
+              <div className="w-12 h-12 rounded-full bg-[#bf9b30]/5 flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 4L16 10L12 20L8 10L12 4Z" fill="#bf9b30" opacity="0.3" />
+                </svg>
+              </div>
+              <span className="text-gray-500 text-sm">Certified Ceylon Gemstones</span>
+            </div>
+          </div>
+
+          {/* RIGHT IMAGE — naturally placed with artistic overflow */}
+          <div className="relative flex justify-end">
+            <div className="relative w-[110%] -mr-[10%]">
+              {/* Main image container with organic shape */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-700 hover:shadow-3xl hover:scale-[1.02]">
+                {/* Gradient overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#bf9b30]/10 via-transparent to-transparent z-10 pointer-events-none"></div>
+                
+                {/* The image */}
+                <img 
+                  src="/images/cc.jpg" 
+                  alt="Ceylon Gemstones" 
+                  className="w-full h-auto object-cover aspect-[4/3]"
+                />
+                
+                {/* Decorative corner elements */}
+                <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-[#bf9b30]/30 rounded-tl-3xl z-20"></div>
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-[#bf9b30]/30 rounded-br-3xl z-20"></div>
+              </div>
+              
+              {/* Floating gem elements for artistic effect */}
+              <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#bf9b30]/5 rounded-full blur-3xl -z-10"></div>
+              <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-amber-200/20 rounded-full blur-3xl -z-10"></div>
+              
+              {/* Small gem accent floating */}
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center transform rotate-12 border border-[#bf9b30]/20">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L17 9L12 22L7 9L12 2Z" fill="#bf9b30" opacity="0.2" />
+                  <path d="M12 2L20 10L12 18L4 10L12 2Z" fill="#bf9b30" opacity="0.1" />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
-
-        {/* Accent Border */}
-        <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-[#bf9b30]/20 rounded-lg -z-10"></div>
       </div>
+      
+      {/* Background decorative elements */}
+      <div className="absolute top-1/3 right-0 w-64 h-64 bg-[#bf9b30]/5 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gray-200/20 rounded-full blur-3xl -z-10"></div>
+    </section>
+  );
+ 
+   
 
-    </div>
-  </div>
-</section>
+ 
 
 
       {/* =================  HERITAGE SECTION ================= */}
