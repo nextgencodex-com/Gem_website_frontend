@@ -78,7 +78,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen font-[Poppins]">
+    <div className="bg-[#f8f4ed] min-h-screen font-[Poppins]">
 {/* ================= HERO SECTION ================= */}
 <section className="relative bg-gradient-to-b from-gray-50 to-white py-24 overflow-hidden">
 
