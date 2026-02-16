@@ -78,97 +78,201 @@ const AboutUs = () => {
   ];
   return (
     <div className="bg-white min-h-screen font-[Poppins]">
+ 
 {/* ================= HERO SECTION ================= */}
  
-    <section className="relative bg-gradient-to-b from-gray-50 to-white py-24 overflow-hidden">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='%23000000'/%3E%3C/svg%3E")`,
-            backgroundSize: "60px 60px",
-          }}
-        />
+<section className="relative bg-[#f0ede8] min-h-screen overflow-hidden">
+  {/* Uncommon Background - Wabi Sabi Texture */}
+  <div className="absolute inset-0">
+    {/* Handmade paper texture */}
+    <div className="absolute inset-0 opacity-20" style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.2'/%3E%3C/svg%3E")`,
+      backgroundRepeat: 'repeat'
+    }} />
+    
+    {/* Raw ink strokes */}
+    <div className="absolute top-40 left-20 w-64 h-64 opacity-10">
+      <svg viewBox="0 0 200 200" className="w-full h-full">
+        <path d="M20,100 Q50,20 100,20 Q150,20 180,100 Q150,180 100,180 Q50,180 20,100" 
+          fill="none" stroke="#bf9b30" strokeWidth="3" strokeDasharray="5,5"/>
+      </svg>
+    </div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-6 relative min-h-screen flex items-center py-20">
+    {/* Unconventional Asymmetrical Layout */}
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
+      
+      {/* LEFT - Deconstructed Content */}
+      <div className="lg:col-span-5 relative z-10 order-2 lg:order-1 mt-12 lg:mt-0">
+        {/* Raw edge badge */}
+        <div className="relative mb-12">
+          <div className="absolute -left-6 top-1/2 w-12 h-[2px] bg-[#bf9b30]/40 -rotate-45"></div>
+          <span className="text-[10px] font-mono text-gray-400 tracking-[0.3em] relative z-10 pl-4">
+            E S T. 1 9 9 9
+          </span>
+        </div>
+
+        {/* Deconstructed Typography */}
+        <div className="relative mb-12">
+          {/* Background fragment */}
+          <div className="absolute -top-8 -left-4 text-[120px] font-black text-[#bf9b30]/5 select-none">
+            {}
+          </div>
+          
+          <h1 className="relative">
+            <span className="block text-7xl font-light text-gray-900 tracking-tight mb-2 opacity-90 hover:opacity-100 transition-opacity">
+              <span className="inline-block transform -rotate-1">A</span>
+              <span className="inline-block transform rotate-2">b</span>
+              <span className="inline-block transform -rotate-1">o</span>
+              <span className="inline-block transform rotate-1">u</span>
+              <span className="inline-block transform -rotate-2">t</span>
+            </span>
+            <span className="relative">
+              <span className="text-8xl font-black text-[#bf9b30] tracking-tighter inline-block transform skew-x-12 hover:skew-x-0 transition-transform duration-500">
+                US
+              </span>
+              <span className="absolute -bottom-2 left-0 w-24 h-1 bg-[#bf9b30]/30"></span>
+              <span className="absolute -bottom-2 left-28 w-12 h-1 bg-[#bf9b30]/10"></span>
+            </span>
+          </h1>
+        </div>
+
+        {/* Unconventional description block */}
+        <div className="relative mb-16 pl-8">
+          {/* Vertical line */}
+          <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-[#bf9b30] via-[#bf9b30]/30 to-transparent"></div>
+          
+          <p className="text-gray-600 text-base leading-relaxed font-light max-w-sm italic">
+            "Three generations. One island. 
+            <span className="block text-gray-800 font-medium not-italic mt-3">
+              Crafting Ceylon's soul into every gem.
+            </span>"
+          </p>
+          
+          {/* Signature element */}
+          <div className="mt-4 font-serif text-2xl text-[#bf9b30]/30 select-none">
+            〜
+          </div>
+        </div>
+
+        {/* Deconstructed stats */}
+        <div className="flex flex-col gap-6 mb-16 max-w-xs">
+          <div className="flex items-center gap-4 group cursor-pointer">
+            <div className="w-12 h-12 border border-[#bf9b30]/30 rounded-full flex items-center justify-center group-hover:border-[#bf9b30] transition-colors">
+              <span className="text-lg font-light text-gray-700">24</span>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-[#bf9b30]/50 to-transparent"></div>
+            <span className="text-xs text-gray-400 tracking-widest">YEARS</span>
+          </div>
+          
+          <div className="flex items-center gap-4 group cursor-pointer">
+            <div className="w-12 h-12 border border-[#bf9b30]/30 rounded-full flex items-center justify-center group-hover:border-[#bf9b30] transition-colors">
+              <span className="text-lg font-light text-gray-700">3</span>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-[#bf9b30]/50 to-transparent"></div>
+            <span className="text-xs text-gray-400 tracking-widest">GENS</span>
+          </div>
+          
+          <div className="flex items-center gap-4 group cursor-pointer">
+            <div className="w-12 h-12 border border-[#bf9b30]/30 rounded-full flex items-center justify-center group-hover:border-[#bf9b30] transition-colors">
+              <span className="text-lg font-light text-gray-700">100</span>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-[#bf9b30]/50 to-transparent"></div>
+            <span className="text-xs text-gray-400 tracking-widest">ETHICAL</span>
+          </div>
+        </div>
+
+        {/* Uncommon button style */}
+        <button className="group relative px-0 py-2 overflow-hidden bg-transparent">
+          <span className="text-sm tracking-[0.3em] text-gray-700 group-hover:text-[#bf9b30] transition-colors duration-300">
+            DISCOVER MORE
+          </span>
+          <span className="absolute bottom-0 left-0 w-full h-px bg-[#bf9b30] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+          <span className="absolute -right-4 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:right-0 transition-all duration-300">
+            →
+          </span>
+        </button>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT CONTENT */}
+      {/* RIGHT - Hero Image - Fully Visible, Uncommon Presentation */}
+      <div className="lg:col-span-7 relative order-1 lg:order-2">
+        {/* Unconventional image container */}
+        <div className="relative pl-0 lg:pl-12">
+          {/* Floating frame - doesn't touch image */}
+          <div className="absolute -top-6 -left-6 lg:-left-6 w-48 h-48 border-2 border-[#bf9b30]/20 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] animate-[spin_20s_linear_infinite]"></div>
+          <div className="absolute -bottom-6 -right-6 w-64 h-64 border border-[#bf9b30]/10 rounded-[70%_30%_50%_50%/30%_40%_60%_70%] animate-[spin_25s_linear_infinite_reverse]"></div>
+          
+          {/* Main image - pure and fully visible */}
           <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-16 h-px bg-[#bf9b30]"></div>
-              <span className="text-sm font-medium text-gray-500 tracking-widest uppercase">
-                Since 1999
-              </span>
-            </div>
-
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              About <span className="text-[#bf9b30]">Us</span>
-            </h1>
-
-            <p className="text-gray-600 text-lg leading-relaxed max-w-xl mb-8">
-              Three generations of gem expertise rooted in Sri Lanka's rich heritage.
-              We craft, source, and deliver ethically sourced Ceylon gemstones with
-              unmatched brilliance, transparency, and trust.
-            </p>
+            <img 
+              src="/images/cc.jpg" 
+              alt="Ceylon Gemstones" 
+              className="w-full h-auto object-contain max-h-[550px] rounded-[40%_60%_40%_60%/60%_40%_60%_40%] shadow-2xl"
+            />
             
-            {/* Decorative element - subtle gem line */}
-            <div className="flex items-center gap-2 mt-8">
-              <div className="w-12 h-12 rounded-full bg-[#bf9b30]/5 flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 4L16 10L12 20L8 10L12 4Z" fill="#bf9b30" opacity="0.3" />
-                </svg>
-              </div>
-              <span className="text-gray-500 text-sm">Certified Ceylon Gemstones</span>
+            {/* Minimal corner markers - away from image */}
+            <div className="absolute -top-3 -right-3 w-12 h-12">
+              <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-[#bf9b30]/40"></div>
+            </div>
+            <div className="absolute -bottom-3 -left-3 w-12 h-12">
+              <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-[#bf9b30]/40"></div>
             </div>
           </div>
 
-          {/* RIGHT IMAGE — naturally placed with artistic overflow */}
-          <div className="relative flex justify-end">
-            <div className="relative w-[110%] -mr-[10%]">
-              {/* Main image container with organic shape */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform transition-all duration-700 hover:shadow-3xl hover:scale-[1.02]">
-                {/* Gradient overlay for depth */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#bf9b30]/10 via-transparent to-transparent z-10 pointer-events-none"></div>
-                
-                {/* The image */}
-                <img 
-                  src="/images/cc.jpg" 
-                  alt="Ceylon Gemstones" 
-                  className="w-full h-auto object-cover aspect-[4/3]"
-                />
-                
-                {/* Decorative corner elements */}
-                <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-[#bf9b30]/30 rounded-tl-3xl z-20"></div>
-                <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-[#bf9b30]/30 rounded-br-3xl z-20"></div>
-              </div>
-              
-              {/* Floating gem elements for artistic effect */}
-              <div className="absolute -top-8 -left-8 w-32 h-32 bg-[#bf9b30]/5 rounded-full blur-3xl -z-10"></div>
-              <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-amber-200/20 rounded-full blur-3xl -z-10"></div>
-              
-              {/* Small gem accent floating */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center transform rotate-12 border border-[#bf9b30]/20">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L17 9L12 22L7 9L12 2Z" fill="#bf9b30" opacity="0.2" />
-                  <path d="M12 2L20 10L12 18L4 10L12 2Z" fill="#bf9b30" opacity="0.1" />
-                </svg>
-              </div>
+          {/* Floating elements - positioned completely away from image */}
+          <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
+            <div className="relative">
+              <div className="w-px h-32 bg-gradient-to-b from-transparent via-[#bf9b30]/30 to-transparent"></div>
+              <span className="absolute top-1/2 left-4 transform -translate-y-1/2 text-xs text-gray-400 rotate-90 origin-left whitespace-nowrap tracking-[0.3em]">
+                HANDCRAFTED
+              </span>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Background decorative elements */}
-      <div className="absolute top-1/3 right-0 w-64 h-64 bg-[#bf9b30]/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gray-200/20 rounded-full blur-3xl -z-10"></div>
-    </section>
-  );
- 
-   
+    </div>
 
- 
+    {/* Uncommon bottom navigation */}
+    <div className="absolute bottom-8 left-0 right-0 px-6">
+      <div className="max-w-7xl mx-auto flex justify-between items-end">
+        {/* Left - Zen element */}
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-gray-300 font-mono">(01)</span>
+          <div className="w-16 h-px bg-[#bf9b30]/30"></div>
+          <span className="text-[10px] text-gray-400 tracking-[0.3em]">HERITAGE</span>
+        </div>
+        
+        {/* Center - Minimal pagination */}
+        <div className="flex gap-6">
+          <span className="text-xs text-gray-300 cursor-pointer hover:text-[#bf9b30] transition-colors">●</span>
+          <span className="text-xs text-gray-300 cursor-pointer hover:text-[#bf9b30] transition-colors">○</span>
+          <span className="text-xs text-gray-300 cursor-pointer hover:text-[#bf9b30] transition-colors">○</span>
+        </div>
+        
+        {/* Right - Year */}
+        <div className="text-right">
+          <span className="text-2xl font-serif text-[#bf9b30]/30">'99</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Raw edge corner elements */}
+  <div className="absolute top-0 left-0 w-20 h-20">
+    <div className="absolute top-0 left-0 w-10 h-10 border-t border-l border-[#bf9b30]/30"></div>
+  </div>
+  <div className="absolute bottom-0 right-0 w-20 h-20">
+    <div className="absolute bottom-0 right-0 w-10 h-10 border-b border-r border-[#bf9b30]/30"></div>
+  </div>
+
+  <style jsx>{`
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  `}</style>
+</section>
 
 
       {/* =================  HERITAGE SECTION ================= */}
