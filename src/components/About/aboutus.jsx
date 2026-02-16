@@ -82,122 +82,104 @@ const AboutUs = () => {
 {/* ================= HERO SECTION ================= */}
  
 <section className="relative bg-[#f0ede8] min-h-screen overflow-hidden">
-  {/* Uncommon Background - Wabi Sabi Texture */}
+  {/* New Professional Background */}
   <div className="absolute inset-0">
-    {/* Handmade paper texture */}
-    <div className="absolute inset-0 opacity-20" style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.2'/%3E%3C/svg%3E")`,
-      backgroundRepeat: 'repeat'
-    }} />
+    {/* Clean gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-[#bf9b30]/5"></div>
     
-    {/* Raw ink strokes */}
-    <div className="absolute top-40 left-20 w-64 h-64 opacity-10">
-      <svg viewBox="0 0 200 200" className="w-full h-full">
-        <path d="M20,100 Q50,20 100,20 Q150,20 180,100 Q150,180 100,180 Q50,180 20,100" 
-          fill="none" stroke="#bf9b30" strokeWidth="3" strokeDasharray="5,5"/>
-      </svg>
-    </div>
+    {/* Subtle geometric pattern */}
+    <div className="absolute inset-0 opacity-[0.02]" style={{
+      backgroundImage: `repeating-linear-gradient(45deg, #000 0px, #000 1px, transparent 1px, transparent 30px)`,
+    }}></div>
   </div>
 
   <div className="max-w-7xl mx-auto px-6 relative min-h-screen flex items-center py-20">
-    {/* Unconventional Asymmetrical Layout */}
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
+    {/* New Balanced Layout */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 w-full items-center">
       
-      {/* LEFT - Deconstructed Content */}
-      <div className="lg:col-span-5 relative z-10 order-2 lg:order-1 mt-12 lg:mt-0">
-        {/* Raw edge badge */}
-        <div className="relative mb-12">
-          <div className="absolute -left-6 top-1/2 w-12 h-[2px] bg-[#bf9b30]/40 -rotate-45"></div>
-          <span className="text-[10px] font-mono text-gray-400 tracking-[0.3em] relative z-10 pl-4">
-            E S T. 1 9 9 9
+      {/* LEFT - Completely Redesigned Professional Content */}
+      <div className="relative z-10">
+        {/* New Elegant Badge */}
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-16 h-[2px] bg-[#bf9b30]"></div>
+          <span className="text-xs font-medium text-gray-500 tracking-[0.2em]">SINCE 1999</span>
+          <span className="text-xs font-medium text-[#bf9b30] tracking-[0.2em]">CEYLON</span>
+        </div>
+
+        {/* New Refined Typography */}
+        <h1 className="mb-6">
+          <span className="block text-7xl md:text-8xl font-light text-gray-900 mb-2 tracking-tight">
+            About
           </span>
-        </div>
-
-        {/* Deconstructed Typography */}
-        <div className="relative mb-12">
-          {/* Background fragment */}
-          <div className="absolute -top-8 -left-4 text-[120px] font-black text-[#bf9b30]/5 select-none">
-            {}
-          </div>
-          
-          <h1 className="relative">
-            <span className="block text-7xl font-light text-gray-900 tracking-tight mb-2 opacity-90 hover:opacity-100 transition-opacity">
-              <span className="inline-block transform -rotate-1">A</span>
-              <span className="inline-block transform rotate-2">b</span>
-              <span className="inline-block transform -rotate-1">o</span>
-              <span className="inline-block transform rotate-1">u</span>
-              <span className="inline-block transform -rotate-2">t</span>
+          <span className="relative inline-block">
+            <span className="text-8xl md:text-9xl font-bold text-[#bf9b30] leading-none">
+              Us
             </span>
-            <span className="relative">
-              <span className="text-8xl font-black text-[#bf9b30] tracking-tighter inline-block transform skew-x-12 hover:skew-x-0 transition-transform duration-500">
-                US
-              </span>
-              <span className="absolute -bottom-2 left-0 w-24 h-1 bg-[#bf9b30]/30"></span>
-              <span className="absolute -bottom-2 left-28 w-12 h-1 bg-[#bf9b30]/10"></span>
-            </span>
-          </h1>
-        </div>
+            <span className="absolute -bottom-3 left-0 w-full h-1 bg-[#bf9b30]/20 rounded-full"></span>
+          </span>
+        </h1>
 
-        {/* Unconventional description block */}
-        <div className="relative mb-16 pl-8">
-          {/* Vertical line */}
-          <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-[#bf9b30] via-[#bf9b30]/30 to-transparent"></div>
-          
-          <p className="text-gray-600 text-base leading-relaxed font-light max-w-sm italic">
-            "Three generations. One island. 
-            <span className="block text-gray-800 font-medium not-italic mt-3">
-              Crafting Ceylon's soul into every gem.
-            </span>"
+        {/* New Sophisticated Description */}
+        <div className="max-w-md mb-12">
+          <p className="text-gray-600 text-lg leading-relaxed">
+            <span className="font-medium text-gray-900">Three generations</span> of gem expertise rooted in Sri Lanka's rich heritage.
           </p>
-          
-          {/* Signature element */}
-          <div className="mt-4 font-serif text-2xl text-[#bf9b30]/30 select-none">
-            〜
+          <p className="text-gray-500 text-base mt-4 font-light">
+            We craft, source, and deliver ethically sourced Ceylon gemstones with unmatched brilliance, transparency, and trust.
+          </p>
+        </div>
+
+        {/* New Stats Cards */}
+        <div className="flex gap-6 mb-12">
+          <div className="bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#bf9b30]/10 shadow-sm">
+            <div className="text-3xl font-light text-gray-900">24<span className="text-[#bf9b30] text-lg ml-1">+</span></div>
+            <div className="text-xs text-gray-400 mt-1 tracking-wide">Years of Excellence</div>
+          </div>
+          <div className="bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#bf9b30]/10 shadow-sm">
+            <div className="text-3xl font-light text-gray-900">3<span className="text-[#bf9b30] text-lg ml-1">G</span></div>
+            <div className="text-xs text-gray-400 mt-1 tracking-wide">Generations</div>
+          </div>
+          <div className="bg-white/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#bf9b30]/10 shadow-sm">
+            <div className="text-3xl font-light text-gray-900">100<span className="text-[#bf9b30] text-lg ml-1">%</span></div>
+            <div className="text-xs text-gray-400 mt-1 tracking-wide">Ethical</div>
           </div>
         </div>
 
-        {/* Deconstructed stats */}
-        <div className="flex flex-col gap-6 mb-16 max-w-xs">
-          <div className="flex items-center gap-4 group cursor-pointer">
-            <div className="w-12 h-12 border border-[#bf9b30]/30 rounded-full flex items-center justify-center group-hover:border-[#bf9b30] transition-colors">
-              <span className="text-lg font-light text-gray-700">24</span>
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-[#bf9b30]/50 to-transparent"></div>
-            <span className="text-xs text-gray-400 tracking-widest">YEARS</span>
-          </div>
-          
-          <div className="flex items-center gap-4 group cursor-pointer">
-            <div className="w-12 h-12 border border-[#bf9b30]/30 rounded-full flex items-center justify-center group-hover:border-[#bf9b30] transition-colors">
-              <span className="text-lg font-light text-gray-700">3</span>
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-[#bf9b30]/50 to-transparent"></div>
-            <span className="text-xs text-gray-400 tracking-widest">GENS</span>
-          </div>
-          
-          <div className="flex items-center gap-4 group cursor-pointer">
-            <div className="w-12 h-12 border border-[#bf9b30]/30 rounded-full flex items-center justify-center group-hover:border-[#bf9b30] transition-colors">
-              <span className="text-lg font-light text-gray-700">100</span>
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-[#bf9b30]/50 to-transparent"></div>
-            <span className="text-xs text-gray-400 tracking-widest">ETHICAL</span>
-          </div>
+        {/* New Button Group */}
+        <div className="flex flex-wrap gap-4">
+          <button className="group relative px-8 py-4 bg-[#bf9b30] text-white font-medium overflow-hidden rounded-full shadow-lg shadow-[#bf9b30]/20 hover:shadow-xl transition-shadow">
+            <span className="relative z-10">Explore Collection</span>
+            <div className="absolute inset-0 bg-gray-900 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+          </button>
+          <button className="px-8 py-4 bg-white text-gray-700 font-medium rounded-full border border-gray-200 hover:border-[#bf9b30] hover:text-[#bf9b30] transition-all shadow-sm">
+            Our Story
+          </button>
         </div>
 
-        {/* Uncommon button style */}
-        <button className="group relative px-0 py-2 overflow-hidden bg-transparent">
-          <span className="text-sm tracking-[0.3em] text-gray-700 group-hover:text-[#bf9b30] transition-colors duration-300">
-            DISCOVER MORE
-          </span>
-          <span className="absolute bottom-0 left-0 w-full h-px bg-[#bf9b30] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-          <span className="absolute -right-4 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:right-0 transition-all duration-300">
-            →
-          </span>
-        </button>
+        {/* New Trust Badges */}
+        <div className="flex items-center gap-6 mt-12 pt-6 border-t border-gray-200">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-[#bf9b30]/10 rounded-full flex items-center justify-center">
+              <svg className="w-4 h-4 text-[#bf9b30]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span className="text-xs text-gray-500">GIA Certified</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-[#bf9b30]/10 rounded-full flex items-center justify-center">
+              <svg className="w-4 h-4 text-[#bf9b30]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
+              </svg>
+            </div>
+            <span className="text-xs text-gray-500">Direct Source</span>
+          </div>
+        </div>
       </div>
 
-      {/* RIGHT - Hero Image - Fully Visible, Uncommon Presentation */}
-      <div className="lg:col-span-7 relative order-1 lg:order-2">
-        {/* Unconventional image container */}
+      {/* RIGHT - Hero Image - KEPT EXACTLY AS ORIGINAL */}
+      <div className="lg:col-span-1 relative order-1 lg:order-2">
+        {/* Unconventional image container - KEPT IDENTICAL */}
         <div className="relative pl-0 lg:pl-12">
           {/* Floating frame - doesn't touch image */}
           <div className="absolute -top-6 -left-6 lg:-left-6 w-48 h-48 border-2 border-[#bf9b30]/20 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] animate-[spin_20s_linear_infinite]"></div>
@@ -233,37 +215,30 @@ const AboutUs = () => {
       </div>
     </div>
 
-    {/* Uncommon bottom navigation */}
+    {/* New Professional Bottom Bar */}
     <div className="absolute bottom-8 left-0 right-0 px-6">
-      <div className="max-w-7xl mx-auto flex justify-between items-end">
-        {/* Left - Zen element */}
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-gray-300 font-mono">(01)</span>
-          <div className="w-16 h-px bg-[#bf9b30]/30"></div>
-          <span className="text-[10px] text-gray-400 tracking-[0.3em]">HERITAGE</span>
+      <div className="max-w-7xl mx-auto flex justify-between items-center pt-6 border-t border-gray-200">
+        <div className="flex items-center gap-6">
+          <span className="text-xs text-gray-400">© 2024 Ceylon Gemstones</span>
+          <span className="text-xs text-gray-300">|</span>
+          <span className="text-xs text-gray-400">Heritage Collection</span>
         </div>
         
-        {/* Center - Minimal pagination */}
-        <div className="flex gap-6">
-          <span className="text-xs text-gray-300 cursor-pointer hover:text-[#bf9b30] transition-colors">●</span>
-          <span className="text-xs text-gray-300 cursor-pointer hover:text-[#bf9b30] transition-colors">○</span>
-          <span className="text-xs text-gray-300 cursor-pointer hover:text-[#bf9b30] transition-colors">○</span>
-        </div>
-        
-        {/* Right - Year */}
-        <div className="text-right">
-          <span className="text-2xl font-serif text-[#bf9b30]/30">'99</span>
+        <div className="flex items-center gap-8">
+          <a href="#" className="text-xs text-gray-400 hover:text-[#bf9b30] transition-colors">Instagram</a>
+          <a href="#" className="text-xs text-gray-400 hover:text-[#bf9b30] transition-colors">Facebook</a>
+          <a href="#" className="text-xs text-gray-400 hover:text-[#bf9b30] transition-colors">YouTube</a>
         </div>
       </div>
     </div>
   </div>
 
-  {/* Raw edge corner elements */}
-  <div className="absolute top-0 left-0 w-20 h-20">
-    <div className="absolute top-0 left-0 w-10 h-10 border-t border-l border-[#bf9b30]/30"></div>
+  {/* New Elegant Corner Elements */}
+  <div className="absolute top-0 left-0 w-40 h-40 pointer-events-none">
+    <div className="absolute top-10 left-10 w-16 h-16 border-t border-l border-[#bf9b30]/20"></div>
   </div>
-  <div className="absolute bottom-0 right-0 w-20 h-20">
-    <div className="absolute bottom-0 right-0 w-10 h-10 border-b border-r border-[#bf9b30]/30"></div>
+  <div className="absolute bottom-0 right-0 w-40 h-40 pointer-events-none">
+    <div className="absolute bottom-10 right-10 w-16 h-16 border-b border-r border-[#bf9b30]/20"></div>
   </div>
 
   <style jsx>{`
