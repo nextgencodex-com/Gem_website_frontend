@@ -1,4 +1,3 @@
- 
 const AboutUs = () => {
   const brandColor = "#C5A33E";
   const brandLight = "rgba(197, 163, 62, 0.08)";
