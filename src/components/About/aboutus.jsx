@@ -16,14 +16,7 @@ const AboutUs = () => {
       <div className="max-w-7xl mx-auto relative">
         {/* Header Section - Centered */}
         <div className="text-center mb-16 relative">
-          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4 border bg-white/60 backdrop-blur-sm"
-            style={{ 
-              color: brandColor,
-              borderColor: brandMedium
-            }}
-          >
-            ✦ Welcome to Elegance ✦
-          </span>
+           
           <h1 className="font-serif text-5xl md:text-6xl text-gray-800 mb-4 relative">
             About Us
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5"
@@ -36,46 +29,44 @@ const AboutUs = () => {
           </p>
         </div>
 
-        {/* Hero Video Section */}
-        <div className="mb-24">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute -inset-1 rounded-3xl blur-md opacity-50"
-              style={{ background: `linear-gradient(135deg, ${brandColor}, ${brandColor}80)` }}
-            />
-            <div className="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
-              <video 
-                className="w-full h-full object-cover"
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-                poster="/images/jewelry-poster.jpg"
-              >
-                <source src="/videos/jewelry-showcase.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className="absolute bottom-4 right-4 z-20 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm flex items-center gap-2 border"
-                style={{ borderColor: brandMedium }}
-              >
-                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: brandColor }} />
-                <span style={{ color: brandColor }}>Craftsmanship in motion</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+{/* Hero Video Section */}
+<div className="mb-24">
+  <div className="relative max-w-4xl mx-auto">
+    <div className="absolute -inset-1 rounded-3xl blur-md opacity-50"
+      style={{ background: `linear-gradient(135deg, ${brandColor}, ${brandColor}80)` }}
+    />
+    <div className="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
+      <video 
+        className="w-full h-full object-cover"
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+        controls // Add this if you want play/pause controls
+        poster="/images/jewelry-poster.jpg" // Optional: image shown before video loads
+      >
+        {/* Add your video source here - supports multiple formats for compatibility */}
+        <source src="/videos/vi.mp4" type="video/mp4" />
+         
+        {/* Fallback text for browsers that don't support video */}
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+ 
         {/* Section 1: Our Story */}
         <section className="grid md:grid-cols-2 gap-12 items-center mb-28">
           <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="/images/our-story.jpg"
+              src="/images/i2.jpg"
               alt="Our jewelry story"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
           <div className="space-y-6">
-            <span className="text-sm uppercase tracking-wider" style={{ color: brandColor }}>Our Journey</span>
+      
             <h2 className="font-serif text-4xl text-gray-800">
               Our Story
             </h2>
@@ -100,7 +91,7 @@ const AboutUs = () => {
         {/* Section 2: What We Offer */}
         <section className="grid md:grid-cols-2 gap-12 items-center mb-28">
           <div className="order-2 md:order-1">
-            <span className="text-sm uppercase tracking-wider block mb-6" style={{ color: brandColor }}>Our Collection</span>
+             
             <h2 className="font-serif text-4xl text-gray-800 mb-8">
               What We Offer
             </h2>
@@ -139,73 +130,102 @@ const AboutUs = () => {
           </div>
           <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl order-1 md:order-2">
             <img
-              src="/images/what-we-offer.jpg"
+              src="/images/i1.jpg"
               alt="What we offer"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
         </section>
+{/* Section 3: Our Promise */}
+<section className="mb-28">
+  <div className="text-center mb-12">
+    <h2 className="font-serif text-4xl text-gray-800">
+      Our Promise
+    </h2>
+  </div>
+  
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {/* Premium Quality Material */}
+    <div className="group">
+      <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
+        <img
+          src="/images/i4.jpg"
+          alt="Premium Quality Material"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+      </div>
+      <h3 className="font-serif text-lg text-gray-800 mb-2 text-center">
+        Premium Quality Material
+      </h3>
+      <p className="text-gray-500 text-sm text-center">
+        Only the finest metals and gems
+      </p>
+    </div>
 
-        {/* Section 3: Our Promise */}
-        <section className="mb-28">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4 border bg-white/60 backdrop-blur-sm"
-              style={{ color: brandColor, borderColor: brandMedium }}
-            >
-              ✦ Our Commitment ✦
-            </span>
-            <h2 className="font-serif text-4xl text-gray-800">
-              Our Promise
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { 
-                title: "Premium Quality Material", 
-                desc: "Only the finest metals and gems"
-              },
-              { 
-                title: "Affordable Luxury", 
-                desc: "Exceptional value for timeless pieces"
-              },
-              { 
-                title: "Fast & Reliable Delivery", 
-                desc: "Secure shipping worldwide"
-              },
-              { 
-                title: "Customer Satisfaction Guarantee", 
-                desc: "100% happiness guaranteed"
-              }
-            ].map((item, index) => (
-              <div key={index} className="group">
-                <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
-                  <img
-                    src={`/images/${item.title.toLowerCase().replace(/\s+/g, '-')}.jpg`}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <h3 className="font-serif text-lg text-gray-800 mb-2 text-center">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 text-sm text-center">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+    {/* Affordable Luxury */}
+    <div className="group">
+      <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
+        <img
+          src="/images/i5.webp"
+          alt="Affordable Luxury"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+      </div>
+      <h3 className="font-serif text-lg text-gray-800 mb-2 text-center">
+        Affordable Luxury
+      </h3>
+      <p className="text-gray-500 text-sm text-center">
+        Exceptional value for timeless pieces
+      </p>
+    </div>
+
+    {/* Fast & Reliable Delivery */}
+    <div className="group">
+      <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
+        <img
+          src="/images/i6.png"
+          alt="Fast & Reliable Delivery"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+      </div>
+      <h3 className="font-serif text-lg text-gray-800 mb-2 text-center">
+        Fast & Reliable Delivery
+      </h3>
+      <p className="text-gray-500 text-sm text-center">
+        Secure shipping worldwide
+      </p>
+    </div>
+
+    {/* Customer Satisfaction Guarantee */}
+    <div className="group">
+      <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
+        <img
+          src="/images/i8.jpg"
+          alt="Customer Satisfaction Guarantee"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+      </div>
+      <h3 className="font-serif text-lg text-gray-800 mb-2 text-center">
+        Customer Satisfaction Guarantee
+      </h3>
+      <p className="text-gray-500 text-sm text-center">
+        100% happiness guaranteed
+      </p>
+    </div>
+  </div>
+</section>
 
         {/* Section 4: Why Choose Us */}
         <section className="grid md:grid-cols-2 gap-12 items-center mb-28">
           <div className="relative h-[550px] rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="/images/why-choose-us.jpg"
+              src="/images/i3.jpg"
               alt="Why choose us"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
           <div>
-            <span className="text-sm uppercase tracking-wider block mb-6" style={{ color: brandColor }}>Why We're Different</span>
+           
             <h2 className="font-serif text-4xl text-gray-800 mb-8">
               Why Choose Us
             </h2>
