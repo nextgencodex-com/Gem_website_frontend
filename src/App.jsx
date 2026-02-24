@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/home";
 import AboutUs from "./components/About/aboutus";
-import Blog from "./components/Blog/Blog";
+import Gifts from "./components/Gifts/gifts";
 import GemCollection from "./components/GemCollection/GemCollection";
 import JewelleryCollection from "./components/JewelleryCollection/JewelleryCollection";
 import ContactUs from "./components/ContactUs/ContactUs";
@@ -21,7 +21,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout><Home /></Layout>} />
       <Route path="/about" element={<Layout><AboutUs /></Layout>} />
-      <Route path="/blog" element={<Layout><Blog /></Layout>} />
+      <Route path="/gifts" element={<Layout><Gifts/></Layout>} />
       <Route path="/gem-collection" element={<Layout><GemCollection /></Layout>} />
       <Route path="/jewellery-collection" element={<Layout><JewelleryCollection /></Layout>} />
       <Route path="/contact" element={<Layout><ContactUs /></Layout>} />

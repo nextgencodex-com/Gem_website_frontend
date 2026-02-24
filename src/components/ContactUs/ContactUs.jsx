@@ -50,23 +50,34 @@ _Sent via website contact form_
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 font-[Poppins]">
-      {/* Hero Section */}
-      <div className="relative h-[400px] md:h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
+    <div className="min-h-screen bg-black">
+      {/* Subtle background pattern - matching About Us page */}
+      <div className="fixed inset-0 opacity-10 pointer-events-none" 
+        style={{
+          backgroundImage: `radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+
+     {/* Hero Section */}
+<div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-center overflow-hidden bg-black">
   <img
-    src="/images/cu.jpg"
+    src="/images/contact.avif"
     alt="Luxury Gemstones Contact Us"
-    className="absolute inset-0 w-full h-full object-cover z-0"
+    className="absolute inset-0 w-full h-full object-contain z-0"
   />
-  <div className="absolute inset-0 bg-black opacity-50 z-10" />
-  <div className="relative z-20 space-y-4 px-6 lg:px-12 max-w-3xl mx-auto pt-16">
-    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg mb-4">Contact Us</h1>
-    <p className="text-base md:text-lg max-w-3xl mx-auto">
-      Get In Touch With Our Gemstone Specialists For Expert Consultation And Personalized Service
+  <div className="absolute inset-0 bg-black/50 z-10" />
+  <div className="relative z-20 space-y-6 px-6 lg:px-12 max-w-4xl mx-auto">
+    <h1 className="font-serif text-5xl md:text-6xl text-white font-bold mb-4 relative">
+      Contact Us
+      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
+    </h1>
+    <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+      Get in touch with our gemstone specialists for expert consultation 
+      and personalized service. We're here to assist you with any inquiries.
     </p>
   </div>
 </div>
-
 
       {/* WhatsApp Button */}
       <div className="fixed left-6 bottom-6 z-20">
@@ -82,18 +93,18 @@ _Sent via website contact form_
       </div>
 
       {/* Contact Form Section */}
-      <section className="relative z-20 max-w-6xl mx-auto -mt-16 bg-white rounded-xl shadow-2xl p-8 md:p-12 lg:p-16 border border-gray-200">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-          <span className="text-[#bf9b30]">Get in Touch</span>
+      <section className="relative z-20 max-w-6xl mx-auto -mt-16 bg-[#1a1a1a] rounded-xl shadow-2xl p-8 md:p-12 lg:p-16 border border-gray-800">
+        <h2 className="font-serif text-4xl text-white font-bold mb-8 text-center">
+          Get in Touch
         </h2>
 
         {/* Company Logo */}
         <div className="flex justify-center mb-10">
           <div className="relative">
-            <div className="absolute -inset-4 bg-[#bf9b30] rounded-full opacity-20 blur"></div>
-            <div className="relative bg-white p-4 rounded-full shadow-lg ring-1 ring-[#bf9b30]/10">
+            <div className="absolute -inset-4 bg-white/10 rounded-full blur"></div>
+            <div className="relative bg-[#1a1a1a] p-4 rounded-full shadow-lg ring-1 ring-gray-700">
               <img
-                src="/images/logo2.jpg" // Update this path to your actual logo
+                src="/images/logo2.jpg"
                 alt="Luxury Gemstones"
                 className="w-32 md:w-40 h-32 md:h-40 object-contain"
               />
@@ -105,13 +116,13 @@ _Sent via website contact form_
           {/* Contact Form */}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="fullName" className="block text-sm font-medium text-gray-400 mb-2">
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="fullName"
-                className="w-full p-3 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#bf9b30]"
+                className="w-full p-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-gray-600"
                 placeholder="Enter your full name"
                 required
                 value={form.fullName}
@@ -119,13 +130,13 @@ _Sent via website contact form_
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
                 Email Address <span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
                 id="email"
-                className="w-full p-3 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#bf9b30]"
+                className="w-full p-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-gray-600"
                 placeholder="Enter your email address"
                 required
                 value={form.email}
@@ -133,26 +144,26 @@ _Sent via website contact form_
               />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">
                 Phone Number
               </label>
               <input
                 type="tel"
                 id="phone"
-                className="w-full p-3 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#bf9b30]"
+                className="w-full p-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-gray-600"
                 placeholder="Enter your phone number"
                 value={form.phone}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
                 Message <span className="text-red-500">*</span>
               </label>
               <textarea
                 id="message"
                 rows="5"
-                className="w-full p-3 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#bf9b30] resize-y"
+                className="w-full p-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-white/30 placeholder-gray-600 resize-y"
                 placeholder="Type your message here..."
                 required
                 value={form.message}
@@ -161,62 +172,66 @@ _Sent via website contact form_
             </div>
 
             <div className="flex flex-col items-center justify-center sm:flex-row gap-1 pt-0">
-            <button
-              type="submit"
-              className="w-40 bg-[#bf9b30]  text-white text-sm py-1 px-1 rounded-full transition-colors duration-300"
-              disabled={sending}
-            >
-              {sending ? "Sending..." : "SEND MESSAGE"}
-            </button>
+              <button
+                type="submit"
+                className="w-40 bg-white text-black font-semibold text-sm py-2 px-1 rounded-full transition-colors duration-300 hover:bg-gray-200"
+                disabled={sending}
+              >
+                {sending ? "SENDING..." : "SEND MESSAGE"}
+              </button>
             </div>
-            {sent && <div className="text-black-600 mt-2 text-sm">Message sent successfully!</div>}
+            {sent && (
+              <div className="text-green-400 mt-2 text-sm text-center">
+                Message sent successfully!
+              </div>
+            )}
           </form>
 
           {/* Contact Information */}
-          <div className="space-y-8 p-6 bg-[#f8f4ed] rounded-lg">
+          <div className="space-y-8 p-6 bg-[#1a1a1a] rounded-lg border border-gray-800">
             <div className="flex items-start space-x-4">
-              <div className="p-3 rounded-full bg-white shadow-md">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#bf9b30]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="p-3 rounded-full bg-black border border-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Phone</h3>
-                <p className="text-gray-600">+94 11 234 5678</p>
-                <p className="text-gray-600 mt-1">Monday - Friday, 9am - 5pm</p>
+                <h3 className="font-serif text-lg text-white font-bold mb-1">Phone</h3>
+                <p className="text-gray-400">+94 11 234 5678</p>
+                <p className="text-gray-500 text-sm mt-1">Monday - Friday, 9am - 5pm</p>
               </div>
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="p-3 rounded-full bg-white shadow-md">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#bf9b30]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="p-3 rounded-full bg-black border border-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Email</h3>
-                <p className="text-gray-600">info@gemstones.com</p>
-                <p className="text-gray-600 mt-1">Response within 24 hours</p>
+                <h3 className="font-serif text-lg text-white font-bold mb-1">Email</h3>
+                <p className="text-gray-400">info@gemstones.com</p>
+                <p className="text-gray-500 text-sm mt-1">Response within 24 hours</p>
               </div>
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="p-3 rounded-full bg-white shadow-md">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#bf9b30]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="p-3 rounded-full bg-black border border-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Address</h3>
-                <p className="text-gray-600">123 Gem Street</p>
-                <p className="text-gray-600">Ratnapura, Sri Lanka</p>
+                <h3 className="font-serif text-lg text-white font-bold mb-1">Address</h3>
+                <p className="text-gray-400">123 Gem Street</p>
+                <p className="text-gray-400">Ratnapura, Sri Lanka</p>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-gray-300">
-              <h3 className="font-semibold text-lg mb-2">Business Hours</h3>
-              <ul className="space-y-1 text-gray-600">
+            <div className="pt-4 border-t border-gray-800">
+              <h3 className="font-serif text-lg text-white font-bold mb-2">Business Hours</h3>
+              <ul className="space-y-1 text-gray-400">
                 <li className="flex justify-between">
                   <span>Monday - Friday</span>
                   <span>9:00 AM - 6:00 PM</span>
@@ -227,7 +242,7 @@ _Sent via website contact form_
                 </li>
                 <li className="flex justify-between">
                   <span>Sunday</span>
-                  <span>Closed</span>
+                  <span className="text-gray-500">Closed</span>
                 </li>
               </ul>
             </div>

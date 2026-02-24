@@ -16,7 +16,7 @@ const Header = () => {
   const navigationLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Blog", href: "/blog" },
+    { name: "Gifts", href: "/gifts" },
     { name: "Gem Collection", href: "/gem-collection" },
     { name: "Jewellery Collection", href: "/jewellery-collection" },
     { name: "Contact Us", href: "/contact" },
