@@ -17,8 +17,8 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Gifts", href: "/gifts" },
-    { name: "Gem Collection", href: "/gem-collection" },
-    { name: "Jewellery Collection", href: "/jewellery-collection" },
+    // Header should open the gifts list so users can access every item
+    { name: "Gifts Details", href: "/gifts/details" },
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -119,7 +119,9 @@ const Header = () => {
         </div>
       </div>
 
-      <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
+      {cartOpen && (
+        <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
+      )}
     </header>
   );
 };

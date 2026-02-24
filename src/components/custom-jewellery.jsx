@@ -445,7 +445,7 @@ export default function CustomJewelleryPage(props) {
     if (withUpload && uploadedImage) {
       message += `Custom Design Image: [see uploaded image]%0A`;
     }
-    window.open(`https://wa.me/94759627589?text=${message}`, "_blank");
+    window.location.href = `https://wa.me/94759627589?text=${message}`;
   };
 
   // Image upload for custom design
