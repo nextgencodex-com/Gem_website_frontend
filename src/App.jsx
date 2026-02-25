@@ -4,10 +4,9 @@ import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/home";
 import AboutUs from "./components/About/aboutus";
 import Gifts from "./components/Gifts/gifts";
- 
 import GiftsDetails from "./components/GiftsDetails/GiftsDetails";
+import ShoppingCart from "./components/ShoppingCart";
 import ContactUs from "./components/ContactUs/ContactUs";
- 
 import Customize from "./components/customize";
 import AdminPanel from "./components/Admin/page";
 import CustomJewelleryPage from "./components/custom-jewellery";
@@ -18,21 +17,23 @@ import LoginPage from "./components/Login/LoginPage";
 export default function App() {
   return (
     <Routes>
+      {/* Public routes with Layout (Header & Footer) */}
       <Route path="/" element={<Layout><Home /></Layout>} />
       <Route path="/about" element={<Layout><AboutUs /></Layout>} />
-      <Route path="/gifts" element={<Layout><Gifts/></Layout>} />
-      <Route path="/gifts/:id" element={<Layout><GiftsDetails/></Layout>} />
-      <Route path="/gifts/details" element={<Layout><GiftsDetails/></Layout>} />
-      
+      <Route path="/gifts" element={<Layout><Gifts /></Layout>} />
+      <Route path="/GiftDetails" element={<Layout><GiftsDetails /></Layout>} />
       <Route path="/contact" element={<Layout><ContactUs /></Layout>} />
       <Route path="/customize" element={<Layout><Customize /></Layout>} />
-      <Route path="/custom-jewellery" element={<CustomJewelleryPage />} />
+      <Route path="/custom-jewellery" element={<Layout><CustomJewelleryPage /></Layout>} />
+      <Route path="/shopping-cart" element={<Layout><ShoppingCart /></Layout>} />
       
+      {/* Admin routes - no Layout (or you can keep them without Layout) */}
       <Route path="/admin" element={<AdminPanel />} />
       <Route path="/admin/jtype" element={<AddJewelryType />} />
       <Route path="/admin/jspecs" element={<AddJewelrySpecs />} />
       <Route path="/admin/login" element={<LoginPage />} />
-      {/* Add other admin routes as needed */}
+      
+      {/* Catch all - redirect to home */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
