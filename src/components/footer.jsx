@@ -209,8 +209,7 @@ const Footer = () => {
               © Design and develop by{" "}
               <a
                 href="https://wa.me/94759627589"
-                target="_blank"
-                rel="noopener noreferrer"
+                target="_self"
                 className="text-blue-600 hover:underline"
               >
                 NextGen CodeX

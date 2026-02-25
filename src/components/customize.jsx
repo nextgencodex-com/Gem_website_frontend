@@ -2,7 +2,7 @@ import { X, ChevronDown, Upload } from "lucide-react";
 import { useState, useRef, useEffect} from "react";
 import { useCart } from "./cart-context";
 import { useNavigate } from "react-router-dom";
-import { getImageUrl } from "./GemCollection/gems-data";
+import { getImageUrl } from "./GiftsDetails/GiftsDetails";
 
 // Sample popular designs for each jewelry type
 const popularDesigns = {
@@ -270,7 +270,7 @@ Details: ${orderData.details}
     const phone = "94759627589";
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
-    window.open(url, "_blank");
+    window.location.href = url;
   };
 
   // Email modal state

@@ -55,6 +55,10 @@ export function CartProvider({ children }) {
     );
   };
 
+  const updateItem = (id, type, patch) => {
+    setCartItems((prev) => prev.map((i) => (i.id === id && i.type === type ? { ...i, ...patch } : i)));
+  };
+
   const clearCart = () => setCartItems([]);
 
   // Calculate total in LKR (base currency)
@@ -92,7 +96,8 @@ export function CartProvider({ children }) {
         selectedCurrency,
         setSelectedCurrency,
         convertCurrency,
-        getAllCurrencyTotals,
+            getAllCurrencyTotals,
+            updateItem,
         exchangeRates
       }}
     >

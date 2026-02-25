@@ -303,7 +303,7 @@ export default function AdminPanel() {
 };
 
   return (
-    <div className="min-h-screen font-[Poppins]">
+    <div className="min-h-screen font-serif">
       {/* Admin Header */}
       <div className="bg-gradient-to-r from-[#bf9b30] to-[#a88928] text-white shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
