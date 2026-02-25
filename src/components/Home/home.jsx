@@ -17,7 +17,7 @@ function HeroSection({ navigate }) {
   };
 
   return (
-    <div className="relative h-[400px] md:h-[700px] flex items-center justify-center text-center text-white overflow-hidden font-serif rounded-[3rem] md:rounded-[4rem] mx-4 md:mx-8 mt-4 md:mt-6">
+    <div className="relative h-[400px] md:h-[700px] flex items-center justify-center text-center text-white overflow-hidden font-serif rounded-[3rem] md:rounded-[4rem] mx-4 md:mx-8 mt-0 md:mt-0">
       <video
         ref={videoRef}
         src="/videos/hero 11.mp4"

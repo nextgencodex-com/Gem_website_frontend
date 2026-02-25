@@ -14,8 +14,16 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-black" style={{ backgroundColor: "white" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+    <footer className="bg-black text-white border-t border-white/10 relative">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none" 
+        style={{
+          backgroundImage: `radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo */}
           <div className="w-18 h-20">
@@ -26,91 +34,95 @@ const Footer = () => {
             />
           </div>
 
-
           {/* Get in Touch */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-6">Get in Touch</h3>
+            <h3 className="font-serif text-xl text-white font-bold mb-6">Get in Touch</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <svg
-                  className="w-5 h-5 text-black mt-1 flex-shrink-0"
+                  className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                 </svg>
-                <p className="text-black">
-                  123 Gem Street Ratnapura, Sri Lanka
+                <p className="text-gray-400">
+                  123 Gem Street, Ratnapura, Sri Lanka
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <svg
-                  className="w-5 h-5 text-black flex-shrink-0"
+                  className="w-5 h-5 text-gray-400 flex-shrink-0"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
-                <p className="text-black">contact@luxirisgems.com</p>
+                <p className="text-gray-400">contact@luxirisgems.com</p>
               </div>
               <div className="flex items-center space-x-3">
                 <svg
-                  className="w-5 h-5 text-black flex-shrink-0"
+                  className="w-5 h-5 text-gray-400 flex-shrink-0"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                 </svg>
-                <p className="text-black">+94 11 234 5678</p>
+                <p className="text-gray-400">+94 11 234 5678</p>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-6">Quick Links</h3>
+            <h3 className="font-serif text-xl text-white font-bold mb-6">Quick Links</h3>
             <nav className="space-y-3">
               <Link
                 to="/about"
-                className="block text-black hover:text-blue-400 transition-colors duration-300"
+                className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
                 About Us
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 to="/gem-collection"
-                className="block text-black hover:text-blue-400 transition-colors duration-300"
+                className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
                 Gem Collection
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 to="/jewellery-collection"
-                className="block text-black hover:text-blue-400 transition-colors duration-300"
+                className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
                 Jewellery Collection
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 to="/contact"
-                className="block text-black hover:text-blue-400 transition-colors duration-300"
+                className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
                 Contact
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 to="/admin/login"
-                className="block text-black hover:text-blue-400 transition-colors duration-300"
+                className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
                 Admin Panel
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
             </nav>
           </div>
 
           {/* Newsletter */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-6">Join a Newsletter</h3>
+            <h3 className="font-serif text-xl text-white font-bold mb-6">Join Our Newsletter</h3>
             <form onSubmit={handleSubscribe} className="space-y-4">
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-black mb-2"
+                  className="block text-sm font-medium text-gray-400 mb-2"
                 >
                   Your Email
                 </label>
@@ -119,14 +131,14 @@ const Footer = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter Your Email"
-                  className="w-full px-4 py-3 rounded-lg bg-white border-black text-gray-900 placeholder-gray-500 focus:outline-black focus:ring-2 focus:ring-blue-400"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-white/30 transition-colors"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-40 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
+                className="w-40 bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-full transition-all duration-300 border border-white/20"
               >
                 Subscribe
               </button>
@@ -135,10 +147,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-blue-600 mt-12 pt-8">
+        <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
-            <p className="text-black text-sm">
+            <p className="text-gray-500 text-sm">
               © 2025 Luxiris Gems. All rights reserved.
             </p>
 
@@ -146,10 +158,10 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-black hover:text-blue-400 transition-colors duration-300"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <svg
-                  className="w-4 h-8"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -158,10 +170,10 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-black hover:text-blue-400 transition-colors duration-300"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <svg
-                  className="w-4 h-8"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -170,10 +182,10 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-black hover:text-blue-400 transition-colors duration-300"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <svg
-                  className="w-4 h-8"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -182,10 +194,10 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-black hover:text-blue-400 transition-colors duration-300"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <svg
-                  className="w-4 h-8"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -194,10 +206,10 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-black hover:text-blue-400 transition-colors duration-300"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <svg
-                  className="w-4 h-8"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -205,18 +217,21 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-            <p className="text-black text-sm">
-              © Design and develop by{" "}
-              <a
-                href="https://wa.me/94759627589"
-                target="_self"
-                className="text-blue-600 hover:underline"
-              >
-                NextGen CodeX
-              </a>{" "}
-              PVT LTD.
-            </p>
           </div>
+          
+          {/* Developer Credit */}
+          <p className="text-gray-500 text-sm text-center md:text-right mt-4">
+            Design and develop by{" "}
+            <a
+              href="https://wa.me/94759627589"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white underline underline-offset-4 transition-colors"
+            >
+              NextGen CodeX
+            </a>{" "}
+            PVT LTD.
+          </p>
         </div>
       </div>
     </footer>
