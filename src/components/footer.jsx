@@ -28,7 +28,7 @@ const Footer = () => {
           {/* Logo */}
           <div className="w-18 h-20">
             <img
-              src="/images/logo2.jpg"
+              src="/images/Log 1.webp"
               alt="Luxiris Gems Logo"
               className="w-full h-full object-contain"
             />
@@ -85,17 +85,17 @@ const Footer = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
-                to="/gem-collection"
+                to="/gifts"
                 className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
-                Gem Collection
+                Gifts
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
                 to="/jewellery-collection"
                 className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
-                Jewellery Collection
+                Popular
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link

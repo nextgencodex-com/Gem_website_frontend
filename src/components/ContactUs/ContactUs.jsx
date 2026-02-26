@@ -104,9 +104,9 @@ _Sent via website contact form_
             <div className="absolute -inset-4 bg-white/10 rounded-full blur"></div>
             <div className="relative bg-[#1a1a1a] p-4 rounded-full shadow-lg ring-1 ring-gray-700">
               <img
-                src="/images/logo2.jpg"
+                src="/images/Log 1.webp"
                 alt="Luxury Gemstones"
-                className="w-32 md:w-40 h-32 md:h-40 object-contain"
+                className="w-32 md:w-40 h-32 md:h-40 object-cover rounded-full"
               />
             </div>
           </div>

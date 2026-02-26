@@ -17,56 +17,16 @@ function HeroSection({ navigate }) {
   };
 
   return (
-    <div className="relative h-[400px] md:h-[700px] flex items-center justify-center text-center text-white overflow-hidden font-serif rounded-[3rem] md:rounded-[4rem] mx-4 md:mx-8 mt-0 md:mt-0">
-      <video
-        ref={videoRef}
-        src="/videos/hero 11.mp4"
-        autoPlay
-        muted={muted}
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      ></video>
-
-      <div className="absolute inset-0 bg-black opacity-30 z-10" />
-
-      <div className="relative z-20 space-y-8 px-6 lg:px-16 max-w-4xl">
-        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold drop-shadow-xl text-white">
-          TIMELESS NATURAL BEAUTY
-          <br />
-          FROM THE HEART
-          <br />
-          OF THE WORLD
-        </h1>
-
-        {/* Hide buttons on mobile */}
-        <div className="hidden md:flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            className="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-medium transition-colors duration-300 border border-white/30 backdrop-blur-md text-sm md:text-base md:px-8"
-            onClick={() => navigate("/gem-collection")}
-          >
-            EXPLORE OUR GIFTS COLLECTION
-          </button>
-          <button
-            className="bg-transparent border-2 border-white/30 text-white hover:bg-white hover:text-black px-6 py-3 rounded-full font-medium transition-all duration-300 backdrop-blur-md text-sm md:text-base md:px-8"
-            onClick={() => navigate("/jewellery-collection")}
-          >
-            EXPLORE OUR JEWELLERY COLLECTION
-          </button>
-        </div>
+    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-center overflow-hidden bg-black">
+      <img
+        src="/images/Hero 23.jpeg"
+        alt="Luxury Gemstones"
+        className="absolute inset-0 w-full h-full object-contain z-0"
+      />
+      <div className="absolute inset-0 bg-black/50 z-10" />
+      <div className="relative z-20 space-y-6 px-6 lg:px-12 max-w-4xl mx-auto">
+        {/* Hero text if needed */}
       </div>
-
-      {/* Mute/Unmute Toggle Icon */}
-      <button
-        onClick={toggleMute}
-        className="absolute top-4 right-4 z-30 bg-white/10 hover:bg-white/20 backdrop-blur-md p-2 rounded-full transition"
-      >
-        {muted ? (
-          <VolumeX className="w-6 h-6 text-white" />
-        ) : (
-          <Volume2 className="w-6 h-6 text-white" />
-        )}
-      </button>
     </div>
   );
 }
@@ -113,7 +73,7 @@ const Home = () => {
     {
       id: 2,
       title: "Rings",
-      image: "/images/bg.webpg",
+      image: "/images/bg.webp",
       link: "/rings"
     },
     {
@@ -136,24 +96,41 @@ const Home = () => {
     }
   ];
 
-  // Gifting Services items
+  // Gifting Services items - UPDATED WITH BETTER ICONS
   const giftingServices = [
     {
       id: 1,
       title: "Book an Appointment",
-      image: "/images/book.webp",
+      icon: (className) => (
+        <svg className={className} fill="white" viewBox="0 0 24 24">
+          <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="white" strokeWidth="1.5" fill="none"/>
+          <circle cx="12" cy="15" r="1" fill="white"/>
+          <circle cx="16" cy="15" r="1" fill="white"/>
+          <circle cx="8" cy="15" r="1" fill="white"/>
+        </svg>
+      ),
       link: "/book-appointment",
     },
     {
       id: 2,
       title: "Engrave Your Gift",
-      image: "/images/gift.webp",
+      icon: (className) => (
+        <svg className={className} fill="white" viewBox="0 0 24 24">
+          <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke="white" strokeWidth="1.5" fill="none"/>
+          <path d="M3 21h18" stroke="white" strokeWidth="1.5" fill="none"/>
+        </svg>
+      ),
       link: "/engraving-services",
     },
     {
       id: 3,
       title: "Contact Us",
-      image: "/images/contact.webp",
+      icon: (className) => (
+        <svg className={className} fill="white" viewBox="0 0 24 24">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="white" strokeWidth="1.5" fill="none"/>
+          <circle cx="12" cy="13" r="1" fill="white"/>
+        </svg>
+      ),
       link: "/contact",
     }
   ];
@@ -173,13 +150,6 @@ const Home = () => {
     "/images/bg.webp",
     "/images/bg.webp",
     "/images/bg.webp"
-  ];
-
-  // Placeholder images for gifting services section
-  const serviceImages = [
-    "/images/ba.png",
-    "/images/eg.jpg",
-    "/images/cu.png"
   ];
 
   return (
@@ -279,7 +249,7 @@ const Home = () => {
           {/* Row 1: 2 Images Side by Side */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-10">
             {/* First Image */}
-            <div 
+            {/*<div 
               className="group cursor-pointer"
               onClick={() => navigate("/collection-1")}
             >
@@ -290,10 +260,10 @@ const Home = () => {
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                 />
               </div>
-            </div>
+            </div>*/}
 
             {/* Second Image */}
-            <div 
+            {/*<div 
               className="group cursor-pointer"
               onClick={() => navigate("/collection-2")}
             >
@@ -304,7 +274,7 @@ const Home = () => {
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                 />
               </div>
-            </div>
+            </div>*/}
           </div>
 
           {/* Row 2: Most Popular Item in Center */}
@@ -353,7 +323,7 @@ const Home = () => {
           {/* Row 3: 2 Images Side by Side */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             {/* Third Image */}
-            <div 
+            {/*<div 
               className="group cursor-pointer"
               onClick={() => navigate("/collection-3")}
             >
@@ -364,10 +334,10 @@ const Home = () => {
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                 />
               </div>
-            </div>
+            </div>*/}
 
             {/* Fourth Image */}
-            <div 
+            {/*<div 
               className="group cursor-pointer"
               onClick={() => navigate("/collection-4")}
             >
@@ -378,7 +348,7 @@ const Home = () => {
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                 />
               </div>
-            </div>
+            </div>*/}
           </div>
         </div>
       </section>
@@ -424,7 +394,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Section 4: Discover Our Gifting Services */}
+      {/* Section 4: Discover Our Gifting Services - REDUCED ICON SIZE */}
       <section className="py-12 md:py-20 bg-black/95 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
@@ -438,51 +408,24 @@ const Home = () => {
             </p>
           </div>
 
-          {/* 3 Images in a Single Line */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
-            {giftingServices.map((item, index) => (
+          {/* 3 Icons in a Single Line - REDUCED SIZE */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+            {giftingServices.map((item) => (
               <div 
                 key={item.id}
-                className="group cursor-pointer"
-                onClick={() => navigate(item.link)}
+                className="group text-center"
               >
-                {/* Image Container */}
-                <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-6">
-                  <img
-                    src={serviceImages[index] || item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                  />
+                {/* Icon Container - REDUCED PADDING AND ICON SIZE */}
+                <div className="flex justify-center mb-4">
+                  <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
+                    {item.icon("w-12 h-12 md:w-14 md:h-14 text-white")}
+                  </div>
                 </div>
                 
-                {/* Title Below Image */}
-                <h3 className="font-serif text-lg md:text-xl text-white font-bold mb-2 group-hover:text-white/80 transition-colors duration-300">
+                {/* Title Below Icon - REDUCED TEXT SIZE */}
+                <h3 className="font-serif text-base md:text-lg text-white font-bold group-hover:text-white transition-colors duration-300">
                   {item.title}
                 </h3>
-                
-                {/* Learn More Link with Arrow */}
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(item.link);
-                  }}
-                  className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center gap-1"
-                >
-                  <span>Learn More</span>
-                  <svg 
-                    className="w-4 h-4" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth="2" 
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </button>
               </div>
             ))}
           </div>

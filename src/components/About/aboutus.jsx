@@ -9,46 +9,33 @@ const AboutUs = () => {
         }}
       />
       
-      <div className="max-w-7xl mx-auto relative">
-        {/* Header Section - Centered */}
-        <div className="text-center mb-16 relative">
+      {/* Hero Section - Exact same as Contact Us */}
+      <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-center overflow-hidden bg-black -mt-20 mb-16">
+        <img
+          src="/images/Ab.webp"
+          alt="Luxury Gemstones About Us"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="relative z-20 space-y-6 px-6 lg:px-12 max-w-4xl mx-auto">
           <h1 className="font-serif text-5xl md:text-6xl text-white font-bold mb-4 relative">
             About Us
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Crafting timeless elegance with exceptional artistry, bringing you 
             the finest jewelry that celebrates life's precious moments.
           </p>
         </div>
+      </div>
 
-        {/* Hero Video Section */}
-        <div className="mb-24">
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute -inset-1 rounded-3xl blur-md opacity-30 bg-white/20" />
-            <div className="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
-              <video 
-                className="w-full h-full object-cover"
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-                controls
-                poster="/images/jewelry-poster.jpg"
-              >
-                <source src="/videos/vi.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </div>
- 
+      {/* Rest of your About Us content remains exactly the same */}
+      <div className="max-w-7xl mx-auto relative">
         {/* Section 1: Our Story */}
         <section className="grid md:grid-cols-2 gap-12 items-center mb-28">
           <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="/images/i2.jpg"
+              src="/images/Log 1.webp"
               alt="Our jewelry story"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
@@ -57,7 +44,7 @@ const AboutUs = () => {
             <h2 className="font-serif text-4xl text-white font-bold">
               Our Story
             </h2>
-            <p className="text-gray-400 leading-relaxed text-lg">
+            <p className="font-serif text-gray-400 leading-relaxed text-lg">
               Founded in the heart of the city, our journey began with a simple passion 
               for creating exquisite jewelry that tells a story. What started as a small 
               family workshop has blossomed into a destination for those who appreciate 
@@ -115,14 +102,14 @@ const AboutUs = () => {
           </div>
           <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl order-1 md:order-2">
             <img
-              src="/images/i1.jpg"
+              src="/images/i2.jpg"
               alt="What we offer"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />
           </div>
         </section>
 
-        {/* Section 3: Our Promise */}
+        {/* Section 3: Our Promise - FIXED ICONS WITH BETTER VISIBILITY */}
         <section className="mb-28">
           <div className="text-center mb-12">
             <h2 className="font-serif text-4xl text-white font-bold">
@@ -132,69 +119,73 @@ const AboutUs = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Premium Quality Material */}
-            <div className="group">
-              <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
-                <img
-                  src="/images/i4.jpg"
-                  alt="Premium Quality Material"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+            <div className="group text-center">
+              <div className="flex justify-center mb-4">
+                <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
+                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" fill="none"/>
+                  </svg>
+                </div>
               </div>
-              <h3 className="font-serif text-lg text-white font-bold mb-2 text-center">
+              <h3 className="font-serif text-lg text-white font-bold mb-2">
                 Premium Quality Material
               </h3>
-              <p className="text-gray-400 text-sm text-center">
+              <p className="text-gray-400 text-sm">
                 Only the finest metals and gems
               </p>
             </div>
 
             {/* Affordable Luxury */}
-            <div className="group">
-              <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
-                <img
-                  src="/images/i5.webp"
-                  alt="Affordable Luxury"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+            <div className="group text-center">
+              <div className="flex justify-center mb-4">
+                <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
+                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path d="M12 2v20M17 5H9.5C7.8 5 6 6.5 6 9c0 2.5 2 4 4 4h4c2 0 4 1.5 4 4 0 2.5-1.8 4-3.5 4H6" stroke="white" fill="none"/>
+                  </svg>
+                </div>
               </div>
-              <h3 className="font-serif text-lg text-white font-bold mb-2 text-center">
+              <h3 className="font-serif text-lg text-white font-bold mb-2">
                 Affordable Luxury
               </h3>
-              <p className="text-gray-400 text-sm text-center">
+              <p className="text-gray-400 text-sm">
                 Exceptional value for timeless pieces
               </p>
             </div>
 
             {/* Fast & Reliable Delivery */}
-            <div className="group">
-              <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
-                <img
-                  src="/images/i6.png"
-                  alt="Fast & Reliable Delivery"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+            <div className="group text-center">
+              <div className="flex justify-center mb-4">
+                <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
+                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <circle cx="7" cy="17" r="2" stroke="white" fill="none"/>
+                    <circle cx="17" cy="17" r="2" stroke="white" fill="none"/>
+                    <path d="M3 11h4l3-5h8l2 5h3" stroke="white" fill="none"/>
+                    <path d="M3 11v6h2M19 11v6h-2" stroke="white" fill="none"/>
+                  </svg>
+                </div>
               </div>
-              <h3 className="font-serif text-lg text-white font-bold mb-2 text-center">
+              <h3 className="font-serif text-lg text-white font-bold mb-2">
                 Fast & Reliable Delivery
               </h3>
-              <p className="text-gray-400 text-sm text-center">
+              <p className="text-gray-400 text-sm">
                 Secure shipping worldwide
               </p>
             </div>
 
             {/* Customer Satisfaction Guarantee */}
-            <div className="group">
-              <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md">
-                <img
-                  src="/images/i8.jpg"
-                  alt="Customer Satisfaction Guarantee"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+            <div className="group text-center">
+              <div className="flex justify-center mb-4">
+                <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
+                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" fill="none"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" fill="none"/>
+                  </svg>
+                </div>
               </div>
-              <h3 className="font-serif text-lg text-white font-bold mb-2 text-center">
+              <h3 className="font-serif text-lg text-white font-bold mb-2">
                 Customer Satisfaction Guarantee
               </h3>
-              <p className="text-gray-400 text-sm text-center">
+              <p className="text-gray-400 text-sm">
                 100% happiness guaranteed
               </p>
             </div>

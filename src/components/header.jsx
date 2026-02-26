@@ -44,7 +44,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="w-18 h-16 flex items-center">
             <img
-              src="/images/logo2.jpg"
+              src="/images/Log 1.webp"
               alt="Luxiris Gems Logo"
               className="w-full h-full object-contain"
             />
