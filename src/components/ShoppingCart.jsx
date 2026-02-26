@@ -298,7 +298,7 @@ const ShoppingCart = () => {
                   )}
                 </div>
 
-                {/* Need help section - Simplified */}
+                {/* Need help section - Simplified  
                 <div className="mt-8 bg-white/5 rounded-xl p-6 border border-white/10">
                   <h4 className="font-serif text-white font-medium mb-4">Need Assistance?</h4>
                   <div className="space-y-3">
@@ -331,7 +331,7 @@ const ShoppingCart = () => {
                       <span className="block w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
                     </button>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Continue shopping link */}
                 <button
