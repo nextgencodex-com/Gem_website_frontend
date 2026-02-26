@@ -20,7 +20,7 @@ function HeroSection({ navigate }) {
     <div className="relative h-[400px] md:h-[700px] flex items-center justify-center text-center text-white overflow-hidden font-serif rounded-[3rem] md:rounded-[4rem] mx-4 md:mx-8 mt-0 md:mt-0">
       <video
         ref={videoRef}
-        src="/videos/hero 11.mp4"
+        src="/videos/herov.mp4"
         autoPlay
         muted={muted}
         loop
@@ -309,11 +309,11 @@ const Home = () => {
 
           {/* Row 2: Most Popular Item in Center */}
           <div className="flex justify-center mb-8 md:mb-10">
-            <div className="max-w-md w-full text-center">
+              <div className="max-w-md w-full text-center">
               {/* Image Container - Same Size as Others */}
               <div 
                 className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-4 mx-auto cursor-pointer"
-                onClick={() => navigate("/most-popular")}
+                onClick={() => navigate("/popular")}
               >
                 <img
                   src="/images/jew 5.jpg"
@@ -329,7 +329,7 @@ const Home = () => {
               
               {/* Shop Now Button with Arrow */}
               <button 
-                onClick={() => navigate("/most-popular")}
+                onClick={() => navigate("/popular")}
                 className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
               >
                 <span>Shop Now</span>
