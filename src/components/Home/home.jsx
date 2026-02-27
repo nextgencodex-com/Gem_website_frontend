@@ -202,7 +202,7 @@ const Home = () => {
               <div 
                 key={item.id} 
                 className="group cursor-pointer text-center"
-                onClick={() => navigate("/gifts")}
+                onClick={() => navigate("/gifts", { state: { scrollToId: item.id } })}
               >
                 {/* Image Container */}
                 <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-6">
@@ -222,7 +222,7 @@ const Home = () => {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    navigate("/gifts");
+                    navigate("/gifts", { state: { scrollToId: item.id } });
                   }}
                   className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
                 >
