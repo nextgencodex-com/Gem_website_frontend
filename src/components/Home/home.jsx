@@ -39,13 +39,13 @@ const Home = () => {
     {
       id: 1,
       title: "Gifts for Her",
-      image: "/images/gh.jpg",
+      image: "/images/bl 1.jpg",
       link: "/birthday-collection"
     },
     {
       id: 2,
       title: "Gold Jewellery",
-      image: "/images/gj.jpg",
+      image: "/images/bl 2.jpg",
       link: "/anniversary-collection"
     },
     {
@@ -57,7 +57,7 @@ const Home = () => {
     {
       id: 4,
       title: "Gift for Him",
-      image: "/images/jhim.jpeg",
+      image: "/images/bl 4.jpg",
       link: "/luxury-collection"
     }
   ];
@@ -67,7 +67,7 @@ const Home = () => {
     {
       id: 1,
       title: "Necklaces & Pendants",
-      image: "/images/bg.webp",
+      image: "/images/bl 6.jpg",
       link: "/necklaces-pendants"
     },
     {
@@ -137,19 +137,19 @@ const Home = () => {
 
   // Placeholder images for gift section
   const giftImages = [
-    "/images/gh.jpg",
-    "/images/gj.jpg",
+    "/images/bl 1.jpg",
+    "/images/bl 2.jpg",
     "/images/hs.webp",
-    "/images/jhim.jpeg"
+    "/images/bl 4.jpg"
   ];
 
   // Placeholder images for category section
   const categoryImages = [
-    "/images/bg.webp",
-    "/images/bg.webp",
-    "/images/bg.webp",
-    "/images/bg.webp",
-    "/images/bg.webp"
+    "/images/bl 6.jpg",
+    "/images/bl 7.jpg",
+    "/images/bl 8.jpg",
+    "/images/bl 9.jpg",
+    "/images/bl 10.jpg"
   ];
 
   return (
@@ -286,7 +286,7 @@ const Home = () => {
                 onClick={() => navigate("/popular")}
               >
                 <img
-                  src="/images/jew 5.jpg"
+                  src="/images/bl 5.jpg"
                   alt="Most Popular Items"
                   className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                 />
