@@ -10,7 +10,7 @@ const Popular = () => {
       id: 1,
       name: "Diamond Solitaire Ring",
       title: "Diamond Solitaire Ring",
-      image: "/images/ring1.jpg",
+      image: "/images/ds.jpg",
       price: 2999,
       currency: "$",
       description:
@@ -27,7 +27,7 @@ const Popular = () => {
       id: 2,
       name: "Pearl Pendant Necklace",
       title: "Pearl Pendant Necklace",
-      image: "/images/neck1.jpg",
+      image: "/images/p.webp",
       price: 1899,
       currency: "$",
       description:
@@ -44,7 +44,7 @@ const Popular = () => {
       id: 3,
       name: "Gold Hoop Earrings",
       title: "Gold Hoop Earrings",
-      image: "/images/ear1.jpg",
+      image: "/images/gh.webp",
       price: 1299,
       currency: "$",
       description:
@@ -61,7 +61,7 @@ const Popular = () => {
       id: 4,
       name: "Sapphire Bracelet",
       title: "Sapphire Bracelet",
-      image: "/images/b1.jpg",
+      image: "/images/sb.webp",
       price: 2499,
       currency: "$",
       description:
@@ -78,7 +78,7 @@ const Popular = () => {
       id: 5,
       name: "Emerald Engagement Ring",
       title: "Emerald Engagement Ring",
-      image: "/images/jew 5.jpg",
+      image: "/images/eer.jpg",
       price: 3599,
       currency: "$",
       description:
@@ -95,7 +95,7 @@ const Popular = () => {
       id: 6,
       name: "Ruby Pendant",
       title: "Ruby Pendant",
-      image: "/images/gm.jpg",
+      image: "/images/rp.webp",
       price: 2199,
       currency: "$",
       description:
@@ -112,7 +112,7 @@ const Popular = () => {
       id: 7,
       name: "Diamond Stud Earrings",
       title: "Diamond Stud Earrings",
-      image: "/images/dj.jpeg",
+      image: "/images/dse.webp",
       price: 1799,
       currency: "$",
       description:
@@ -129,7 +129,7 @@ const Popular = () => {
       id: 8,
       name: "Gold Chain Bracelet",
       title: "Gold Chain Bracelet",
-      image: "/images/gh.jpg",
+      image: "/images/gcb.webp",
       price: 999,
       currency: "$",
       description:

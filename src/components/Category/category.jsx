@@ -32,12 +32,12 @@ const Category = () => {
   const categoryItems = [
     {
       id: 1,
-      title: "Necklaces and Pendants",
+      title: "Necklace & Pendants",
       items: [
         { 
           id: 101, 
           name: "Colar Necklace", 
-          image: "/images/gh.jpg",
+          image: "/images/collar.jpg",
           price: 1899,
           currency: "$",
           description: "Elegant colar necklace that sits gracefully on the neckline. Perfect for both casual and formal occasions.",
@@ -50,7 +50,7 @@ const Category = () => {
         { 
           id: 102, 
           name: "Heart Pendant Necklace", 
-          image: "/images/gh.jpg",
+          image: "/images/bl 11.jpg",
           price: 1599,
           currency: "$",
           description: "Romantic heart pendant necklace, a symbol of love and affection.",
@@ -63,7 +63,7 @@ const Category = () => {
         { 
           id: 103, 
           name: "Opera Necklace", 
-          image: "/images/gh.jpg",
+          image: "/images/opera.jpg",
           price: 2499,
           currency: "$",
           description: "Long opera necklace that makes a dramatic statement for formal events.",
@@ -76,7 +76,7 @@ const Category = () => {
         { 
           id: 104, 
           name: "Cross Pendant Necklace", 
-          image: "/images/gh.jpg",
+          image: "/images/bl 14.jpg",
           price: 1299,
           currency: "$",
           description: "Classic cross pendant necklace, a timeless symbol of faith.",
@@ -95,7 +95,7 @@ const Category = () => {
         { 
           id: 201, 
           name: "Solitare Ring", 
-          image: "/images/ring1.jpg",
+          image: "/images/solitare.jpg",
           price: 2999,
           currency: "$",
           description: "Classic solitaire ring featuring a single stunning gemstone.",
@@ -108,7 +108,7 @@ const Category = () => {
         { 
           id: 202, 
           name: "Cocktail Ring", 
-          image: "/images/ring1.jpg",
+          image: "/images/cocktail.webp",
           price: 2199,
           currency: "$",
           description: "Bold cocktail ring designed to make a statement at parties and events.",
@@ -121,7 +121,7 @@ const Category = () => {
         { 
           id: 203, 
           name: "Halo Ring", 
-          image: "/images/ring1.jpg",
+          image: "/images/halo.jpg",
           price: 3299,
           currency: "$",
           description: "Stunning halo ring with center stone surrounded by smaller gems.",
@@ -134,7 +134,7 @@ const Category = () => {
         { 
           id: 204, 
           name: "Promise Ring", 
-          image: "/images/ring1.jpg",
+          image: "/images/promise.jpg",
           price: 1299,
           currency: "$",
           description: "Meaningful promise ring to symbolize commitment and love.",
@@ -153,7 +153,7 @@ const Category = () => {
         { 
           id: 301, 
           name: "Stud Earrings", 
-          image: "/images/r.1.jpg",
+          image: "/images/stud.webp",
           price: 999,
           currency: "$",
           description: "Classic stud earrings for everyday elegance.",
@@ -166,7 +166,7 @@ const Category = () => {
         { 
           id: 302, 
           name: "Dangle Earrings", 
-          image: "/images/r.1.jpg",
+          image: "/images/dangle.webp",
           price: 1499,
           currency: "$",
           description: "Elegant dangle earrings that move gracefully with you.",
@@ -179,7 +179,7 @@ const Category = () => {
         { 
           id: 303, 
           name: "Hoop Earrings", 
-          image: "/images/r.1.jpg",
+          image: "/images/hoop.webp",
           price: 1299,
           currency: "$",
           description: "Stylish hoop earrings in various sizes.",
@@ -192,7 +192,7 @@ const Category = () => {
         { 
           id: 304, 
           name: "Cluster Earrings", 
-          image: "/images/r.1.jpg",
+          image: "/images/cluster.webp",
           price: 1799,
           currency: "$",
           description: "Stunning cluster earrings with multiple gems.",
@@ -211,7 +211,7 @@ const Category = () => {
         { 
           id: 401, 
           name: "Chain Bracelets", 
-          image: "/images/bg.webp",
+          image: "/images/chainb.webp",
           price: 899,
           currency: "$",
           description: "Versatile chain bracelets for daily wear.",
@@ -224,7 +224,7 @@ const Category = () => {
         { 
           id: 402, 
           name: "Tennis Bracelets", 
-          image: "/images/bg.webp",
+          image: "/images/tennisb.webp",
           price: 3299,
           currency: "$",
           description: "Classic tennis bracelets with sparkling stones.",
@@ -237,7 +237,7 @@ const Category = () => {
         { 
           id: 403, 
           name: "Link Bracelets", 
-          image: "/images/bg.webp",
+          image: "/images/linkb.jpg",
           price: 1499,
           currency: "$",
           description: "Bold link bracelets for a statement look.",
@@ -250,7 +250,7 @@ const Category = () => {
         { 
           id: 404, 
           name: "Bangle Bracelets", 
-          image: "/images/bg.webp",
+          image: "/images/bangleb.webp",
           price: 1299,
           currency: "$",
           description: "Classic bangles that stack beautifully.",
@@ -269,7 +269,7 @@ const Category = () => {
         { 
           id: 501, 
           name: "Forever Shine Ring", 
-          image: "/images/bs1.png",
+          image: "/images/fsr.jpg",
           price: 3999,
           currency: "$",
           description: "A stunning ring that symbolizes forever love with brilliant shine.",
@@ -282,7 +282,7 @@ const Category = () => {
         { 
           id: 502, 
           name: "Royal Halo Ring", 
-          image: "/images/bs1.png",
+          image: "/images/rhr.webp",
           price: 4499,
           currency: "$",
           description: "Regal halo ring fit for royalty, featuring a magnificent center stone.",
@@ -295,7 +295,7 @@ const Category = () => {
         { 
           id: 503, 
           name: "Queen Proposal Ring", 
-          image: "/images/bs1.png",
+          image: "/images/qpr.jpg",
           price: 5299,
           currency: "$",
           description: "Make her feel like a queen with this magnificent proposal ring.",
@@ -308,7 +308,7 @@ const Category = () => {
         { 
           id: 504, 
           name: "Golden Vow Ring", 
-          image: "/images/bs1.png",
+          image: "/images/gvr.webp",
           price: 3599,
           currency: "$",
           description: "Beautiful ring to celebrate your golden vows and commitment.",

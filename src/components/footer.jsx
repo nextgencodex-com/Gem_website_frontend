@@ -99,6 +99,13 @@ const Footer = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link
+                to="/category"
+                className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
+              >
+                Category
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white/30 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <Link
                 to="/contact"
                 className="block text-gray-400 hover:text-white transition-colors duration-300 relative group w-fit"
               >
