@@ -6,6 +6,8 @@ import AboutUs from "./components/About/aboutus";
 import Gifts from "./components/Gifts/gifts";
 import Popular from "./components/Popular/popular";
 import PopularItems from "./components/Popular/popularItems";
+import Category from "./components/Category/category";
+import CategoryItems from "./components/Category/categoryItems";
 import GiftsDetails from "./components/GiftsDetails/GiftsDetails";
 import ShoppingCart from "./components/ShoppingCart";
 import ContactUs from "./components/ContactUs/ContactUs";
@@ -25,6 +27,8 @@ export default function App() {
       <Route path="/gifts" element={<Layout><Gifts /></Layout>} />
       <Route path="/popular" element={<Layout><Popular /></Layout>} />
       <Route path="/popularItems" element={<Layout><PopularItems /></Layout>} />
+      <Route path="/category" element={<Layout><Category/></Layout>} />
+      <Route path="/categoryItems" element={<Layout><CategoryItems /></Layout>} />
       <Route path="/GiftDetails" element={<Layout><GiftsDetails /></Layout>} />
       <Route path="/contact" element={<Layout><ContactUs /></Layout>} />
       <Route path="/customize" element={<Layout><Customize /></Layout>} />

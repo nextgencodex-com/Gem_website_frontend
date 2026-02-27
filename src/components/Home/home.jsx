@@ -15,6 +15,7 @@ function HeroSection({ navigate }) {
       setMuted(newMutedState);
     }
   };
+  
 
   return (
     <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-center overflow-hidden bg-black">
@@ -134,6 +135,9 @@ const Home = () => {
       link: "/contact",
     }
   ];
+
+
+
 
   // Placeholder images for gift section
   const giftImages = [
@@ -373,7 +377,7 @@ const Home = () => {
               <div 
                 key={item.id}
                 className="group cursor-pointer text-center"
-                onClick={() => navigate(item.link)}
+                onClick={() => navigate("/category", { state: { scrollToId: item.id } })}
               >
                 {/* Image Container */}
                 <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-4">
@@ -388,8 +392,36 @@ const Home = () => {
                 <h3 className="font-serif text-base md:text-lg text-white font-bold mt-4 group-hover:text-white/80 transition-colors duration-300">
                   {item.title}
                 </h3>
-              </div>
+
+                {/* Shop Now Button with Arrow Icon */}
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate("/category", { state: { scrollToId: item.id } });
+                  }}
+                  className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                >
+                  <span>Shop Now</span>
+                  <svg 
+                    className="w-4 h-4" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth="2" 
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </button>
+             </div>
+
+              
             ))}
+
+             
           </div>
         </div>
       </section>

@@ -24,6 +24,7 @@ const Header = () => {
     { name: "About Us", href: "/about" },
     { name: "Gifts", href: "/gifts" },
     { name: "Popular", href: "/popular" },
+    { name: "Category", href: "/category" },
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -39,6 +40,8 @@ const Header = () => {
           backgroundSize: '50px 50px'
         }}
       />
+
+      
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
