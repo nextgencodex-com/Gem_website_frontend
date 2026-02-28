@@ -1,4 +1,4 @@
- import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 // Use images from the `public/images` folder via absolute paths
@@ -329,7 +329,7 @@ const Category = () => {
   return (
     <section className="py-12 md:py-20 bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header - This is already responsive */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-serif text-3xl md:text-5xl text-white font-bold mb-4 relative inline-block">
             Shop by Category
@@ -340,70 +340,119 @@ const Category = () => {
           </p>
         </div>
 
-
         {/* 5 Sections - One below the other */}
         <div className="space-y-16">
           {categoryItems.map((category) => (
             <div key={category.id} id={`category-${category.id}`} className="space-y-6">
-              {/* Category Title */}
+              {/* Category Title - Responsive */}
               <h3 className="font-serif text-2xl md:text-3xl text-white font-bold text-center">
                 {category.title}
               </h3>
 
-              {/* 4 Images Grid (since each category now has 4 items) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {category.items.map((item) => (
-                  <div key={item.id} className="flex flex-col">
-                    {/* Image Container */}
-                    <div 
-                      className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl cursor-pointer mb-3"
-                      onClick={() => handleNavigation(item)}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="absolute inset-0 w-full h-full object-cover transform hover:scale-110 transition duration-500"
-                      />
-                    </div>
-
-                    {/* Item Title */}
-                    <h4 
-                      className="font-serif text-sm md:text-base text-white font-medium text-center mb-3 cursor-pointer hover:text-white/80 transition-colors duration-300"
-                      onClick={() => handleNavigation(item)}
-                    >
-                      {item.name}
-                    </h4>
-
-                    
-
-                    {/* View Details Button */}
-                    <button
-                      onClick={() => handleNavigation(item)}
-                      className="text-white/60 hover:text-white font-medium text-xs md:text-sm transition-colors duration-300 flex items-center justify-center mx-auto gap-1 group"
-                    >
-                      <span>View Details</span>
-                      <svg
-                        className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+              {/* ========== DESKTOP VIEW CODE ========== */}
+              <div className="hidden lg:block">
+                {/* 4 Images Grid - Desktop */}
+                <div className="grid grid-cols-4 gap-6">
+                  {category.items.map((item) => (
+                    <div key={item.id} className="flex flex-col">
+                      {/* Image Container */}
+                      <div 
+                        className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl cursor-pointer mb-3"
+                        onClick={() => handleNavigation(item)}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="absolute inset-0 w-full h-full object-cover transform hover:scale-110 transition duration-500"
                         />
-                      </svg>
-                    </button>
-                  </div>
-                ))}
+                      </div>
+
+                      {/* Item Title */}
+                      <h4 
+                        className="font-serif text-base text-white font-medium text-center mb-3 cursor-pointer hover:text-white/80 transition-colors duration-300"
+                        onClick={() => handleNavigation(item)}
+                      >
+                        {item.name}
+                      </h4>
+
+                      {/* View Details Button */}
+                      <button
+                        onClick={() => handleNavigation(item)}
+                        className="text-white/60 hover:text-white font-medium text-sm transition-colors duration-300 flex items-center justify-center mx-auto gap-1 group"
+                      >
+                        <span>View Details</span>
+                        <svg
+                          className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ========== MOBILE VIEW CODE ========== */}
+              <div className="block lg:hidden">
+                {/* Mobile - Show 2 items per row */}
+                <div className="grid grid-cols-2 gap-4">
+                  {category.items.map((item) => (
+                    <div key={item.id} className="flex flex-col">
+                      {/* Image Container - Mobile */}
+                      <div 
+                        className="relative aspect-square w-full overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer mb-2"
+                        onClick={() => handleNavigation(item)}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="absolute inset-0 w-full h-full object-cover transform hover:scale-110 transition duration-500"
+                        />
+                      </div>
+
+                      {/* Item Title - Mobile */}
+                      <h4 
+                        className="font-serif text-sm text-white font-medium text-center mb-2 line-clamp-2 px-1"
+                        onClick={() => handleNavigation(item)}
+                      >
+                        {item.name}
+                      </h4>
+
+                      {/* View Details Button - Mobile */}
+                      <button
+                        onClick={() => handleNavigation(item)}
+                        className="text-white/60 hover:text-white font-medium text-xs transition-colors duration-300 flex items-center justify-center mx-auto gap-1 group"
+                      >
+                        <span>View</span>
+                        <svg
+                          className="w-2.5 h-2.5 transform group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
- 
-
       </div>
     </section>
   );

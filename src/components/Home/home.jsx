@@ -15,18 +15,58 @@ function HeroSection({ navigate }) {
       setMuted(newMutedState);
     }
   };
-  
 
   return (
-    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-center overflow-hidden bg-black">
+    <div className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center overflow-hidden bg-black">
+      {/* Background Image */}
       <img
         src="/images/Hero 23.jpeg"
         alt="Luxury Gemstones"
-        className="absolute inset-0 w-full h-full object-contain z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       />
-      <div className="absolute inset-0 bg-black/50 z-10" />
-      <div className="relative z-20 space-y-6 px-6 lg:px-12 max-w-4xl mx-auto">
-        {/* Hero text if needed */}
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
+      
+      {/* Text Content - Left Aligned */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full">
+        <div className="max-w-2xl">
+          {/* Small Elegant Tagline */}
+          <p className="text-white/60 text-sm md:text-base tracking-[0.3em] uppercase mb-4">
+            Luxury Redefined
+          </p>
+          
+          {/* Main Heading */}
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight">
+            Timeless 
+            <span className="block text-white/90">Elegance</span>
+          </h1>
+          
+          {/* Subheading */}
+          <p className="text-gray-200 text-base md:text-lg lg:text-xl mb-8 max-w-lg leading-relaxed">
+            Discover exquisite gemstones and jewellery crafted to celebrate life's most precious moments.
+          </p>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4">
+            <button 
+              onClick={() => navigate("/gifts")}
+              className="group bg-white text-black hover:bg-gray-200 font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
+            >
+              <span>Explore Collection</span>
+              <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+            
+            <button 
+              onClick={() => navigate("/about")}
+              className="group border border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-3 rounded-full transition-all duration-300"
+            >
+              Our Story
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -97,7 +137,7 @@ const Home = () => {
     }
   ];
 
-  // Gifting Services items - UPDATED WITH BETTER ICONS
+  // Gifting Services items
   const giftingServices = [
     {
       id: 1,
@@ -136,9 +176,6 @@ const Home = () => {
     }
   ];
 
-
-
-
   // Placeholder images for gift section
   const giftImages = [
     "/images/bl 1.jpg",
@@ -166,10 +203,10 @@ const Home = () => {
         }}
       />
 
-      {/* Hero Section with Video */}
+      {/* Hero Section - This is already responsive, so we keep it as is */}
       <HeroSection navigate={navigate} />
 
-      {/* WhatsApp Button */}
+      {/* WhatsApp Button - This is already responsive, so we keep it as is */}
       <div className="fixed left-4 bottom-4 md:left-6 md:bottom-6 z-20">
         <button
           className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-full flex items-center gap-2 shadow-lg transition-colors duration-300 text-sm md:text-base"
@@ -182,287 +219,499 @@ const Home = () => {
         </button>
       </div>
 
-      {/* Section 1: Find the Perfect Gift */}
-      <section className="py-12 md:py-20 bg-black border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-5xl text-white font-bold mb-4 relative inline-block">
-              Find the Perfect Gift
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
-            </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto mt-8">
-              Discover our curated collection of exquisite gemstones and jewellery perfect for every special occasion
-            </p>
-          </div>
+      {/* ========== DESKTOP VIEW CODE ========== */}
+      <div className="hidden md:block">
+        {/* Section 1: Find the Perfect Gift - Desktop */}
+        <section className="py-20 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Section Header - Desktop */}
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-5xl text-white font-bold mb-4 relative inline-block">
+                Find the Perfect Gift
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto mt-8">
+                Discover our curated collection of exquisite gemstones and jewellery perfect for every special occasion
+              </p>
+            </div>
 
-          {/* 4 Images in a Single Line */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-            {giftItems.map((item, index) => (
-              <div 
-                key={item.id} 
-                className="group cursor-pointer text-center"
-                onClick={() => navigate("/gifts", { state: { scrollToId: item.id } })}
-              >
-                {/* Image Container */}
-                <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-6">
-                  <img
-                    src={giftImages[index] || item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                  />
-                </div>
-                
-                {/* Title Below Image */}
-                <h3 className="font-serif text-lg md:text-xl text-white font-bold mb-4 group-hover:text-white/80 transition-colors duration-300">
-                  {item.title}
-                </h3>
-                
-                {/* Shop Now Button with Arrow Icon */}
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate("/gifts", { state: { scrollToId: item.id } });
-                  }}
-                  className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+            {/* 4 Images in a Single Line - Desktop */}
+            <div className="grid grid-cols-4 gap-10">
+              {giftItems.map((item, index) => (
+                <div 
+                  key={item.id} 
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/gifts", { state: { scrollToId: item.id } })}
                 >
-                  <span>Shop Now</span>
-                  <svg 
-                    className="w-4 h-4" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth="2" 
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-6">
+                    <img
+                      src={giftImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
                     />
-                  </svg>
-                </button>
-              </div>
-            ))}
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-xl text-white font-bold mb-4 group-hover:text-white/80 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  
+                  {/* Shop Now Button with Arrow Icon */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/gifts", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop Now</span>
+                    <svg 
+                      className="w-4 h-4" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section 2: 3-Row Layout with Most Popular in Middle Row */}
-      <section className="py-12 md:py-20 bg-black/95 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Row 1: 2 Images Side by Side */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-10">
-            {/* First Image */}
-            {/*<div 
-              className="group cursor-pointer"
-              onClick={() => navigate("/collection-1")}
-            >
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl">
-                <img
-                  src="/images/gh.jpg"
-                  alt="Jewellery 2"
-                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                />
-              </div>
-            </div>*/}
-
-            {/* Second Image */}
-            {/*<div 
-              className="group cursor-pointer"
-              onClick={() => navigate("/collection-2")}
-            >
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl">
-                <img
-                  src="/images/gh.jpg"
-                  alt="Jewellery 3"
-                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                />
-              </div>
-            </div>*/}
-          </div>
-
-          {/* Row 2: Most Popular Item in Center */}
-          <div className="flex justify-center mb-8 md:mb-10">
-              <div className="max-w-md w-full text-center">
-              {/* Image Container - Same Size as Others */}
-              <div 
-                className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-4 mx-auto cursor-pointer"
-                onClick={() => navigate("/popular")}
-              >
+        {/* Section 2: Most Popular Item - Desktop */}
+        <section className="py-20 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Split Layout - Image Left, Content Right */}
+            <div className="grid grid-cols-2 gap-12 items-center">
+              {/* Left Side - Image */}
+              <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-2xl group">
                 <img
                   src="/images/bl 5.jpg"
                   alt="Most Popular Items"
-                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              
-              {/* Most Popular Items Text */}
-              <h3 className="font-serif text-lg md:text-xl text-white font-bold mb-2">
-                Most Popular Items
-              </h3>
-              
-              {/* Shop Now Button with Arrow */}
-              <button 
-                onClick={() => navigate("/popular")}
-                className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
-              >
-                <span>Shop Now</span>
-                <svg 
-                  className="w-4 h-4" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth="2" 
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
 
-          {/* Row 3: 2 Images Side by Side */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-            {/* Third Image */}
-            {/*<div 
-              className="group cursor-pointer"
-              onClick={() => navigate("/collection-3")}
-            >
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl">
-                <img
-                  src="/images/gh.jpg"
-                  alt="Jewellery 1"
-                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                />
-              </div>
-            </div>*/}
-
-            {/* Fourth Image */}
-            {/*<div 
-              className="group cursor-pointer"
-              onClick={() => navigate("/collection-4")}
-            >
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl">
-                <img
-                  src="/images/gh.jpg"
-                  alt="Jewellery 4"
-                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                />
-              </div>
-            </div>*/}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Shop by Category */}
-      <section className="py-12 md:py-20 bg-black border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-5xl text-white font-bold mb-4 relative inline-block">
-              Shop by Category
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
-            </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto mt-8">
-              Browse our exclusive collections categorized by jewellery type
-            </p>
-          </div>
-
-          {/* 5 Images in a Single Line */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
-            {categoryItems.map((item, index) => (
-              <div 
-                key={item.id}
-                className="group cursor-pointer text-center"
-                onClick={() => navigate("/category", { state: { scrollToId: item.id } })}
-              >
-                {/* Image Container */}
-                <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-4">
-                  <img
-                    src={categoryImages[index] || item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                  />
-                </div>
-                
-                {/* Title Below Image */}
-                <h3 className="font-serif text-base md:text-lg text-white font-bold mt-4 group-hover:text-white/80 transition-colors duration-300">
-                  {item.title}
+              {/* Right Side - Content */}
+              <div className="text-left space-y-6">
+                {/* Title */}
+                <h3 className="font-serif text-5xl text-white font-bold">
+                  Most Popular <span className="text-white/60">Items</span>
                 </h3>
-
-                {/* Shop Now Button with Arrow Icon */}
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate("/category", { state: { scrollToId: item.id } });
-                  }}
-                  className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
-                >
-                  <span>Shop Now</span>
-                  <svg 
-                    className="w-4 h-4" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth="2" 
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </button>
-             </div>
-
-              
-            ))}
-
-             
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Discover Our Gifting Services - REDUCED ICON SIZE */}
-      <section className="py-12 md:py-20 bg-black/95 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-5xl text-white font-bold mb-4 relative inline-block">
-              Discover Our Gifting Services
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
-            </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto mt-8">
-              Enhance your gift-giving experience with our exclusive services
-            </p>
-          </div>
-
-          {/* 3 Icons in a Single Line - REDUCED SIZE */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            {giftingServices.map((item) => (
-              <div 
-                key={item.id}
-                className="group text-center"
-              >
-                {/* Icon Container - REDUCED PADDING AND ICON SIZE */}
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
-                    {item.icon("w-12 h-12 md:w-14 md:h-14 text-white")}
+                
+                {/* Description */}
+                <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
+                  Discover our most loved and bestselling jewellery pieces. 
+                  These exquisite designs have captured the hearts of our customers 
+                  and continue to shine as timeless favorites.
+                </p>
+                
+                {/* Features/Benefits List */}
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm">Certified Quality</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm">Best Seller</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm">Limited Edition</span>
                   </div>
                 </div>
                 
-                {/* Title Below Icon - REDUCED TEXT SIZE */}
-                <h3 className="font-serif text-base md:text-lg text-white font-bold group-hover:text-white transition-colors duration-300">
-                  {item.title}
-                </h3>
+                {/* Shop Now Button */}
+                <div className="pt-6">
+                  <button 
+                    onClick={() => navigate("/popular")}
+                    className="group inline-flex items-center gap-3 bg-white text-black hover:bg-gray-200 font-semibold text-lg px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <span>Shop the Collection</span>
+                    <svg 
+                      className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Section 3: Shop by Category - Desktop */}
+        <section className="py-20 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Section Header - Desktop */}
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-5xl text-white font-bold mb-4 relative inline-block">
+                Shop by Category
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto mt-8">
+                Browse our exclusive collections categorized by jewellery type
+              </p>
+            </div>
+
+            {/* 5 Images in a Single Line - Desktop */}
+            <div className="grid grid-cols-5 gap-8">
+              {categoryItems.map((item, index) => (
+                <div 
+                  key={item.id}
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/category", { state: { scrollToId: item.id } })}
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-4">
+                    <img
+                      src={categoryImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                    />
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-lg text-white font-bold mt-4 group-hover:text-white/80 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+
+                  {/* Shop Now Button with Arrow Icon */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/category", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop Now</span>
+                    <svg 
+                      className="w-4 h-4" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Discover Our Gifting Services - Desktop */}
+        <section className="py-20 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Section Header - Desktop */}
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-5xl text-white font-bold mb-4 relative inline-block">
+                Discover Our Gifting Services
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto mt-8">
+                Enhance your gift-giving experience with our exclusive services
+              </p>
+            </div>
+
+            {/* 3 Icons in a Single Line - Desktop */}
+            <div className="grid grid-cols-3 gap-8">
+              {giftingServices.map((item) => (
+                <div 
+                  key={item.id}
+                  className="group text-center"
+                >
+                  {/* Icon Container */}
+                  <div className="flex justify-center mb-4">
+                    <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
+                      {item.icon("w-14 h-14 text-white")}
+                    </div>
+                  </div>
+                  
+                  {/* Title Below Icon */}
+                  <h3 className="font-serif text-lg text-white font-bold group-hover:text-white transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* ========== MOBILE VIEW CODE ========== */}
+      <div className="block md:hidden">
+        {/* Section 1: Find the Perfect Gift - Mobile */}
+        <section className="py-12 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Section Header - Mobile */}
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl text-white font-bold mb-4 relative inline-block">
+                Find the Perfect Gift
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-base max-w-3xl mx-auto mt-6">
+                Discover our curated collection of exquisite gemstones and jewellery
+              </p>
+            </div>
+
+            {/* 4 Images in Grid - Mobile */}
+            <div className="grid grid-cols-2 gap-6">
+              {giftItems.map((item, index) => (
+                <div 
+                  key={item.id} 
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/gifts", { state: { scrollToId: item.id } })}
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg mb-4">
+                    <img
+                      src={giftImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                    />
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-base text-white font-bold mb-2">
+                    {item.title}
+                  </h3>
+                  
+                  {/* Shop Now Button with Arrow Icon */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/gifts", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-xs transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop Now</span>
+                    <svg 
+                      className="w-3 h-3" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2: Most Popular Item - Mobile */}
+        <section className="py-12 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Split Layout - Image Top, Content Bottom for Mobile */}
+            <div className="flex flex-col gap-8 items-center">
+              {/* Image */}
+              <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-2xl shadow-2xl group">
+                <img
+                  src="/images/bl 5.jpg"
+                  alt="Most Popular Items"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="text-center space-y-4">
+                {/* Title */}
+                <h3 className="font-serif text-3xl text-white font-bold">
+                  Most Popular <span className="text-white/60">Items</span>
+                </h3>
+                
+                {/* Description */}
+                <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                  Discover our most loved and bestselling jewellery pieces. 
+                  These exquisite designs have captured the hearts of our customers.
+                </p>
+                
+                {/* Features/Benefits List */}
+                <div className="flex flex-wrap justify-center gap-3 pt-2">
+                  <div className="flex items-center gap-1 text-gray-300">
+                    <svg className="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-xs">Certified</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-gray-300">
+                    <svg className="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-xs">Best Seller</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-gray-300">
+                    <svg className="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-xs">Limited</span>
+                  </div>
+                </div>
+                
+                {/* Shop Now Button */}
+                <div className="pt-4">
+                  <button 
+                    onClick={() => navigate("/popular")}
+                    className="group inline-flex items-center gap-2 bg-white text-black hover:bg-gray-200 font-semibold text-base px-6 py-2.5 rounded-full transition-all duration-300"
+                  >
+                    <span>Shop Collection</span>
+                    <svg 
+                      className="w-4 h-4" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Shop by Category - Mobile */}
+        <section className="py-12 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Section Header - Mobile */}
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl text-white font-bold mb-4 relative inline-block">
+                Shop by Category
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-base max-w-3xl mx-auto mt-6">
+                Browse our exclusive collections
+              </p>
+            </div>
+
+            {/* 5 Images in Grid - Mobile */}
+            <div className="grid grid-cols-2 gap-4">
+              {categoryItems.map((item, index) => (
+                <div 
+                  key={item.id}
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/category", { state: { scrollToId: item.id } })}
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg mb-3">
+                    <img
+                      src={categoryImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-sm text-white font-bold mb-2">
+                    {item.title}
+                  </h3>
+
+                  {/* Shop Now Button */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/category", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-xs transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop</span>
+                    <svg 
+                      className="w-3 h-3" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Discover Our Gifting Services - Mobile */}
+        <section className="py-12 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Section Header - Mobile */}
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl text-white font-bold mb-4 relative inline-block">
+                Gifting Services
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-base max-w-3xl mx-auto mt-6">
+                Enhance your gift-giving experience
+              </p>
+            </div>
+
+            {/* 3 Icons in Column for Mobile */}
+            <div className="flex flex-col gap-6">
+              {giftingServices.map((item) => (
+                <div 
+                  key={item.id}
+                  className="group flex items-center gap-4 text-left"
+                >
+                  {/* Icon Container */}
+                  <div className="flex-shrink-0 p-3 rounded-full bg-white/10 border border-white/20">
+                    {item.icon("w-8 h-8 text-white")}
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="font-serif text-base text-white font-bold">
+                    {item.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

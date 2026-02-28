@@ -178,7 +178,7 @@ const Popular = () => {
         }}
       />
 
-      {/* Page Header */}
+      {/* Page Header - This is already responsive */}
       <div className="relative z-10 pt-12 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-serif text-4xl md:text-5xl text-white font-bold mb-4 relative inline-block">
@@ -190,68 +190,126 @@ const Popular = () => {
           </p>
         </div>
       </div>
- 
-   
 
-      {/* Popular Items Grid */}
-      <section className="py-8 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-            {sortedItems.map((item) => (
-              <div
-                key={item.id}
-                className="group cursor-pointer text-center"
-                onClick={() => handleViewDetails(item)}
-              >
-                {/* Image Container */}
-                <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-6">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
-                  />
-                  
-                </div>
-
-                {/* Title Below Image */}
-                <h3 className="font-serif text-lg md:text-xl text-white font-bold mb-2 group-hover:text-white/80 transition-colors duration-300">
-                  {item.title}
-                </h3>
- 
-
-                {/* View Details Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleViewDetails(item);
-                  }}
-                  className="text-white/60 hover:text-white font-medium text-sm md:text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+      {/* ========== DESKTOP VIEW CODE ========== */}
+      <div className="hidden lg:block">
+        <section className="py-8 pb-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-4 gap-8 md:gap-10">
+              {sortedItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="group cursor-pointer text-center"
+                  onClick={() => handleViewDetails(item)}
                 >
-                  <span>View Details</span>
-                  <svg
-                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-6">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                    />
+                  </div>
+
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-xl text-white font-bold mb-2 group-hover:text-white/80 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+
+                  {/* View Details Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleViewDetails(item);
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                    <span>View Details</span>
+                    <svg
+                      className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* Empty State */}
+            {sortedItems.length === 0 && (
+              <div className="text-center py-16">
+                <p className="text-gray-400 text-lg">No items found in this category.</p>
+                <button onClick={() => setSelectedCategory("All")} className="mt-4 text-white/60 hover:text-white underline underline-offset-4">
+                  View all items
                 </button>
               </div>
-            ))}
+            )}
           </div>
+        </section>
+      </div>
 
-          {/* Empty State */}
-          {sortedItems.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-gray-400 text-lg">No items found in this category.</p>
-              <button onClick={() => setSelectedCategory("All")} className="mt-4 text-white/60 hover:text-white underline underline-offset-4">
-                View all items
-              </button>
+      {/* ========== MOBILE VIEW CODE ========== */}
+      <div className="block lg:hidden">
+        <section className="py-6 pb-16">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid grid-cols-2 gap-4">
+              {sortedItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="group cursor-pointer text-center"
+                  onClick={() => handleViewDetails(item)}
+                >
+                  {/* Image Container - Mobile */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl mb-3">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                    />
+                  </div>
+
+                  {/* Title Below Image - Mobile */}
+                  <h3 className="font-serif text-sm text-white font-bold mb-2 line-clamp-2 px-1">
+                    {item.title}
+                  </h3>
+
+                  {/* View Details Button - Mobile */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleViewDetails(item);
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-xs transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>View</span>
+                    <svg
+                      className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
+              ))}
             </div>
-          )}
-        </div>
-      </section>
+
+            {/* Empty State - Mobile */}
+            {sortedItems.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-400 text-base">No items found in this category.</p>
+                <button onClick={() => setSelectedCategory("All")} className="mt-3 text-white/60 hover:text-white text-sm underline underline-offset-4">
+                  View all items
+                </button>
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

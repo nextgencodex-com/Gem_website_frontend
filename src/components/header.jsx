@@ -41,8 +41,6 @@ const Header = () => {
         }}
       />
 
-      
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -54,7 +52,7 @@ const Header = () => {
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* DESKTOP VIEW - EXACTLY AS ORIGINAL */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navigationLinks.map((link) => (
               <Link
@@ -75,9 +73,26 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right Section */}
-          <div className="flex items-center space-x-4">
+          {/* Right Section - Desktop - EXACTLY AS ORIGINAL */}
+          <div className="hidden lg:flex items-center space-x-4">
             {/* Cart */}
+            <button
+              className="relative text-gray-400 hover:text-white transition-colors duration-300"
+              onClick={() => navigate('/shopping-cart')}
+              aria-label="Open cart"
+            >
+              <ShoppingCart className="w-6 h-6" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                  {cartItems.length}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* MOBILE VIEW - Only visible on mobile */}
+          <div className="flex lg:hidden items-center space-x-4">
+            {/* Cart - Mobile */}
             <button
               className="relative text-gray-400 hover:text-white transition-colors duration-300"
               onClick={() => navigate('/shopping-cart')}
@@ -94,7 +109,8 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-gray-400 hover:text-white transition-colors duration-300"
+              className="text-gray-400 hover:text-white transition-colors duration-300"
+              aria-label="Toggle menu"
             >
               <svg
                 className="w-6 h-6"

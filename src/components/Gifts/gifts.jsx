@@ -36,8 +36,8 @@ const Gifts = () => {
       items: [
         { 
           id: 101, 
-          name: "a", 
-          image: "/images/gh.jpg",
+          name: "Seraphina", 
+          image: "/images/s.webp",
           price: 1899,
           currency: "$",
           description: "A beautiful pendant set that adds elegance to any outfit. Perfect for her special moments.",
@@ -49,8 +49,8 @@ const Gifts = () => {
         },
         { 
           id: 102, 
-          name: "b", 
-          image: "/images/gh.jpg",
+          name: "Lunaria", 
+          image: "/images/l.webp",
           price: 1299,
           currency: "$",
           description: "Classic pearl stud earrings that she'll treasure forever.",
@@ -62,8 +62,8 @@ const Gifts = () => {
         },
         { 
           id: 103, 
-          name: "c", 
-          image: "/images/gh.jpg",
+          name: "Amorette", 
+          image: "/images/a.avif",
           price: 3299,
           currency: "$",
           description: "A stunning diamond bracelet that sparkles with every movement.",
@@ -75,8 +75,8 @@ const Gifts = () => {
         },
         { 
           id: 104, 
-          name: "d", 
-          image: "/images/gh.jpg",
+          name: "Veloura", 
+          image: "/images/v.webp",
           price: 1599,
           currency: "$",
           description: "Romantic rose gold ring that symbolizes your love.",
@@ -90,12 +90,12 @@ const Gifts = () => {
     },
     {
       id: 2,
-      title: "Gold Jewelry",
+      title: "Gold Jewellery",
       items: [
         { 
           id: 201, 
-          name: "a", 
-          image: "/images/ring1.jpg",
+          name: "Aurelia", 
+          image: "/images/ar.webp",
           price: 2499,
           currency: "$",
           description: "Classic gold chain necklace that never goes out of style.",
@@ -107,8 +107,8 @@ const Gifts = () => {
         },
         { 
           id: 202, 
-          name: "b", 
-          image: "/images/ring1.jpg",
+          name: "Aurora", 
+          image: "/images/au.avif",
           price: 1799,
           currency: "$",
           description: "Timeless gold hoop earrings for everyday elegance.",
@@ -120,8 +120,8 @@ const Gifts = () => {
         },
         { 
           id: 203, 
-          name: "c", 
-          image: "/images/ring1.jpg",
+          name: "Zarina", 
+          image: "/images/sa.webp",
           price: 2999,
           currency: "$",
           description: "A set of three gold bangles that stack beautifully.",
@@ -133,8 +133,8 @@ const Gifts = () => {
         },
         { 
           id: 204, 
-          name: "d", 
-          image: "/images/ring1.jpg",
+          name: "Serenique", 
+          image: "/images/se.webp",
           price: 1399,
           currency: "$",
           description: "Classic gold signet ring for a sophisticated look.",
@@ -148,12 +148,12 @@ const Gifts = () => {
     },
     {
       id: 3,
-      title: "Heart Shaped Jewelry",
+      title: "Heart Shaped Jewellery",
       items: [
         { 
           id: 301, 
-          name: "a", 
-          image: "/images/r.1.jpg",
+          name: "Amora", 
+          image: "/images/am.webp",
           price: 1599,
           currency: "$",
           description: "Romantic heart pendant necklace, a symbol of love.",
@@ -165,8 +165,8 @@ const Gifts = () => {
         },
         { 
           id: 302, 
-          name: "b", 
-          image: "/images/r.1.jpg",
+          name: "Cordelia", 
+          image: "/images/co.webp",
           price: 1199,
           currency: "$",
           description: "Sweet heart-shaped stud earrings for daily wear.",
@@ -178,8 +178,8 @@ const Gifts = () => {
         },
         { 
           id: 303, 
-          name: "c", 
-          image: "/images/r.1.jpg",
+          name: "Valoria", 
+          image: "/images/va.webp",
           price: 999,
           currency: "$",
           description: "Elegant heart-shaped ring for that special someone.",
@@ -191,8 +191,8 @@ const Gifts = () => {
         },
         { 
           id: 304, 
-          name: "d", 
-          image: "/images/r.1.jpg",
+          name: "Lovelle", 
+          image: "/images/lp.webp",
           price: 1399,
           currency: "$",
           description: "Charming heart bracelet with delicate links.",
@@ -210,8 +210,8 @@ const Gifts = () => {
       items: [
         { 
           id: 401, 
-          name: "a", 
-          image: "/images/bs1.png",
+          name: "Valor", 
+          image: "/images/vo.webp",
           price: 3999,
           currency: "$",
           description: "A stunning ring that symbolizes forever love with brilliant shine.",
@@ -223,8 +223,8 @@ const Gifts = () => {
         },
         { 
           id: 402, 
-          name: "b", 
-          image: "/images/bs1.png",
+          name: "Titan", 
+          image: "/images/ti.webp",
           price: 4499,
           currency: "$",
           description: "Regal halo ring fit for royalty, featuring a magnificent center stone.",
@@ -236,8 +236,8 @@ const Gifts = () => {
         },
         { 
           id: 403, 
-          name: "c", 
-          image: "/images/bs1.png",
+          name: "Vanguard", 
+          image: "/images/vaa.webp",
           price: 5299,
           currency: "$",
           description: "Make her feel like a queen with this magnificent proposal ring.",
@@ -249,8 +249,8 @@ const Gifts = () => {
         },
         { 
           id: 404, 
-          name: "d", 
-          image: "/images/bs1.png",
+          name: "Onyx", 
+          image: "/images/o.jpg",
           price: 3599,
           currency: "$",
           description: "Beautiful ring to celebrate your golden vows and commitment.",
@@ -271,7 +271,7 @@ const Gifts = () => {
   return (
     <section className="py-12 md:py-20 bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header - This is already responsive, keep as is */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-serif text-3xl md:text-5xl text-white font-bold mb-4 relative inline-block">
             Gift Collections
@@ -286,59 +286,111 @@ const Gifts = () => {
         <div className="space-y-16">
           {giftItems.map((category) => (
             <div key={category.id} id={`category-${category.id}`} className="space-y-6">
-              {/* Category Title */}
+              {/* Category Title - Responsive */}
               <h3 className="font-serif text-2xl md:text-3xl text-white font-bold text-center">
                 {category.title}
               </h3>
 
-              {/* 4 Images Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {category.items.map((item) => (
-                  <div key={item.id} className="flex flex-col">
-                    {/* Image Container */}
-                    <div 
-                      className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl cursor-pointer mb-3"
-                      onClick={() => handleNavigation(item)}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="absolute inset-0 w-full h-full object-cover transform hover:scale-110 transition duration-500"
-                      />
-                    </div>
-
-                    {/* Item Title */}
-                    <h4 
-                      className="font-serif text-sm md:text-base text-white font-medium text-center mb-1 cursor-pointer hover:text-white/80 transition-colors duration-300"
-                      onClick={() => handleNavigation(item)}
-                    >
-                      {item.name}
-                    </h4>
-
-                    
-
-                    {/* View Details Button */}
-                    <button
-                      onClick={() => handleNavigation(item)}
-                      className="text-white/60 hover:text-white font-medium text-xs md:text-sm transition-colors duration-300 flex items-center justify-center mx-auto gap-1 group"
-                    >
-                      <span>View Details</span>
-                      <svg
-                        className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+              {/* ========== DESKTOP VIEW CODE ========== */}
+              <div className="hidden lg:block">
+                {/* 4 Images Grid - Desktop */}
+                <div className="grid grid-cols-4 gap-6">
+                  {category.items.map((item) => (
+                    <div key={item.id} className="flex flex-col">
+                      {/* Image Container */}
+                      <div 
+                        className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl cursor-pointer mb-3"
+                        onClick={() => handleNavigation(item)}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="absolute inset-0 w-full h-full object-cover transform hover:scale-110 transition duration-500"
                         />
-                      </svg>
-                    </button>
-                  </div>
-                ))}
+                      </div>
+
+                      {/* Item Title */}
+                      <h4 
+                        className="font-serif text-base text-white font-medium text-center mb-1 cursor-pointer hover:text-white/80 transition-colors duration-300"
+                        onClick={() => handleNavigation(item)}
+                      >
+                        {item.name}
+                      </h4>
+
+                      {/* View Details Button */}
+                      <button
+                        onClick={() => handleNavigation(item)}
+                        className="text-white/60 hover:text-white font-medium text-sm transition-colors duration-300 flex items-center justify-center mx-auto gap-1 group"
+                      >
+                        <span>View Details</span>
+                        <svg
+                          className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ========== MOBILE VIEW CODE ========== */}
+              <div className="block lg:hidden">
+                {/* Mobile - Show 2 items per row */}
+                <div className="grid grid-cols-2 gap-4">
+                  {category.items.map((item) => (
+                    <div key={item.id} className="flex flex-col">
+                      {/* Image Container - Mobile */}
+                      <div 
+                        className="relative aspect-square w-full overflow-hidden rounded-lg shadow-lg transition-all duration-300 cursor-pointer mb-2"
+                        onClick={() => handleNavigation(item)}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="absolute inset-0 w-full h-full object-cover transform hover:scale-110 transition duration-500"
+                        />
+                      </div>
+
+                      {/* Item Title - Mobile */}
+                      <h4 
+                        className="font-serif text-sm text-white font-medium text-center mb-1 line-clamp-1 px-1"
+                        onClick={() => handleNavigation(item)}
+                      >
+                        {item.name}
+                      </h4>
+
+                      {/* View Details Button - Mobile */}
+                      <button
+                        onClick={() => handleNavigation(item)}
+                        className="text-white/60 hover:text-white font-medium text-xs transition-colors duration-300 flex items-center justify-center mx-auto gap-1 group"
+                      >
+                        <span>View</span>
+                        <svg
+                          className="w-2.5 h-2.5 transform group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

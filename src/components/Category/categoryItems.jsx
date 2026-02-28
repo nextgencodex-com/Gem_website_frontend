@@ -104,7 +104,7 @@ const CategoryItems = () => {
         }}
       />
 
-      {/* WhatsApp Button */}
+      {/* WhatsApp Button - Already responsive */}
       <div className="fixed left-4 bottom-4 md:left-6 md:bottom-6 z-20">
         <button
           className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-full flex items-center gap-2 shadow-lg transition-colors duration-300 text-sm md:text-base"
@@ -117,7 +117,7 @@ const CategoryItems = () => {
         </button>
       </div>
 
-      {/* Header */}
+      {/* Header - Already responsive */}
       <header className="px-6 md:px-12 py-6 relative z-10">
         <div className="flex items-center justify-between">
           <button
@@ -143,11 +143,155 @@ const CategoryItems = () => {
 
       {/* Main Layout */}
       <main className="px-6 md:px-12 pb-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Left: Gallery */}
-          <section className="bg-white/5 backdrop-blur-sm rounded-md p-6 md:p-10 border border-white/10">
-            <div className="flex gap-6">
-              {/* Main Image only (removed side thumbnails) */}
+        {/* ========== DESKTOP VIEW CODE ========== */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-2 gap-10">
+            {/* Left: Gallery - Desktop */}
+            <section className="bg-white/5 backdrop-blur-sm rounded-md p-10 border border-white/10">
+              <div className="flex gap-6">
+                <div className="w-full">
+                  <div className="relative aspect-square bg-white/5 rounded-md overflow-hidden border border-white/10">
+                    <img
+                      src={activeImg || product.image || product.images?.[0]}
+                      alt={product.name || product.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Right: Product Info - Desktop */}
+            <section className="bg-white/5 backdrop-blur-sm rounded-md p-10 border border-white/10">
+              <div className="flex items-center justify-between gap-6 flex-wrap">
+                <h1 className="font-serif text-4xl text-white font-bold">
+                  {product.name || product.title}
+                </h1>
+                <div className="text-3xl text-white font-semibold whitespace-nowrap">
+                  {product.currency || "$"}{(product.price ?? 0).toFixed(2)}
+                </div>
+              </div>
+
+              <p className="mt-6 text-base leading-relaxed text-gray-400 max-w-xl">
+                {product.description}
+              </p>
+
+              {/* Size */}
+              {product.sizes && product.sizes.length > 0 && (
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="text-sm text-gray-400">Size:</div>
+                  <select
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                    className="bg-black border border-white/15 rounded-md px-3 py-2 text-sm text-white outline-none focus:border-white/40"
+                    style={{ colorScheme: 'dark' }}
+                  >
+                    {product.sizes.map((s) => (
+                      <option key={s} value={s} className="bg-black text-white">
+                        {s}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
+              {/* Quantity */}
+              <div className="mt-8 flex items-center gap-4">
+                <div className="text-sm text-gray-400">Quantity:</div>
+                <div className="flex items-center border border-white/15 rounded-md overflow-hidden">
+                  <button
+                    className="px-4 py-2 text-gray-400 hover:bg-white/5 hover:text-white transition-colors"
+                    onClick={() => setQty((q) => Math.max(1, q - 1))}
+                  >
+                    −
+                  </button>
+                  <div className="px-4 py-2 text-sm text-white w-10 text-center">
+                    {qty}
+                  </div>
+                  <button
+                    className="px-4 py-2 text-gray-400 hover:bg-white/5 hover:text-white transition-colors"
+                    onClick={() => setQty((q) => q + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="mt-8 space-y-3">
+                <button
+                  onClick={handleAddToCart}
+                  className={`w-full rounded-md px-5 py-3 text-base transition-all duration-300 font-medium flex items-center justify-center gap-2 ${
+                    isInCart 
+                      ? "bg-green-500/20 text-green-400 border border-green-500/30 cursor-default"
+                      : "bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:scale-[1.02] active:scale-[0.98]"
+                  }`}
+                  disabled={isInCart}
+                >
+                  {isInCart ? (
+                    <>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Added to Cart</span>
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      <span>Add to Cart</span>
+                    </>
+                  )}
+                </button>
+
+                {showCartMessage && (
+                  <div className="text-green-400 text-sm text-center animate-pulse bg-green-500/10 py-2 rounded-md border border-green-500/20">
+                    ✓ Added to cart successfully!
+                  </div>
+                )}
+              </div>
+
+              {/* Accordion tabs */}
+              <div className="mt-10 border-t border-white/10">
+                {[
+                  { key: "details", label: "Details", value: product.details || "Premium quality craftsmanship with attention to detail." },
+                  { key: "maintenance", label: "Maintenance", value: product.maintenance || "Store in a dry place. Clean with soft cloth. Avoid contact with chemicals." },
+                  { key: "warranty", label: "Warranty", value: product.warranty || "1 year warranty against manufacturing defects." },
+                  { key: "shipping", label: "Shipping", value: product.shipping || "Free shipping on orders over $100. Delivery within 5-7 business days." },
+                ].map((t) => (
+                  <div key={t.key} className="border-b border-white/10">
+                    <button
+                      onClick={() => setTab((cur) => (cur === t.key ? "" : t.key))}
+                      className="w-full flex items-center justify-between py-4 text-left"
+                    >
+                      <span className="text-sm text-gray-400">{t.label}</span>
+                      <span className="text-gray-500 text-xl">
+                        {tab === t.key ? "−" : "+"}
+                      </span>
+                    </button>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        tab === t.key ? "max-h-40 pb-4" : "max-h-0"
+                      }`}
+                    >
+                      <p className="text-sm text-gray-500 leading-relaxed pr-6">
+                        {t.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+
+        {/* ========== MOBILE VIEW CODE ========== */}
+        <div className="block lg:hidden">
+          <div className="flex flex-col gap-5">
+            {/* Left: Gallery - Mobile */}
+            <section className="bg-white/5 backdrop-blur-sm rounded-md p-4 border border-white/10">
               <div className="w-full">
                 <div className="relative aspect-square bg-white/5 rounded-md overflow-hidden border border-white/10">
                   <img
@@ -157,144 +301,136 @@ const CategoryItems = () => {
                   />
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          {/* Right: Product Info */}
-          <section className="bg-white/5 backdrop-blur-sm rounded-md p-6 md:p-10 border border-white/10">
-            <div className="flex items-center gap-6 flex-wrap">
-              <h1 className="font-serif text-3xl md:text-4xl text-white font-bold">
-                {product.name || product.title}
-              </h1>
-              <div className="text-2xl md:text-3xl text-white font-semibold">
-                {product.currency || "$"}{(product.price ?? 0).toFixed(2)}
-              </div>
-            </div>
-
-            <p className="mt-6 text-sm md:text-base leading-relaxed text-gray-400 max-w-xl">
-              {product.description}
-            </p>
-
-
-            {/* Size */}
-            {product.sizes && product.sizes.length > 0 && (
-              <div className="mt-8 flex items-center gap-4">
-                <div className="text-sm text-gray-400">Size:</div>
-                <select
-                  value={size}
-                  onChange={(e) => setSize(e.target.value)}
-                  className="bg-black border border-white/15 rounded-md px-3 py-2 text-sm text-white outline-none focus:border-white/40"
-                  style={{ colorScheme: 'dark' }}
-                >
-                  {product.sizes.map((s) => (
-                    <option key={s} value={s} className="bg-black text-white">
-                      {s}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-
-            {/* Quantity */}
-            <div className="mt-8 flex items-center gap-4">
-              <div className="text-sm text-gray-400">Quantity:</div>
-              <div className="flex items-center border border-white/15 rounded-md overflow-hidden">
-                <button
-                  className="px-4 py-2 text-gray-400 hover:bg-white/5 hover:text-white transition-colors"
-                  onClick={() => setQty((q) => Math.max(1, q - 1))}
-                >
-                  −
-                </button>
-                <div className="px-4 py-2 text-sm text-white w-10 text-center">
-                  {qty}
+            {/* Right: Product Info - Mobile */}
+            <section className="bg-white/5 backdrop-blur-sm rounded-md p-5 border border-white/10">
+              <div className="flex flex-col gap-2">
+                <h1 className="font-serif text-2xl text-white font-bold">
+                  {product.name || product.title}
+                </h1>
+                <div className="text-2xl text-white font-semibold">
+                  {product.currency || "$"}{(product.price ?? 0).toFixed(2)}
                 </div>
-                <button
-                  className="px-4 py-2 text-gray-400 hover:bg-white/5 hover:text-white transition-colors"
-                  onClick={() => setQty((q) => q + 1)}
-                >
-                  +
-                </button>
               </div>
-            </div>
 
+              <p className="mt-4 text-sm leading-relaxed text-gray-400">
+                {product.description}
+              </p>
 
-
-
-            {/* Action Buttons */}
-            <div className="mt-8 space-y-3">
-              {/* Add to Cart Button */}
-              <button
-                onClick={handleAddToCart}
-                className={`w-full rounded-md px-5 py-3 text-sm md:text-base transition-all duration-300 font-medium flex items-center justify-center gap-2 ${
-                  isInCart 
-                    ? "bg-green-500/20 text-green-400 border border-green-500/30 cursor-default"
-                    : "bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:scale-[1.02] active:scale-[0.98]"
-                }`}
-                disabled={isInCart}
-              >
-                {isInCart ? (
-                  <>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Added to Cart</span>
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <span>Add to Cart</span>
-                  </>
-                )}
-              </button>
-
-              {/* Success Message */}
-              {showCartMessage && (
-                <div className="text-green-400 text-sm text-center animate-pulse bg-green-500/10 py-2 rounded-md border border-green-500/20">
-                  ✓ Added to cart successfully!
+              {/* Size */}
+              {product.sizes && product.sizes.length > 0 && (
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="text-xs text-gray-400">Size:</div>
+                  <select
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                    className="bg-black border border-white/15 rounded-md px-2 py-1.5 text-xs text-white outline-none focus:border-white/40"
+                    style={{ colorScheme: 'dark' }}
+                  >
+                    {product.sizes.map((s) => (
+                      <option key={s} value={s} className="bg-black text-white">
+                        {s}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               )}
-            </div>
 
-            
-            {/* Accordion tabs */}
-            <div className="mt-10 border-t border-white/10">
-              {[
-                { key: "details", label: "Details", value: product.details || "Premium quality craftsmanship with attention to detail." },
-                { key: "maintenance", label: "Maintenance", value: product.maintenance || "Store in a dry place. Clean with soft cloth. Avoid contact with chemicals." },
-                { key: "warranty", label: "Warranty", value: product.warranty || "1 year warranty against manufacturing defects." },
-                { key: "shipping", label: "Shipping", value: product.shipping || "Free shipping on orders over $100. Delivery within 5-7 business days." },
-              ].map((t) => (
-                <div key={t.key} className="border-b border-white/10">
+              {/* Quantity */}
+              <div className="mt-5 flex items-center gap-3">
+                <div className="text-xs text-gray-400">Qty:</div>
+                <div className="flex items-center border border-white/15 rounded-md overflow-hidden">
                   <button
-                    onClick={() => setTab((cur) => (cur === t.key ? "" : t.key))}
-                    className="w-full flex items-center justify-between py-4 text-left"
+                    className="px-3 py-1.5 text-gray-400 hover:bg-white/5 hover:text-white transition-colors text-sm"
+                    onClick={() => setQty((q) => Math.max(1, q - 1))}
                   >
-                    <span className="text-sm text-gray-400">{t.label}</span>
-                    <span className="text-gray-500 text-xl">
-                      {tab === t.key ? "−" : "+"}
-                    </span>
+                    −
                   </button>
-
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      tab === t.key ? "max-h-40 pb-4" : "max-h-0"
-                    }`}
-                  >
-                    <p className="text-sm text-gray-500 leading-relaxed pr-6">
-                      {t.value}
-                    </p>
+                  <div className="px-3 py-1.5 text-xs text-white w-8 text-center">
+                    {qty}
                   </div>
+                  <button
+                    className="px-3 py-1.5 text-gray-400 hover:bg-white/5 hover:text-white transition-colors text-sm"
+                    onClick={() => setQty((q) => q + 1)}
+                  >
+                    +
+                  </button>
                 </div>
-              ))}
-            </div>
-          </section>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="mt-6 space-y-2">
+                <button
+                  onClick={handleAddToCart}
+                  className={`w-full rounded-md px-4 py-2.5 text-sm transition-all duration-300 font-medium flex items-center justify-center gap-2 ${
+                    isInCart 
+                      ? "bg-green-500/20 text-green-400 border border-green-500/30 cursor-default"
+                      : "bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                  }`}
+                  disabled={isInCart}
+                >
+                  {isInCart ? (
+                    <>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Added</span>
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      <span>Add to Cart</span>
+                    </>
+                  )}
+                </button>
+
+                {showCartMessage && (
+                  <div className="text-green-400 text-xs text-center animate-pulse bg-green-500/10 py-1.5 rounded-md border border-green-500/20">
+                    ✓ Added to cart!
+                  </div>
+                )}
+              </div>
+
+              {/* Accordion tabs - Mobile */}
+              <div className="mt-6 border-t border-white/10">
+                {[
+                  { key: "details", label: "Details", value: product.details || "Premium quality craftsmanship with attention to detail." },
+                  { key: "maintenance", label: "Maintenance", value: product.maintenance || "Store in a dry place. Clean with soft cloth. Avoid contact with chemicals." },
+                  { key: "warranty", label: "Warranty", value: product.warranty || "1 year warranty against manufacturing defects." },
+                  { key: "shipping", label: "Shipping", value: product.shipping || "Free shipping on orders over $100. Delivery within 5-7 business days." },
+                ].map((t) => (
+                  <div key={t.key} className="border-b border-white/10">
+                    <button
+                      onClick={() => setTab((cur) => (cur === t.key ? "" : t.key))}
+                      className="w-full flex items-center justify-between py-3 text-left"
+                    >
+                      <span className="text-xs text-gray-400">{t.label}</span>
+                      <span className="text-gray-500 text-lg">
+                        {tab === t.key ? "−" : "+"}
+                      </span>
+                    </button>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        tab === t.key ? "max-h-40 pb-3" : "max-h-0"
+                      }`}
+                    >
+                      <p className="text-xs text-gray-500 leading-relaxed pr-4">
+                        {t.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
       </main>
     </div>
   );
 };
-
 
 export default CategoryItems;
