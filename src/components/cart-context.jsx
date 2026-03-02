@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 // Exchange rates (relative to LKR as base)
 const exchangeRates = {
@@ -13,8 +13,33 @@ const exchangeRates = {
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
-  const [selectedCurrency, setSelectedCurrency] = useState("LKR");
+  // initialize from localStorage to persist across refreshes
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const raw = localStorage.getItem("cartItems");
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+
+  const [selectedCurrency, setSelectedCurrency] = useState(() => {
+    try {
+      const raw = localStorage.getItem("selectedCurrency");
+      return raw || "LKR";
+    } catch (e) {
+      return "LKR";
+    }
+  });
+
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const raw = localStorage.getItem("favorites");
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  });
 
   // Currency conversion function
   const convertCurrency = (priceLKR, toCurrency) => {
@@ -22,37 +47,60 @@ export function CartProvider({ children }) {
     return priceLKR * exchangeRates[toCurrency];
   };
 
-  // item: { id, name, image, price, quantity, type }
+  // item: accept various shapes: { id, title/name, image, price, quantity or qty, sizes, qtyOptions, type }
   const addToCart = (item) => {
-    // Ensure price is a number
+    const price = typeof item.price === "string" ? parseFloat(item.price) : item.price || 0;
+    const qty = item.quantity ?? item.qty ?? 1;
+    const type = item.type ?? "generic";
     const normalizedItem = {
       ...item,
-      price: typeof item.price === "string" ? parseFloat(item.price) : item.price
+      price,
+      qty,
+      type,
     };
-    
+
     setCartItems((prev) => {
-      const existing = prev.find((i) => i.id === item.id && i.type === item.type);
+      const existing = prev.find((i) => i.id === normalizedItem.id && i.type === normalizedItem.type);
       if (existing) {
         return prev.map((i) =>
-          i.id === item.id && i.type === item.type
-            ? { ...i, quantity: i.quantity + (item.quantity || 1) }
+          i.id === normalizedItem.id && i.type === normalizedItem.type
+            ? { ...i, qty: i.qty + normalizedItem.qty }
             : i
         );
       }
-      return [...prev, { ...normalizedItem, quantity: normalizedItem.quantity || 1 }];
+      return [...prev, normalizedItem];
     });
   };
 
   const removeFromCart = (id, type) => {
-    setCartItems((prev) => prev.filter((i) => !(i.id === id && i.type === type)));
+    if (type === undefined) {
+      setCartItems((prev) => prev.filter((i) => i.id !== id));
+    } else {
+      setCartItems((prev) => prev.filter((i) => !(i.id === id && i.type === type)));
+    }
   };
 
   const updateQuantity = (id, type, quantity) => {
+    // backward-compatible: if type omitted, update by id only
     setCartItems((prev) =>
       prev.map((i) =>
-        i.id === id && i.type === type ? { ...i, quantity } : i
+        (i.id === id && (type === undefined || i.type === type)) ? { ...i, qty: quantity } : i
       )
     );
+  };
+
+  // flexible updater used by UI: updateCartQty(id, number) or updateCartQty(id, { size })
+  const updateCartQty = (id, arg) => {
+    if (typeof arg === 'object') {
+      setCartItems((prev) => prev.map((i) => (i.id === id ? { ...i, ...arg } : i)));
+    } else {
+      const quantity = Number(arg) || 0;
+      setCartItems((prev) => prev.map((i) => (i.id === id ? { ...i, qty: quantity } : i)));
+    }
+  };
+
+  const updateItem = (id, type, patch) => {
+    setCartItems((prev) => prev.map((i) => (i.id === id && i.type === type ? { ...i, ...patch } : i)));
   };
 
   const clearCart = () => setCartItems([]);
@@ -60,8 +108,9 @@ export function CartProvider({ children }) {
   // Calculate total in LKR (base currency)
   const totalLKR = cartItems.reduce(
     (sum, i) => {
-      const price = typeof i.price === "string" ? parseFloat(i.price) : i.price;
-      const itemTotal = typeof price === "number" && !isNaN(price) ? price * i.quantity : 0;
+      const price = typeof i.price === "string" ? parseFloat(i.price) : i.price || 0;
+      const qty = i.quantity ?? i.qty ?? 0;
+      const itemTotal = typeof price === "number" && !isNaN(price) ? price * qty : 0;
       return sum + itemTotal;
     },
     0
@@ -79,20 +128,43 @@ export function CartProvider({ children }) {
     return totals;
   };
 
+  // Persist cart/favorites/currency to localStorage when they change
+  useEffect(() => {
+    try {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    } catch (e) {}
+  }, [cartItems]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    } catch (e) {}
+  }, [favorites]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("selectedCurrency", selectedCurrency);
+    } catch (e) {}
+  }, [selectedCurrency]);
+
   return (
     <CartContext.Provider
       value={{ 
         cartItems, 
         addToCart, 
-        removeFromCart, 
-        updateQuantity, 
-        clearCart, 
+        removeFromCart,
+        updateQuantity,
+        updateCartQty,
+        updateItem,
+        clearCart,
         total,
         totalLKR,
         selectedCurrency,
         setSelectedCurrency,
         convertCurrency,
         getAllCurrencyTotals,
+        favorites,
+        toggleFav: (id) => setFavorites((f) => ({ ...f, [id]: !f[id] })),
         exchangeRates
       }}
     >
@@ -100,6 +172,8 @@ export function CartProvider({ children }) {
     </CartContext.Provider>
   );
 }
+
+// (persistence handled inside CartProvider)
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useCart() {

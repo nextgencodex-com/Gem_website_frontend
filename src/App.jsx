@@ -1,14 +1,16 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/home";
 import AboutUs from "./components/About/aboutus";
-import Blog from "./components/Blog/Blog";
-import GemCollection from "./components/GemCollection/GemCollection";
-import JewelleryCollection from "./components/JewelleryCollection/JewelleryCollection";
+import Gifts from "./components/Gifts/gifts";
+import Popular from "./components/Popular/popular";
+import PopularItems from "./components/Popular/popularItems";
+import Category from "./components/Category/category";
+import CategoryItems from "./components/Category/categoryItems";
+import GiftsDetails from "./components/GiftsDetails/GiftsDetails";
+import ShoppingCart from "./components/ShoppingCart";
 import ContactUs from "./components/ContactUs/ContactUs";
-import GemDetails from "./components/gem-details";
-import JewDetails from "./components/jew-details";
 import Customize from "./components/customize";
 import AdminPanel from "./components/Admin/page";
 import CustomJewelleryPage from "./components/custom-jewellery";
@@ -19,21 +21,28 @@ import LoginPage from "./components/Login/LoginPage";
 export default function App() {
   return (
     <Routes>
+      {/* Public routes with Layout (Header & Footer) */}
       <Route path="/" element={<Layout><Home /></Layout>} />
       <Route path="/about" element={<Layout><AboutUs /></Layout>} />
-      <Route path="/blog" element={<Layout><Blog /></Layout>} />
-      <Route path="/gem-collection" element={<Layout><GemCollection /></Layout>} />
-      <Route path="/jewellery-collection" element={<Layout><JewelleryCollection /></Layout>} />
+      <Route path="/gifts" element={<Layout><Gifts /></Layout>} />
+      <Route path="/popular" element={<Layout><Popular /></Layout>} />
+      <Route path="/popularItems" element={<Layout><PopularItems /></Layout>} />
+      <Route path="/category" element={<Layout><Category/></Layout>} />
+      <Route path="/categoryItems" element={<Layout><CategoryItems /></Layout>} />
+      <Route path="/GiftDetails" element={<Layout><GiftsDetails /></Layout>} />
       <Route path="/contact" element={<Layout><ContactUs /></Layout>} />
       <Route path="/customize" element={<Layout><Customize /></Layout>} />
-      <Route path="/custom-jewellery" element={<CustomJewelleryPage />} />
-      <Route path="/gem-details/:id" element={<Layout><GemDetails /></Layout>} />
-      <Route path="/jew-details/:id" element={<Layout><JewDetails /></Layout>} />
+      <Route path="/custom-jewellery" element={<Layout><CustomJewelleryPage /></Layout>} />
+      <Route path="/shopping-cart" element={<Layout><ShoppingCart /></Layout>} />
+      
+      {/* Admin routes - no Layout (or you can keep them without Layout) */}
       <Route path="/admin" element={<AdminPanel />} />
       <Route path="/admin/jtype" element={<AddJewelryType />} />
       <Route path="/admin/jspecs" element={<AddJewelrySpecs />} />
       <Route path="/admin/login" element={<LoginPage />} />
-      {/* Add other admin routes as needed */}
+      
+      {/* Catch all - redirect to home */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

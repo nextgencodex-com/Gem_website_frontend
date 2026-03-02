@@ -445,7 +445,7 @@ export default function CustomJewelleryPage(props) {
     if (withUpload && uploadedImage) {
       message += `Custom Design Image: [see uploaded image]%0A`;
     }
-    window.open(`https://wa.me/94759627589?text=${message}`, "_blank");
+    window.location.href = `https://wa.me/94759627589?text=${message}`;
   };
 
   // Image upload for custom design
@@ -695,7 +695,7 @@ export default function CustomJewelleryPage(props) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4 flex flex-col items-center font-[Poppins]">
+    <div className="min-h-screen bg-gray-50 py-10 px-4 flex flex-col items-center font-serif">
       <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8 relative">
         {/* Close Button */}
         <button

@@ -1,64 +1,106 @@
 "use client";
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "./cart-context";
-import CartModal from "./CartModal";
+import CartModal from "./ShoppingCart";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
+  const navigate = useNavigate();
   const { cartItems } = useCart();
+  const location = useLocation();
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const navigationLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Gem Collection", href: "/gem-collection" },
-    { name: "Jewellery Collection", href: "/jewellery-collection" },
+    { name: "Gifts", href: "/gifts" },
+    { name: "Popular", href: "/popular" },
+    { name: "Category", href: "/category" },
     { name: "Contact Us", href: "/contact" },
   ];
 
+  // Check if link is active
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <header className="bg-white text-black sticky top-0 z-50 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="bg-black text-white sticky top-0 z-50 border-b border-white/10">
+      {/* Subtle background pattern matching other pages */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none" 
+        style={{
+          backgroundImage: `radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <div className="w-18 h-16 flex items-center">
+          <Link to="/" className="w-18 h-16 flex items-center">
             <img
-              src="/images/logo2.jpg"
+              src="/images/Log 1.webp"
               alt="Luxiris Gems Logo"
               className="w-full h-full object-contain"
             />
-          </div>
+          </Link>
 
-          {/* Desktop Navigation */}
+          {/* DESKTOP VIEW - EXACTLY AS ORIGINAL */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navigationLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-black hover:text-blue-400 transition-colors duration-300 font-medium text-sm xl:text-base"
+                className={`relative transition-colors duration-300 font-medium text-sm xl:text-base group ${
+                  isActive(link.href) ? "text-white" : "text-gray-400 hover:text-white"
+                }`}
               >
                 {link.name}
+                {/* Active indicator underline */}
+                <span 
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-white/30 transform transition-transform duration-300 ${
+                    isActive(link.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             ))}
           </nav>
 
-          {/* Right Section */}
-          <div className="flex items-center space-x-4">
+          {/* Right Section - Desktop - EXACTLY AS ORIGINAL */}
+          <div className="hidden lg:flex items-center space-x-4">
             {/* Cart */}
             <button
-              className="relative text-black hover:text-blue-500 transition-colors duration-300"
-              onClick={() => setCartOpen(true)}
+              className="relative text-gray-400 hover:text-white transition-colors duration-300"
+              onClick={() => navigate('/shopping-cart')}
               aria-label="Open cart"
             >
               <ShoppingCart className="w-6 h-6" />
               {cartItems.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+                <span className="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                  {cartItems.length}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* MOBILE VIEW - Only visible on mobile */}
+          <div className="flex lg:hidden items-center space-x-4">
+            {/* Cart - Mobile */}
+            <button
+              className="relative text-gray-400 hover:text-white transition-colors duration-300"
+              onClick={() => navigate('/shopping-cart')}
+              aria-label="Open cart"
+            >
+              <ShoppingCart className="w-6 h-6" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
                   {cartItems.length}
                 </span>
               )}
@@ -67,7 +109,8 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-black hover:text-blue-500 transition-colors duration-300"
+              className="text-gray-400 hover:text-white transition-colors duration-300"
+              aria-label="Toggle menu"
             >
               <svg
                 className="w-6 h-6"
@@ -109,7 +152,11 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-black hover:text-blue-400 transition-colors duration-300 font-medium py-3 px-3 rounded-md hover:bg-gray-100"
+                className={`transition-colors duration-300 font-medium py-3 px-3 rounded-md ${
+                  isActive(link.href)
+                    ? "text-white bg-white/10"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
@@ -119,7 +166,7 @@ const Header = () => {
         </div>
       </div>
 
-      <CartModal open={cartOpen} onClose={() => setCartOpen(false)} />
+      {/* Cart modal is opened via dedicated /shopping-cart route */}
     </header>
   );
 };

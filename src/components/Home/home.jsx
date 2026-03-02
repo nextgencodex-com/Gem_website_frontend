@@ -2,34 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 import { VolumeX, Volume2 } from "lucide-react";
 
-const testimonials = [
-  {
-    country: "USA",
-    quote:
-      "CeyGem's Sapphires are unmatched in quality. A trusted partner for our jewelry line",
-    name: "Emily Chen, Jeweler",
-  },
-  {
-    country: "UAE",
-    quote: "His expertise in Ceylon gems made our purchase seamless.",
-    img: "/images/12.png",
-    name: "Ahmed Al Mansoori, Buyer",
-  },
-  {
-    country: "UK",
-    quote: "The quality and authenticity of the gems exceeded our expectations",
-    img: "/images/13.png",
-    name: "Nisha Rajan, Collector",
-  },
-  {
-    country: "USA",
-    quote:
-      "A trusted gem expert who brings Sri Lanka's brilliance to the world.",
-    img: "/images/14.png",
-    name: "Lucia Ferraro, Jeweler",
-  },
-];
-
 function HeroSection({ navigate }) {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
@@ -45,125 +17,200 @@ function HeroSection({ navigate }) {
   };
 
   return (
-    <div className="relative h-[400px] md:h-[700px] flex items-center justify-start text-left text-white overflow-hidden font-poppins">
-      <video
-        ref={videoRef}
-        src="/videos/v2.mp4"
-        autoPlay
-        muted={muted}
-        loop
-        playsInline
+    <div className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center overflow-hidden bg-black">
+      {/* Background Image */}
+      <img
+        src="/images/Hero 23.jpeg"
+        alt="Luxury Gemstones"
         className="absolute inset-0 w-full h-full object-cover z-0"
-      ></video>
-
-      <div className="absolute inset-0 bg-black opacity-20 z-10" />
-
-      <div className="relative z-20 space-y-8 px-6 lg:px-16 max-w-4xl rounded-xl p-6">
-        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold drop-shadow-xl text-white">
-          TIMELESS NATURAL BEAUTY
-          <br />
-          FROM THE HEART
-          <br />
-          OF THE WORLD
-        </h1>
-
-        {/* Hide buttons on mobile */}
-        <div className="hidden md:flex flex-col sm:flex-row gap-4 justify-start">
-          <button
-            className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full font-medium transition-colors duration-300 border border-white/50 backdrop-blur-md text-sm md:text-base md:px-8"
-            onClick={() => navigate("/gem-collection")}
-          >
-            EXPLORE OUR GEM COLLECTION
-          </button>
-          <button
-            className="bg-transparent border-2 border-white/50 text-white hover:bg-white hover:text-[#00B9B3] px-6 py-3 rounded-full font-medium transition-all duration-300 backdrop-blur-md text-sm md:text-base md:px-8"
-            onClick={() => navigate("/jewellery-collection")}
-          >
-            EXPLORE OUR JEWELLERY COLLECTION
-          </button>
+      />
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
+      
+      {/* Text Content - Left Aligned */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full">
+        <div className="max-w-2xl">
+          {/* Small Elegant Tagline */}
+          <p className="text-white/60 text-sm md:text-base tracking-[0.3em] uppercase mb-4">
+            Luxury Redefined
+          </p>
+          
+          {/* Main Heading */}
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight">
+            Timeless 
+            <span className="block text-white/90">Elegance</span>
+          </h1>
+          
+          {/* Subheading */}
+          <p className="text-gray-200 text-base md:text-lg lg:text-xl mb-8 max-w-lg leading-relaxed">
+            Discover exquisite gemstones and jewellery crafted to celebrate life's most precious moments.
+          </p>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4">
+            <button 
+              onClick={() => navigate("/gifts")}
+              className="group bg-white text-black hover:bg-gray-200 font-semibold px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
+            >
+              <span>Explore Collection</span>
+              <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+            
+            <button 
+              onClick={() => navigate("/about")}
+              className="group border border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-3 rounded-full transition-all duration-300"
+            >
+              Our Story
+            </button>
+          </div>
         </div>
       </div>
-
-      {/* Mute/Unmute Toggle Icon */}
-      <button
-        onClick={toggleMute}
-        className="absolute top-4 right-4 z-30 bg-white/20 hover:bg-white/40 backdrop-blur-md p-2 rounded-full transition"
-      >
-        {muted ? (
-          <VolumeX className="w-6 h-6 text-white" />
-        ) : (
-          <Volume2 className="w-6 h-6 text-white" />
-        )}
-      </button>
     </div>
   );
 }
 
 const Home = () => {
   const navigate = useNavigate();
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [isWhyChooseOpen, setIsWhyChooseOpen] = useState(false);
-  const carouselRef = useRef(null);
 
-  const handleScroll = (e) => {
-    const scrollLeft = e.target.scrollLeft;
-    const width = e.target.offsetWidth;
-    const idx = Math.round(scrollLeft / width);
-    setCurrentTestimonial(idx);
-  };
-
-  const whyChooseItems = [
+  // Gift items data
+  const giftItems = [
     {
-      icon: (
-        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-      title: "Certified Authenticity",
-      description: "Every gem comes with international certification ensuring genuine Sri Lankan origin and quality.",
+      id: 1,
+      title: "Gifts for Her",
+      image: "/images/bl 1.jpg",
+      link: "/birthday-collection"
     },
     {
-      icon: (
-        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      title: "Ethical Sourcing",
-      description: "We work directly with licensed mines ensuring fair trade practices that benefit local communities.",
+      id: 2,
+      title: "Gold Jewellery",
+      image: "/images/bl 2.jpg",
+      link: "/anniversary-collection"
     },
     {
-      icon: (
-        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-        </svg>
-      ),
-      title: "Global Shipping",
-      description: "Insured worldwide delivery with tracking, ensuring your precious gemstones arrive safely.",
+      id: 3,
+      title: "Heart-Shaped Jewellery",
+      image: "/images/hs.webp",
+      link: "/engagement-rings"
     },
     {
-      icon: (
-        <svg className="w-6 h-6 md:w-8 md:h-8 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      title: "Expert Craftsmanship",
-      description: "Our master cutters have decades of experience in bringing out the maximum brilliance in every stone.",
-    },
+      id: 4,
+      title: "Gift for Him",
+      image: "/images/bl 4.jpg",
+      link: "/luxury-collection"
+    }
   ];
 
-  const toggleWhyChoose = () => {
-    setIsWhyChooseOpen(!isWhyChooseOpen);
-  };
+  // Shop by Category items
+  const categoryItems = [
+    {
+      id: 1,
+      title: "Necklaces & Pendants",
+      image: "/images/bl 6.jpg",
+      link: "/necklaces-pendants"
+    },
+    {
+      id: 2,
+      title: "Rings",
+      image: "/images/bg.webp",
+      link: "/rings"
+    },
+    {
+      id: 3,
+      title: "Earrings",
+      image: "/images/bg.webp",
+      link: "/earrings"
+    },
+    {
+      id: 4,
+      title: "Bracelets",
+      image: "/images/bg.webp",
+      link: "/bracelets"
+    },
+    {
+      id: 5,
+      title: "Love & Engagement",
+      image: "/images/bg.webp",
+      link: "/love-engagement"
+    }
+  ];
+
+  // Gifting Services items
+  const giftingServices = [
+    {
+      id: 1,
+      title: "Book an Appointment",
+      icon: (className) => (
+        <svg className={className} fill="white" viewBox="0 0 24 24">
+          <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="white" strokeWidth="1.5" fill="none"/>
+          <circle cx="12" cy="15" r="1" fill="white"/>
+          <circle cx="16" cy="15" r="1" fill="white"/>
+          <circle cx="8" cy="15" r="1" fill="white"/>
+        </svg>
+      ),
+      link: "/book-appointment",
+    },
+    {
+      id: 2,
+      title: "Engrave Your Gift",
+      icon: (className) => (
+        <svg className={className} fill="white" viewBox="0 0 24 24">
+          <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke="white" strokeWidth="1.5" fill="none"/>
+          <path d="M3 21h18" stroke="white" strokeWidth="1.5" fill="none"/>
+        </svg>
+      ),
+      link: "/engraving-services",
+    },
+    {
+      id: 3,
+      title: "Contact Us",
+      icon: (className) => (
+        <svg className={className} fill="white" viewBox="0 0 24 24">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="white" strokeWidth="1.5" fill="none"/>
+          <circle cx="12" cy="13" r="1" fill="white"/>
+        </svg>
+      ),
+      link: "/contact",
+    }
+  ];
+
+  // Placeholder images for gift section
+  const giftImages = [
+    "/images/bl 1.jpg",
+    "/images/bl 2.jpg",
+    "/images/hs.webp",
+    "/images/bl 4.jpg"
+  ];
+
+  // Placeholder images for category section
+  const categoryImages = [
+    "/images/bl 6.jpg",
+    "/images/bl 7.jpg",
+    "/images/bl 8.jpg",
+    "/images/bl 9.jpg",
+    "/images/bl 10.jpg"
+  ];
 
   return (
-    <div className="min-h-screen font-poppines">
+    <div className="min-h-screen bg-black">
+      {/* Subtle background pattern - matching About Us page */}
+      <div className="fixed inset-0 opacity-10 pointer-events-none" 
+        style={{
+          backgroundImage: `radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
+
+      {/* Hero Section - This is already responsive, so we keep it as is */}
       <HeroSection navigate={navigate} />
 
-      {/* WhatsApp Button - Made smaller on mobile */}
+      {/* WhatsApp Button - This is already responsive, so we keep it as is */}
       <div className="fixed left-4 bottom-4 md:left-6 md:bottom-6 z-20">
         <button
-          className="bg-green-500 hover:bg-[#009690] text-white px-3 py-2 md:px-4 md:py-2 rounded-full flex items-center gap-2 shadow-lg transition-colors duration-300 text-sm md:text-base"
-          onClick={() => window.open("https://wa.me/94759627589", "_blank")}
+          className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-full flex items-center gap-2 shadow-lg transition-colors duration-300 text-sm md:text-base"
+          onClick={() => (window.location.href = "https://wa.me/94759627589")}
         >
           <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
@@ -172,470 +219,499 @@ const Home = () => {
         </button>
       </div>
 
-      {/* Luxurious Gemstone Section with Alternating Layout */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-20">
-            <div className="order-1 md:order-1">
-              <h2 className="text-2xl md:text-5xl font-bold text-[#bf9b30] mb-4 md:mb-6">
-                Exquisite Gemstones
+      {/* ========== DESKTOP VIEW CODE ========== */}
+      <div className="hidden md:block">
+        {/* Section 1: Find the Perfect Gift - Desktop */}
+        <section className="py-20 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Section Header - Desktop */}
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-5xl text-white font-bold mb-4 relative inline-block">
+                Find the Perfect Gift
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
               </h2>
-              <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-8 leading-relaxed">
-                Discover the rarest and most vibrant gemstones from Sri Lanka,
-                each hand-selected for their exceptional quality and brilliance.
-                Our collection represents the finest examples of nature's
-                artistry.
-              </p>
-              <button
-                className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
-                onClick={() => navigate("/gem-collection")}
-              >
-                VIEW GEM COLLECTION
-              </button>
-            </div>
-            <div className="order-2 md:order-2 relative">
-              <div className="relative aspect-square w-full h-auto rounded-xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/gem4.jpg"
-                  alt="Blue Sapphire"
-                  className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-500"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="order-2 md:order-1 relative">
-              <div className="relative aspect-square w-full h-auto rounded-xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/jew1.jpg"
-                  alt="Ruby Gemstone"
-                  className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-500"
-                />
-              </div>
-            </div>
-            <div className="order-1 md:order-2">
-              <h2 className="text-2xl md:text-5xl font-bold text-[#bf9b30] mb-4 md:mb-6">
-                Premium Jewelry Collections
-              </h2>
-              <p className="text-base md:text-lg text-gray-600 mb-6 md:mb-8 leading-relaxed">
-                Our master jewelers transform these exceptional gemstones into
-                breathtaking jewelry pieces that embody elegance and timeless
-                beauty. Each creation tells a story of craftsmanship and
-                passion.
-              </p>
-              <button
-                className="w-60 bg-[#bf9b30]  text-white font-medium py-1 px-1 rounded-full transition-colors duration-300"
-                onClick={() => navigate("/jewellery-collection")}
-              >
-                VIEW JEWELRY COLLECTION
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Master Of Ceylon Gems Section */}
-      <section className="py-12 md:py-20 bg-[#f8f4ed]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="relative aspect-square w-full h-auto rounded-xl overflow-hidden shadow-2xl">
-              <img
-                src="/images/gem5.jpg"
-                alt="Master Gemologist"
-                className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-500"
-              />
-            </div>
-
-            <div className="order-1 md:order-2">
-              <h2 className="text-2xl md:text-5xl font-bold text-[#bf9b30] mb-4 md:mb-6">
-                Master Of Gems
-              </h2>
-              <div className="w-16 h-1 bg-[#00B9B3] mb-6 md:mb-8"></div>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6 md:mb-8">
-                With over 25 years in Sri Lanka's gem trade, our founder brings
-                you the finest Ceylon Sapphires, Rubies, and more. From the
-                legendary gem mines of Ratnapura to your collection, experience
-                the authenticity and brilliance that only comes from generations
-                of expertise.
-              </p>
-              <div className="space-y-3 md:space-y-4">
-                <div className="flex items-start">
-                  <svg
-                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B3] mt-0.5 md:mt-1 mr-2 md:mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <p className="text-sm md:text-base text-gray-700">
-                    25+ years of gem sourcing expertise
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B30] mt-0.5 md:mt-1 mr-2 md:mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <p className="text-sm md:text-base text-gray-700">
-                    Direct relationships with licensed mines
-                  </p>
-                </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B3] mt-0.5 md:mt-1 mr-2 md:mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <p className="text-sm md:text-base text-gray-700">
-                    International gemological certifications
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Story In Numbers Section */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-center text-[#bf9b30] mb-4">
-            Our Legacy In Numbers
-          </h2>
-          <div className="w-16 h-1 bg-[#00B9B3] mx-auto mb-12 md:mb-16"></div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <div className="text-4xl md:text-5xl font-bold text-[#00B9B3] mb-3 md:mb-4">25+</div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-1 md:mb-2">
-                Years of Excellence
-              </h3>
-              <p className="text-sm md:text-base text-gray-600">In the gemstone industry</p>
-            </div>
-
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <div className="text-4xl md:text-5xl font-bold text-[#00B9B3] mb-3 md:mb-4">4</div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-1 md:mb-2">
-                Countries Served
-              </h3>
-              <p className="text-sm md:text-base text-gray-600">Global clientele base</p>
-            </div>
-
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300">
-              <div className="text-4xl md:text-5xl font-bold text-[#00B9B3] mb-3 md:mb-4">
-                1000+
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-1 md:mb-2">
-                Satisfied Clients
-              </h3>
-              <p className="text-sm md:text-base text-gray-600">Worldwide</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-12 md:py-20 bg-[#f8f4ed]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#bf9b30] mb-4">
-              Client Testimonials
-            </h2>
-            <div className="w-16 h-1 bg-[#00B9B3] mx-auto"></div>
-          </div>
-
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="text-sm font-medium text-[#00B9B3] mb-2">
-                  {testimonial.country}
-                </div>
-                <div className="text-3xl md:text-4xl text-gray-300 mb-3 md:mb-4">"</div>
-                <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 italic">{testimonial.quote}</p>
-                <div className="flex items-center">
-                  <div>
-                    <div className="font-semibold text-gray-800">
-                      {testimonial.name}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile Carousel */}
-          <div className="md:hidden">
-            <div
-              className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4"
-              ref={carouselRef}
-              onScroll={handleScroll}
-            >
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="min-w-[85%] snap-center">
-                  <div className="bg-white p-6 rounded-xl shadow-md">
-                    <div className="text-sm font-medium text-[#00B9B3] mb-2">
-                      {testimonial.country}
-                    </div>
-                    <div className="text-3xl text-gray-300 mb-4">"</div>
-                    <p className="text-sm text-gray-600 mb-6 italic">
-                      {testimonial.quote}
-                    </p>
-                    <div className="flex items-center">
-                      <img
-                        src={testimonial.img}
-                        alt={testimonial.name}
-                        className="w-10 h-10 rounded-full mr-3 object-cover"
-                      />
-                      <div>
-                        <div className="font-semibold text-gray-800">
-                          {testimonial.name}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center mt-6 space-x-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full ${
-                    currentTestimonial === index
-                      ? "bg-[#00B9B3]"
-                      : "bg-gray-300"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#bf9b30] mb-4">
-              Why Choose CeyGem
-            </h2>
-            <div className="w-16 h-1 bg-[#00B9B3] mx-auto"></div>
-          </div>
-
-          {/* Desktop Grid - hidden on mobile */}
-          <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {whyChooseItems.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:border-[#00B9B3] transition-all duration-300"
-              >
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                  {item.icon}
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile View with Dropdown - shown only on mobile */}
-          <div className="md:hidden">
-            {/* First item always visible */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 mb-6">
-              <div className="w-12 h-12 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[#00B9B3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                Certified Authenticity
-              </h3>
-              <p className="text-sm text-gray-600">
-                Every gem comes with international certification ensuring genuine Sri Lankan origin and quality.
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto mt-8">
+                Discover our curated collection of exquisite gemstones and jewellery perfect for every special occasion
               </p>
             </div>
 
-            {/* Dropdown arrow button */}
-            <div className="flex justify-center my-6">
-              <button
-                onClick={toggleWhyChoose}
-                className="flex flex-col items-center justify-center text-[#bf9b30] hover:text-[#a88728] transition-colors duration-300"
-                aria-label={isWhyChooseOpen ? "Hide features" : "Show features"}
-              >
-                <span className="text-sm font-semibold mb-1">
-                  {isWhyChooseOpen ? "Hide" : "Show"} More Features
-                </span>
-                <svg
-                  className={`w-8 h-8 transform transition-transform duration-300 ${
-                    isWhyChooseOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+            {/* 4 Images in a Single Line - Desktop */}
+            <div className="grid grid-cols-4 gap-10">
+              {giftItems.map((item, index) => (
+                <div 
+                  key={item.id} 
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/gifts", { state: { scrollToId: item.id } })}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* Dropdown content - Other features */}
-            <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                isWhyChooseOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-              }`}
-            >
-              {whyChooseItems.slice(1).map((item, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 mb-6">
-                  <div className="w-12 h-12 bg-[#00B9B3] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
-                    {item.icon}
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-6">
+                    <img
+                      src={giftImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                    />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-xl text-white font-bold mb-4 group-hover:text-white/80 transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-gray-600">
-                    {item.description}
-                  </p>
+                  
+                  {/* Shop Now Button with Arrow Icon */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/gifts", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop Now</span>
+                    <svg 
+                      className="w-4 h-4" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section className="py-12 md:py-20 bg-[#f8f4ed]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-bold text-[#bf9b30] mb-4 md:mb-6">
-                Contact Us
-              </h2>
-              <div className="w-16 h-1 bg-[#00B9B3] mb-6 md:mb-8"></div>
-              <p className="text-base md:text-lg text-gray-700 mb-6 md:mb-8 leading-relaxed">
-                Have questions about our gemstones or jewelry collections? Our
-                experts are ready to assist you with personalized service.
-              </p>
+        {/* Section 2: Most Popular Item - Desktop */}
+        <section className="py-20 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Split Layout - Image Left, Content Right */}
+            <div className="grid grid-cols-2 gap-12 items-center">
+              {/* Left Side - Image */}
+              <div className="relative aspect-square w-full overflow-hidden rounded-2xl shadow-2xl group">
+                <img
+                  src="/images/bl 5.jpg"
+                  alt="Most Popular Items"
+                  className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
 
-              <div className="space-y-3 md:space-y-4">
-                <div className="flex items-start">
-                  <svg
-                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B3] mt-0.5 md:mt-1 mr-2 md:mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  <div>
-                    <p className="text-sm md:text-base font-medium text-gray-800">Phone</p>
-                    <p className="text-sm md:text-base text-gray-600">+94 11 234 5678</p>
+              {/* Right Side - Content */}
+              <div className="text-left space-y-6">
+                {/* Title */}
+                <h3 className="font-serif text-5xl text-white font-bold">
+                  Most Popular <span className="text-white/60">Items</span>
+                </h3>
+                
+                {/* Description */}
+                <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
+                  Discover our most loved and bestselling jewellery pieces. 
+                  These exquisite designs have captured the hearts of our customers 
+                  and continue to shine as timeless favorites.
+                </p>
+                
+                {/* Features/Benefits List */}
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm">Certified Quality</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm">Best Seller</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm">Limited Edition</span>
                   </div>
                 </div>
-
-                <div className="flex items-start">
-                  <svg
-                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B3] mt-0.5 md:mt-1 mr-2 md:mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                
+                {/* Shop Now Button */}
+                <div className="pt-6">
+                  <button 
+                    onClick={() => navigate("/popular")}
+                    className="group inline-flex items-center gap-3 bg-white text-black hover:bg-gray-200 font-semibold text-lg px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <div>
-                    <p className="text-sm md:text-base font-medium text-gray-800">Email</p>
-                    <p className="text-sm md:text-base text-gray-600">info@ceygem.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <svg
-                    className="w-5 h-5 md:w-6 md:h-6 text-[#00B9B3] mt-0.5 md:mt-1 mr-2 md:mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                  <div>
-                    <p className="text-sm md:text-base font-medium text-gray-800">Address</p>
-                    <p className="text-sm md:text-base text-gray-600">
-                      123 Gem Street, Ratnapura, Sri Lanka
-                    </p>
-                  </div>
+                    <span>Shop the Collection</span>
+                    <svg 
+                      className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Image replacing the form */}
-            <div className="relative aspect-square w-full h-auto rounded-xl overflow-hidden shadow-2xl">
-              <img
-                src="/images/j1.jpg"
-                alt="Master Gemologist"
-                className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-500"
-              />
+        {/* Section 3: Shop by Category - Desktop */}
+        <section className="py-20 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Section Header - Desktop */}
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-5xl text-white font-bold mb-4 relative inline-block">
+                Shop by Category
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto mt-8">
+                Browse our exclusive collections categorized by jewellery type
+              </p>
+            </div>
+
+            {/* 5 Images in a Single Line - Desktop */}
+            <div className="grid grid-cols-5 gap-8">
+              {categoryItems.map((item, index) => (
+                <div 
+                  key={item.id}
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/category", { state: { scrollToId: item.id } })}
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:shadow-2xl mb-4">
+                    <img
+                      src={categoryImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                    />
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-lg text-white font-bold mt-4 group-hover:text-white/80 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+
+                  {/* Shop Now Button with Arrow Icon */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/category", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-base transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop Now</span>
+                    <svg 
+                      className="w-4 h-4" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Section 4: Discover Our Gifting Services - Desktop */}
+        <section className="py-20 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Section Header - Desktop */}
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-5xl text-white font-bold mb-4 relative inline-block">
+                Discover Our Gifting Services
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto mt-8">
+                Enhance your gift-giving experience with our exclusive services
+              </p>
+            </div>
+
+            {/* 3 Icons in a Single Line - Desktop */}
+            <div className="grid grid-cols-3 gap-8">
+              {giftingServices.map((item) => (
+                <div 
+                  key={item.id}
+                  className="group text-center"
+                >
+                  {/* Icon Container */}
+                  <div className="flex justify-center mb-4">
+                    <div className="p-4 rounded-full bg-white/10 border border-white/20 group-hover:border-white/40 group-hover:bg-white/15 transition-all duration-300">
+                      {item.icon("w-14 h-14 text-white")}
+                    </div>
+                  </div>
+                  
+                  {/* Title Below Icon */}
+                  <h3 className="font-serif text-lg text-white font-bold group-hover:text-white transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* ========== MOBILE VIEW CODE ========== */}
+      <div className="block md:hidden">
+        {/* Section 1: Find the Perfect Gift - Mobile */}
+        <section className="py-12 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Section Header - Mobile */}
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl text-white font-bold mb-4 relative inline-block">
+                Find the Perfect Gift
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-base max-w-3xl mx-auto mt-6">
+                Discover our curated collection of exquisite gemstones and jewellery
+              </p>
+            </div>
+
+            {/* 4 Images in Grid - Mobile */}
+            <div className="grid grid-cols-2 gap-6">
+              {giftItems.map((item, index) => (
+                <div 
+                  key={item.id} 
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/gifts", { state: { scrollToId: item.id } })}
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg mb-4">
+                    <img
+                      src={giftImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                    />
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-base text-white font-bold mb-2">
+                    {item.title}
+                  </h3>
+                  
+                  {/* Shop Now Button with Arrow Icon */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/gifts", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-xs transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop Now</span>
+                    <svg 
+                      className="w-3 h-3" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2: Most Popular Item - Mobile */}
+        <section className="py-12 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Split Layout - Image Top, Content Bottom for Mobile */}
+            <div className="flex flex-col gap-8 items-center">
+              {/* Image */}
+              <div className="relative aspect-square w-full max-w-md overflow-hidden rounded-2xl shadow-2xl group">
+                <img
+                  src="/images/bl 5.jpg"
+                  alt="Most Popular Items"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="text-center space-y-4">
+                {/* Title */}
+                <h3 className="font-serif text-3xl text-white font-bold">
+                  Most Popular <span className="text-white/60">Items</span>
+                </h3>
+                
+                {/* Description */}
+                <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                  Discover our most loved and bestselling jewellery pieces. 
+                  These exquisite designs have captured the hearts of our customers.
+                </p>
+                
+                {/* Features/Benefits List */}
+                <div className="flex flex-wrap justify-center gap-3 pt-2">
+                  <div className="flex items-center gap-1 text-gray-300">
+                    <svg className="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-xs">Certified</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-gray-300">
+                    <svg className="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-xs">Best Seller</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-gray-300">
+                    <svg className="w-4 h-4 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-xs">Limited</span>
+                  </div>
+                </div>
+                
+                {/* Shop Now Button */}
+                <div className="pt-4">
+                  <button 
+                    onClick={() => navigate("/popular")}
+                    className="group inline-flex items-center gap-2 bg-white text-black hover:bg-gray-200 font-semibold text-base px-6 py-2.5 rounded-full transition-all duration-300"
+                  >
+                    <span>Shop Collection</span>
+                    <svg 
+                      className="w-4 h-4" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Shop by Category - Mobile */}
+        <section className="py-12 bg-black border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Section Header - Mobile */}
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl text-white font-bold mb-4 relative inline-block">
+                Shop by Category
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-base max-w-3xl mx-auto mt-6">
+                Browse our exclusive collections
+              </p>
+            </div>
+
+            {/* 5 Images in Grid - Mobile */}
+            <div className="grid grid-cols-2 gap-4">
+              {categoryItems.map((item, index) => (
+                <div 
+                  key={item.id}
+                  className="group cursor-pointer text-center"
+                  onClick={() => navigate("/category", { state: { scrollToId: item.id } })}
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl shadow-lg mb-3">
+                    <img
+                      src={categoryImages[index] || item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="font-serif text-sm text-white font-bold mb-2">
+                    {item.title}
+                  </h3>
+
+                  {/* Shop Now Button */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/category", { state: { scrollToId: item.id } });
+                    }}
+                    className="text-white/60 hover:text-white font-medium text-xs transition-colors duration-300 flex items-center justify-center mx-auto gap-1"
+                  >
+                    <span>Shop</span>
+                    <svg 
+                      className="w-3 h-3" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth="2" 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Discover Our Gifting Services - Mobile */}
+        <section className="py-12 bg-black/95 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Section Header - Mobile */}
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl text-white font-bold mb-4 relative inline-block">
+                Gifting Services
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-white/30" />
+              </h2>
+              <p className="text-gray-400 text-base max-w-3xl mx-auto mt-6">
+                Enhance your gift-giving experience
+              </p>
+            </div>
+
+            {/* 3 Icons in Column for Mobile */}
+            <div className="flex flex-col gap-6">
+              {giftingServices.map((item) => (
+                <div 
+                  key={item.id}
+                  className="group flex items-center gap-4 text-left"
+                >
+                  {/* Icon Container */}
+                  <div className="flex-shrink-0 p-3 rounded-full bg-white/10 border border-white/20">
+                    {item.icon("w-8 h-8 text-white")}
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="font-serif text-base text-white font-bold">
+                    {item.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
